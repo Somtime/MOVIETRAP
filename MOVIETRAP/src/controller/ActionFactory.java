@@ -1,6 +1,7 @@
 package controller;
 
 import controller.action.Action;
+import controller.action.LoginAction;
 
 public class ActionFactory {
 	// Variable
@@ -15,19 +16,19 @@ public class ActionFactory {
 	}
 	
 	public Action getAction(String command) {
-		// command¸¦ ÀÔ·Â¹Þ¾Æ actionÀ» ½ÇÇàÇÒ º¯¼ö »ý¼º
+		// commandï¿½ï¿½ ï¿½Ô·Â¹Þ¾ï¿½ actionï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		Action action = null;
 		
-		// ConsoleÃ¢¿¡ Ä¿¸Çµå Ç¥½Ã
+		// ConsoleÃ¢ï¿½ï¿½ Ä¿ï¿½Çµï¿½ Ç¥ï¿½ï¿½
 		System.out.println("ActionFactory : " + command);
 		
 		// Action/ Command
-		if (command.equals("")) {
-			//action = new 
+		if (command.equals("login")) {
+			action = new LoginAction();
 		} else if (command.equals("")) {
 			//action = new
 		}
 		
-		return action
+		return action;
 	}
 }
