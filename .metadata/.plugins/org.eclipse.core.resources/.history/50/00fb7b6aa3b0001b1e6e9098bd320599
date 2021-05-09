@@ -1,0 +1,34 @@
+package controller;
+
+import controller.action.Action;
+import controller.action.LoginFormAction;
+
+public class ActionFactory {
+	// Variable
+	private static ActionFactory instance = new ActionFactory();
+	
+	// Constructor
+	private ActionFactory() {}
+	
+	// Method
+	public static ActionFactory getInstance() {
+		return instance;
+	}
+	
+	public Action getAction(String command) {
+		// command¸¦ ÀÔ·Â ¹Þ¾Æ ½ÇÇà ½ÃÅ³ actionÀ» ³ÖÀ» Action º¯¼ö »ý¼º
+		Action action = null;
+		
+		// ConsoleÃ¢ï¿½ï¿½ Ä¿ï¿½Çµï¿½ Ç¥ï¿½ï¿½
+		System.out.println("ActionFactory : " + command);
+		
+		// Action/ Command
+		if (command.equals("index")) {
+			action = new LoginFormAction();
+		} /*
+			 * else if (command.equals("ex")) { action = new }
+			 */
+		
+		return action;
+	}
+}

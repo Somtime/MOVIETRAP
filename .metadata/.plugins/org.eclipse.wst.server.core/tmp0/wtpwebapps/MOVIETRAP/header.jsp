@@ -11,7 +11,9 @@
 	<div id="header">
 	
 		<div id="logo">
-			<img src="" />
+			<a href="#">
+				<img src="assets/images/logo.png" />
+			</a>
 		</div>
 		
 		<div id="search">

@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
+<link href="assets/css/movietrap.css" type="text/css" rel="stylesheet"> 
 <title>Main</title>
 </head>
 <body>
