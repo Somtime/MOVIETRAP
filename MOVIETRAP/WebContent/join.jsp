@@ -20,6 +20,9 @@
     <label for="pwd"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="pwd" required>
     
+    <label for="pwd"><b>Re-Enter Password</b></label>
+    <input type="password" placeholder="Re-Enter Password" name="pwd" required>
+    
     <label for="payment"><b>Payment</b></label>
 
      <!-- Card Number -->
@@ -61,7 +64,7 @@
         <p style="font-size: .8rem;">3 or 4 digits usually found on the signature strip</p>
  
     <!-- Buttons -->
-    <button type="submit">Register</button>
+    <button type="submit">Register</button>    
 </div>
 </form>
 </body>

@@ -6,6 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="assets/css/movietrap.css" type="text/css" rel="stylesheet"> 
 <title>Login</title>
+<script>
+function PwdFunction() {
+	  var x = document.getElementById("login_pwd");
+	  if (x.type === "password") {
+	    x.type = "text";
+	  } else {
+	    x.type = "password";
+	  }
+	}
+</script>
 </head>
 <body>
 <form class="login_join_form">
@@ -14,7 +24,8 @@
     <input type="text" placeholder="Enter Email" name="email" required>
     
     <label for="pwd"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="pwd" required>
+    <input type="password" id="login_pwd" placeholder="Enter Password" name="pwd" required>
+    <input type="checkbox" onclick="PwdFunction()">Show Password
     
     <button type="submit">Login</button>
     <button onclick="MovietrapServlet?command=join">Register</button>

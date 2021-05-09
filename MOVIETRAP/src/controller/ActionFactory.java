@@ -25,8 +25,8 @@ public class ActionFactory {
 		// Action/ Command
 		if (command.equals("login")) {
 			action = new LoginAction();
-		} else if (command.equals("ex")) {
-			//action = new
+		} else if (command.equals("edit_pay")) {
+			action = new EditPayAction();
 		}
 		
 		return action;
