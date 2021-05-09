@@ -6,12 +6,30 @@
 <head>
 <meta charset="UTF-8">
 <title>Membership</title>
+<script>
+function editPay() {
+  var url = "MovietrapServlet?command=edit_pay" 
++ document.formm.id.value;
+  window.open( url, "_blank_1",
+"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=330, height=400");
+}
+</script>
+<style>
+.qna {
+  background-color: white;
+  width: 500px;
+  height: 400px;
+  border: 3px solid black;
+  padding: 30px;
+  margin: 20px;
+}
+</style>
 </head>
 <body>
 	<div id="user icon">
 		<img src="" />
 	</div>
-
+Membership
 <%-- 	<c:forEach items="${memberInfo} var="MemberVO"> --%>
 	<table id="membership">
 		<tr>
@@ -45,16 +63,11 @@
 		</tr>
 	</table>
 <%-- 	</c:forEach> --%>
-	
+
+Q & A
+<div class=qna>
+	qna content
+</div>
 </body>
 </html>
 
-
-<script>
-function editPay() {
-  var url = "MovietrapServlet?command=edit_pay" 
-+ document.formm.id.value;
-  window.open( url, "_blank_1",
-"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=330, height=400");
-}
-</script>

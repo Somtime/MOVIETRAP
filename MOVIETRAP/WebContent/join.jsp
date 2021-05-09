@@ -26,7 +26,9 @@
     <label for="payment"><b>Payment</b></label>
 
      <!-- Card Number -->
-    <input type="text" placeholder="Card Number">
+    <input type="text" placeholder="Card Number Exclude '' - ''" name="pay_num" maxlength="12">
+    <input type="text" placeholder="Last Four Digits" name="pay_num_lstfour" maxlength="4">
+    
  
     <!-- Date Field -->
    		 <div class="month">
@@ -60,7 +62,7 @@
         </div>
     <!-- Card Verification Field -->
 
-        <input type="text" placeholder="CVV">
+        <input type="text" placeholder="CVV" maxlength="4" name="pay_cvc">
         <p style="font-size: .8rem;">3 or 4 digits usually found on the signature strip</p>
  
     <!-- Buttons -->
