@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<link href="assets/css/movietrap.css" type="text/css" rel="stylesheet" >  
+<link href="assets/css/header.css" type="text/css" rel="stylesheet" >  
 <title>Header</title>
 </head>
 <body>
-	<div id="header">
+	<header>
 	
 		<div id="logo">
 			<a href="#">
@@ -36,11 +36,11 @@
 			</select>
 		</div>
 		
-		<div id="user icon">
+		<div id="user_icon">
 			<img src="" />
 		</div>
 		
-		<div id="watch later">
+		<div id="watch_later">
 			<a href="">
 				<img src="" />
 			</a>
@@ -51,6 +51,6 @@
 				<img src="" />
 			</a>
 		</div>
-	</div>
+	</header>
 </body>
 </html>
