@@ -30,6 +30,7 @@
 form {
 	border: 3px solid #f1f1f1;
 }
+/*edited*/	
 input[type=text], input[type=password] {
   width: 97%;
   padding: 12px 20px;
@@ -38,7 +39,6 @@ input[type=text], input[type=password] {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
-	
 button {
   background-color: #04AA6D;
   color: white;
@@ -48,7 +48,7 @@ button {
   cursor: pointer;
   width: 97%;
 }
-
+/*edited*/	
 button:hover {
   opacity: 0.8;
 }
