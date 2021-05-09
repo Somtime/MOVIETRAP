@@ -5,7 +5,7 @@
 <link href="movietrap.css" type="text/css" rel="stylesheet" >      
 <style>
 
-/* Change styles for span and cancel button on extra small screens COMMENT*/ 
+/* Change styles for span and cancel button on extra small screens*/ 
 @media screen and (max-width: 300px) {
   span.psw {
      display: block;
