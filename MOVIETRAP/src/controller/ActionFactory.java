@@ -24,15 +24,10 @@ public class ActionFactory {
 		System.out.println("ActionFactory : " + command);
 		
 		// Action/ Command
-<<<<<<< HEAD
 		if (command.equals("login")) {
-			action = new LoginAction();
+			action = new LoginFormAction();
 		} else if (command.equals("edit_pay")) {
 			action = new EditPayAction();
-=======
-		if (command.equals("index")) {
-			action = new LoginFormAction(); // �α���/ȸ������ ������
->>>>>>> branch 'master' of https://github.com/Somtime/MOVIETRAP.git
 		}
 		
 		return action;
