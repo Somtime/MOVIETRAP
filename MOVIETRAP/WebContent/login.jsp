@@ -8,7 +8,7 @@
 <title>Login</title>
 </head>
 <body>
-<form class="credit-card">
+<form class="login_join_form">
   <div class="container">
 	<label for="id"><b>Email</b></label>
     <input type="text" placeholder="Enter Email" name="email" required>
