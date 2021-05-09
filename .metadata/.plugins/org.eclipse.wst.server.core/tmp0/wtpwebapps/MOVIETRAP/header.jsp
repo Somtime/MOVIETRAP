@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
+<link href="assets/css/movietrap.css" type="text/css" rel="stylesheet" >  
 <title>메인 페이지</title>
 </head>
 <body>
