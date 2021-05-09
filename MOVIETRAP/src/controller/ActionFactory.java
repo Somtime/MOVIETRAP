@@ -1,6 +1,7 @@
 package controller;
 
 import controller.action.Action;
+import controller.action.EditPayAction;
 import controller.action.LoginFormAction;
 
 public class ActionFactory {
@@ -16,10 +17,10 @@ public class ActionFactory {
 	}
 	
 	public Action getAction(String command) {
-		// command¸¦ ÀÔ·Â ¹Þ¾Æ ½ÇÇà ½ÃÅ³ actionÀ» ³ÖÀ» Action º¯¼ö »ý¼º
+		// commandï¿½ï¿½ ï¿½Ô·ï¿½ ï¿½Þ¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ actionï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Action ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		Action action = null;
 		
-		// Console Ã¢¿¡ Ä¿¸Çµå Ç¥½Ã
+		// Console Ã¢ï¿½ï¿½ Ä¿ï¿½Çµï¿½ Ç¥ï¿½ï¿½
 		System.out.println("ActionFactory : " + command);
 		
 		// Action/ Command
@@ -30,7 +31,7 @@ public class ActionFactory {
 			action = new EditPayAction();
 =======
 		if (command.equals("index")) {
-			action = new LoginFormAction(); // ·Î±×ÀÎ/È¸¿ø°¡ÀÔ ÆäÀÌÁö
+			action = new LoginFormAction(); // ï¿½Î±ï¿½ï¿½ï¿½/È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 >>>>>>> branch 'master' of https://github.com/Somtime/MOVIETRAP.git
 		}
 		
