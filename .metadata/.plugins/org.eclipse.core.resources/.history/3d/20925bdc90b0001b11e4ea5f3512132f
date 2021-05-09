@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>메인 페이지</title>
+</head>
+<body>
+	<div id="header">
+		<div id="logo">
+			<img src="" />
+		</div>
+		<div id="search">
+			<input type="search" placeholder="search">
+		</div>
+		<div>
+			<select >
+		</div>
+	</div>
+</body>
+</html>
