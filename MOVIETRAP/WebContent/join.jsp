@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="movietrap.css" type="text/css" rel="stylesheet"> 
 <title>Join</title>
-
 </head>
 <body>
 <form class="credit-card">
