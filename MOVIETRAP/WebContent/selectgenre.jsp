@@ -15,7 +15,7 @@
 			<select name="sortby">
 				<option value="" selected>sort by</option>
 				<option value="">Recent release</option>
-				<option value="">Popular</option>
+				<option value="">Popular</option> 
 				<option value="">Alphabetical</option>
 			</select>
 		</div>
