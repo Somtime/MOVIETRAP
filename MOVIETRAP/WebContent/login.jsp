@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="movietrap.css" type="text/css" rel="stylesheet"> 
+<link href="assets/css/movietrap.css" type="text/css" rel="stylesheet"> 
 <title>Login</title>
 </head>
 <body>
