@@ -8,11 +8,11 @@
 <title>Membership</title>
 <script>
 function editPay() {
-  var url = "MovietrapServlet?command=edit_pay" 
-+ document.formm.id.value;
+ var url = "MOVIETRAPServlet?command=edit_pay";
   window.open( url, "_blank_1",
-"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=330, height=400");
+ "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=330, height=500");
 }
+
 </script>
 <style>
 .qna {
@@ -58,7 +58,7 @@ Membership
 			</td>		
 		<tr>
 			<td>
-				<p onclick="editPay()">edit payment</p>
+				<button onclick="editPay()">edit payment</button>
 			</td>
 		</tr>
 	</table>

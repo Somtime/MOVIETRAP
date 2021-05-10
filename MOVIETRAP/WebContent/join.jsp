@@ -24,7 +24,8 @@
     <input type="password" placeholder="Re-Enter Password" name="pwd" required>
     
     <label for="payment"><b>Payment</b></label>
-
+	<label for="id"><b>Name on Card</b></label>
+    <input type="text" placeholder="Full Name" name="ay_name" required>
      <!-- Card Number -->
     <input type="text" placeholder="Card Number Exclude '' - ''" name="pay_num" maxlength="12">
     <input type="text" placeholder="Last Four Digits" name="pay_num_lstfour" maxlength="4">

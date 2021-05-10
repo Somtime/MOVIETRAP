@@ -10,7 +10,9 @@
 <body> 
 <form class="login_join_form">
 	<div class="container">
-	<label for="payment"><b>Payment</b></label>
+	<label for="payment"><b>Edit Payment</b></label>
+	<label for="id"><b>Name on Card</b></label>
+    <input type="text" placeholder="Full Name" name="ay_name" required>
 	
 	     <!-- Card Number -->
 	    <input type="text" placeholder="Card Number Exclude '' - ''" name="pay_num" maxlength="12">
