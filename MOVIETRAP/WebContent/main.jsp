@@ -43,5 +43,57 @@
 		</div>
 	
 	</div>
+
+<div id="content-wrapper">
+	<div class="column">
+		<div id="slide-wrapper" >
+			<img id="slideLeft" class="arrow" src="assets/images/heart.png">
+			<div id="slider">
+				<img class="thumbnail active" src="assets/images/heart.png">
+				<img class="thumbnail" src="assets/images/logo.png">
+				<img class="thumbnail" src="assets/images/logo.png">
+				<img class="thumbnail" src="assets/images/logo.png">
+				<img class="thumbnail" src="assets/images/logo.png">
+				<img class="thumbnail" src="assets/images/logo.png">
+				<img class="thumbnail" src="assets/images/logo.png">
+			</div>
+			<img id="slideRight" class="arrow" src="assets/images/heart.png">
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	let thumbnails = document.getElementsByClassName('thumbnail')
+
+	let activeImages = document.getElementsByClassName('active')
+
+	for (var i=0; i < thumbnails.length; i++){
+
+		thumbnails[i].addEventListener('mouseover', function(){
+			console.log(activeImages)
+			
+			if (activeImages.length > 0){
+				activeImages[0].classList.remove('active')
+			}
+			
+
+			this.classList.add('active')
+			document.getElementById('featured').src = this.src
+		})
+	}
+
+
+	let buttonRight = document.getElementById('slideRight');
+	let buttonLeft = document.getElementById('slideLeft');
+
+	buttonLeft.addEventListener('click', function(){
+		document.getElementById('slider').scrollLeft -= 180
+	})
+
+	buttonRight.addEventListener('click', function(){
+		document.getElementById('slider').scrollLeft += 180
+	})
+
+
+</script>
 </body>
 </html>

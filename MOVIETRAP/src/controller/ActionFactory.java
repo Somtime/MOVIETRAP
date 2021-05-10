@@ -3,6 +3,7 @@ package controller;
 import controller.action.Action;
 import controller.action.EditPayAction;
 import controller.action.LoginFormAction;
+import controller.action.MembershipAction;
 
 public class ActionFactory {
 	// Variable
@@ -28,6 +29,8 @@ public class ActionFactory {
 			action = new LoginFormAction();
 		} else if (command.equals("edit_pay")) {
 			action = new EditPayAction();
+		} else if (command.equals("membership")) {
+			action = new MembershipAction();
 		}
 		
 		return action;
