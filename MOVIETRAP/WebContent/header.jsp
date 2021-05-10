@@ -37,18 +37,18 @@
 		</div>
 		
 		<div id="user_icon">
-			<img src="" />
+			<img src="assets/images/user.png" />
 		</div>
 		
 		<div id="watch_later">
 			<a href="">
-				<img src="" />
+				<img src="assets/images/heart.png" />
 			</a>
 		</div>
 		
 		<div id="set">
 			<a href="">
-				<img src="" />
+				<img src="assets/images/set.png" />
 			</a>
 		</div>
 	</header>

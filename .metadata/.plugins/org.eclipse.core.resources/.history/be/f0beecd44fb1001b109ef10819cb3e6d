@@ -1,0 +1,51 @@
+@charset "EUC-KR";
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+header {
+	height: 100px;
+	margin: auto;
+}
+
+#logo, #search, #genre, #user_icon, #watch_later, #set {
+	float: left;
+	align-content: center;
+}
+
+#logo {
+	margin: 15px;
+}
+
+#logo img{
+	width: 350px;
+}
+
+div#search {
+    margin: 25px;
+}
+
+#search input[type="search"] {
+    height: 40px;
+    width: 250px;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+#genre {
+	margin: 25px;
+}
+
+#genre select {
+    height: 40px;
+    width: 100px;
+    font-size: 1.5em;
+}
+
+div#user_icon img , #watch_later img {
+    width: 40px;
+    margin: 20px;
+}
+
+#set img {
+    width: 45px;
+    margin: 16px 20px 20px 20px;
+}

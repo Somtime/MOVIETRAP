@@ -24,7 +24,7 @@ public class ActionFactory {
 		System.out.println("ActionFactory : " + command);
 		
 		// Action/ Command
-		if (command.equals("login")) {
+		if (command.equals("index")) {
 			action = new LoginFormAction();
 		} else if (command.equals("edit_pay")) {
 			action = new EditPayAction();
