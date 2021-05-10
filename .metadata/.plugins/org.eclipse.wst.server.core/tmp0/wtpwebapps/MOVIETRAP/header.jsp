@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<link href="assets/css/movietrap.css" type="text/css" rel="stylesheet" >  
+<link href="assets/css/header.css" type="text/css" rel="stylesheet" >  
 <title>Header</title>
 </head>
 <body>
-	<div id="header">
+	<header>
 	
 		<div id="logo">
 			<a href="#">
@@ -36,21 +38,21 @@
 			</select>
 		</div>
 		
-		<div id="user icon">
-			<img src="" />
+		<div id="user_icon">
+			<img src="assets/images/user.png" />
 		</div>
 		
-		<div id="watch later">
+		<div id="watch_later">
 			<a href="">
-				<img src="" />
+				<img src="assets/images/heart.png" />
 			</a>
 		</div>
 		
 		<div id="set">
 			<a href="">
-				<img src="" />
+				<img src="assets/images/set.png" />
 			</a>
 		</div>
-	</div>
+	</header>
 </body>
 </html>
