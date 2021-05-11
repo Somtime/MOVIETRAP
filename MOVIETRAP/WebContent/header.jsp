@@ -13,7 +13,7 @@
 	<header>
 	
 		<div id="logo" onclick="location='main.jsp'">
-				<img src="assets/images/logo.png" />
+				<img src="assets/images/logo.png" /> 
 		</div>
 		
 		<div id="search">
