@@ -2460,3 +2460,85 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+<<<<<<< HEAD
+=======
+
+!ENTRY org.eclipse.php.debug.core 4 4 2021-05-10 15:39:35.901
+!MESSAGE class org.eclipse.php.internal.debug.core.xdebug.communication.XDebugCommunicationDaemon$CommunicationDaemon : Unexpected Exception: Listener thread still listening
+!STACK 0
+java.lang.NegativeArraySizeException: -477
+	at org.eclipse.php.internal.debug.core.xdebug.dbgp.session.DBGpSession.readResponse(DBGpSession.java:707)
+	at org.eclipse.php.internal.debug.core.xdebug.dbgp.session.DBGpSession.<init>(DBGpSession.java:395)
+	at org.eclipse.php.internal.debug.core.xdebug.communication.XDebugCommunicationDaemon$CommunicationDaemon.startConnection(XDebugCommunicationDaemon.java:221)
+	at org.eclipse.php.internal.debug.core.daemon.AbstractDebuggerCommunicationDaemon$ReceiverThread.run(AbstractDebuggerCommunicationDaemon.java:215)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+!ENTRY org.eclipse.php.debug.core 4 4 2021-05-10 15:39:41.499
+!MESSAGE class org.eclipse.php.internal.debug.core.xdebug.communication.XDebugCommunicationDaemon$CommunicationDaemon : Unexpected Exception: Listener thread still listening
+!STACK 0
+java.lang.NegativeArraySizeException: -477
+	at org.eclipse.php.internal.debug.core.xdebug.dbgp.session.DBGpSession.readResponse(DBGpSession.java:707)
+	at org.eclipse.php.internal.debug.core.xdebug.dbgp.session.DBGpSession.<init>(DBGpSession.java:395)
+	at org.eclipse.php.internal.debug.core.xdebug.communication.XDebugCommunicationDaemon$CommunicationDaemon.startConnection(XDebugCommunicationDaemon.java:221)
+	at org.eclipse.php.internal.debug.core.daemon.AbstractDebuggerCommunicationDaemon$ReceiverThread.run(AbstractDebuggerCommunicationDaemon.java:215)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+!ENTRY org.eclipse.php.debug.core 4 4 2021-05-10 15:39:46.703
+!MESSAGE class org.eclipse.php.internal.debug.core.xdebug.communication.XDebugCommunicationDaemon$CommunicationDaemon : Unexpected Exception: Listener thread still listening
+!STACK 0
+java.lang.NegativeArraySizeException: -477
+	at org.eclipse.php.internal.debug.core.xdebug.dbgp.session.DBGpSession.readResponse(DBGpSession.java:707)
+	at org.eclipse.php.internal.debug.core.xdebug.dbgp.session.DBGpSession.<init>(DBGpSession.java:395)
+	at org.eclipse.php.internal.debug.core.xdebug.communication.XDebugCommunicationDaemon$CommunicationDaemon.startConnection(XDebugCommunicationDaemon.java:221)
+	at org.eclipse.php.internal.debug.core.daemon.AbstractDebuggerCommunicationDaemon$ReceiverThread.run(AbstractDebuggerCommunicationDaemon.java:215)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+!ENTRY org.eclipse.php.debug.core 4 4 2021-05-10 15:40:45.206
+!MESSAGE class org.eclipse.php.internal.debug.core.xdebug.communication.XDebugCommunicationDaemon$CommunicationDaemon : Unexpected Exception: Listener thread still listening
+!STACK 0
+java.lang.NegativeArraySizeException: -487
+	at org.eclipse.php.internal.debug.core.xdebug.dbgp.session.DBGpSession.readResponse(DBGpSession.java:707)
+	at org.eclipse.php.internal.debug.core.xdebug.dbgp.session.DBGpSession.<init>(DBGpSession.java:395)
+	at org.eclipse.php.internal.debug.core.xdebug.communication.XDebugCommunicationDaemon$CommunicationDaemon.startConnection(XDebugCommunicationDaemon.java:221)
+	at org.eclipse.php.internal.debug.core.daemon.AbstractDebuggerCommunicationDaemon$ReceiverThread.run(AbstractDebuggerCommunicationDaemon.java:215)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+!ENTRY org.eclipse.php.debug.core 4 4 2021-05-10 15:40:51.439
+!MESSAGE class org.eclipse.php.internal.debug.core.xdebug.communication.XDebugCommunicationDaemon$CommunicationDaemon : Unexpected Exception: Listener thread still listening
+!STACK 0
+java.lang.NegativeArraySizeException: -487
+	at org.eclipse.php.internal.debug.core.xdebug.dbgp.session.DBGpSession.readResponse(DBGpSession.java:707)
+	at org.eclipse.php.internal.debug.core.xdebug.dbgp.session.DBGpSession.<init>(DBGpSession.java:395)
+	at org.eclipse.php.internal.debug.core.xdebug.communication.XDebugCommunicationDaemon$CommunicationDaemon.startConnection(XDebugCommunicationDaemon.java:221)
+	at org.eclipse.php.internal.debug.core.daemon.AbstractDebuggerCommunicationDaemon$ReceiverThread.run(AbstractDebuggerCommunicationDaemon.java:215)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+!ENTRY org.eclipse.php.debug.core 4 4 2021-05-10 15:40:56.983
+!MESSAGE class org.eclipse.php.internal.debug.core.xdebug.communication.XDebugCommunicationDaemon$CommunicationDaemon : Unexpected Exception: Listener thread still listening
+!STACK 0
+java.lang.NegativeArraySizeException: -487
+	at org.eclipse.php.internal.debug.core.xdebug.dbgp.session.DBGpSession.readResponse(DBGpSession.java:707)
+	at org.eclipse.php.internal.debug.core.xdebug.dbgp.session.DBGpSession.<init>(DBGpSession.java:395)
+	at org.eclipse.php.internal.debug.core.xdebug.communication.XDebugCommunicationDaemon$CommunicationDaemon.startConnection(XDebugCommunicationDaemon.java:221)
+	at org.eclipse.php.internal.debug.core.daemon.AbstractDebuggerCommunicationDaemon$ReceiverThread.run(AbstractDebuggerCommunicationDaemon.java:215)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+!ENTRY org.eclipse.php.debug.core 4 4 2021-05-10 15:42:03.436
+!MESSAGE class org.eclipse.php.internal.debug.core.xdebug.dbgp.session.DBGpSession : Unexpected null from readResponse waiting for Init
+
+!ENTRY org.eclipse.php.debug.core 4 4 2021-05-10 15:42:12.739
+!MESSAGE class org.eclipse.php.internal.debug.core.xdebug.dbgp.session.DBGpSession : Unexpected null from readResponse waiting for Init
+
+!ENTRY org.eclipse.php.debug.core 4 4 2021-05-10 15:42:19.063
+!MESSAGE class org.eclipse.php.internal.debug.core.xdebug.dbgp.session.DBGpSession : Unexpected null from readResponse waiting for Init
+
+!ENTRY org.eclipse.php.debug.core 4 4 2021-05-10 16:24:34.439
+!MESSAGE class org.eclipse.php.internal.debug.core.xdebug.communication.XDebugCommunicationDaemon$CommunicationDaemon : Unexpected Exception: Listener thread still listening
+!STACK 0
+java.lang.NegativeArraySizeException: -52478
+	at org.eclipse.php.internal.debug.core.xdebug.dbgp.session.DBGpSession.readResponse(DBGpSession.java:707)
+	at org.eclipse.php.internal.debug.core.xdebug.dbgp.session.DBGpSession.<init>(DBGpSession.java:395)
+	at org.eclipse.php.internal.debug.core.xdebug.communication.XDebugCommunicationDaemon$CommunicationDaemon.startConnection(XDebugCommunicationDaemon.java:221)
+	at org.eclipse.php.internal.debug.core.daemon.AbstractDebuggerCommunicationDaemon$ReceiverThread.run(AbstractDebuggerCommunicationDaemon.java:215)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+>>>>>>> branch 'master' of https://github.com/Somtime/MOVIETRAP.git
