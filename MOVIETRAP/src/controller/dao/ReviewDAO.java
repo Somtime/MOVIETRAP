@@ -48,7 +48,7 @@ public ArrayList<ReviewVO> getReviewList(String title,Timestamp pub_date){
 		}
 		
 	} catch(Exception e) {
-		
+		e.printStackTrace();
 	}finally {
 		DBManager.close(conn, pstmt, rs);
 		
@@ -72,7 +72,7 @@ public void insertReview(ReviewVO review) {
 		 pstmt.setString(5, review.getDescription());
 		
 	} catch(Exception e) {
-		
+		e.printStackTrace();
 	} finally {
 		DBManager.close(conn, pstmt);
 	}
@@ -95,14 +95,29 @@ public void updateReview(ReviewVO review) {
 		 pstmt.setString(5, review.getDescription());
 		
 	} catch(Exception e) {
-		
+		e.printStackTrace();
 	} finally {
 		DBManager.close(conn, pstmt);
 	}
 		
 }
 public void deleteReview(int rseq) {
-
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	String sql = "DELETE FROM review WHERE rseq=?";
 	
+	try {
+		conn = DBManager.getConnection();
+		pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setInt(1, rseq);
+		
+		pstmt.executeQuery();
+		
+	} catch(Exception e) {
+		e.printStackTrace();
+	}finally {
+		DBManager.close(conn, pstmt);
+	}
 }
 }
