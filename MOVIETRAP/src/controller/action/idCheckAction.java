@@ -6,18 +6,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controller.dto.MemberVO;
+import controller.dao.MemberDAO;
 
 public class idCheckAction implements Action {
 
-	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String userid = request.getParameter("email");
 		
-		MemberVO member = new MemberVO();
+		MemberDAO mDao = MemberDAO.getInstance();
+		int idCheck = mDao.idCheck(userid);
 		
-		
-		
-
+		request.getRequestDispatcher("join.jsp").forward(request, response);;
 	}
 
 }

@@ -30,7 +30,6 @@ public class MemberDAO {
 				result = 1;
 			}
 			
-			 
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
