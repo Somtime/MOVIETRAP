@@ -12,18 +12,7 @@ function editPay() {
   window.open( url, "_blank_1",
  "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=330, height=500");
 }
-
 </script>
-<style>
-.qna {
-  background-color: white;
-  width: 500px;
-  height: 400px;
-  border: 3px solid black;
-  padding: 30px;
-  margin: 20px;
-}
-</style>
 </head>
 <body>
 	<div id="user icon">
@@ -65,9 +54,7 @@ Membership
 <%-- 	</c:forEach> --%>
 
 Q & A
-<div class=qna>
-	qna content
-</div>
+
 </body>
 </html>
 

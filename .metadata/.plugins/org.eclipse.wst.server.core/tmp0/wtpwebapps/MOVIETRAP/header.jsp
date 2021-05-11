@@ -12,10 +12,8 @@
 <body>
 	<header>
 	
-		<div id="logo">
-			<a href="#">
-				<img src="assets/images/logo.png" />
-			</a>
+		<div id="logo" onclick="location='main.jsp'">
+				<img src="assets/images/logo.png" /> 
 		</div>
 		
 		<div id="search">
@@ -38,7 +36,7 @@
 			</select>
 		</div>
 		
-		<div id="user_icon">
+		<div id="user_icon" onclick="location='MOVIETRAPServlet?command=membership'">
 			<img src="assets/images/user.png" />
 		</div>
 		
