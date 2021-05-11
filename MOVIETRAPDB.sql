@@ -70,8 +70,10 @@ CREATE SEQUENCE qna_seq START WITH 1;
 INSERT INTO member (email, pwd, name, phone, pay_name, pay_num, pay_num_lstfour, pay_cvc) values
 ('kdpark@email.com','1111','박길동','010-1111-1111','payname','111111111111','1111','111');
 INSERT INTO member (email, pwd, name, phone, admin) values
-('kdlee@email.com','2222','이길동','010-1111-1111','y');
+('kdlee@email.com','2222','이길동','010-2222-2222','y');
 
 -- qna
 INSERT INTO qna(cseq, send_id, rcvd_id, chat_content) values(qna_seq.nextval, 'kdpark@email.com', 'kdlee@email.com','질문');
 INSERT INTO qna(cseq, send_id, rcvd_id, chat_content) values(qna_seq.nextval, 'kdlee@email.com', 'kdpark@email.com','답변');
+
+COMMIT;
