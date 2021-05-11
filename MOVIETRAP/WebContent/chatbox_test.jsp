@@ -8,7 +8,7 @@
 <title>Membership</title>
 <style>
 .container{max-width:1170px; margin:auto;}
-img{ max-width:100%;}
+img{ max-width:100%;} 
 .inbox_people {
   background: #f8f8f8 none repeat scroll 0 0;
   float: left;
