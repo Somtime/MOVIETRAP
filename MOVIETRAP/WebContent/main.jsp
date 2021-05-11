@@ -6,7 +6,7 @@
 <head>
 <meta charset="EUC-KR">
 <link href="assets/css/main.css" type="text/css" rel="stylesheet"> 
-<title>Main</title>
+<title>Main</title> 
 </head>
 <body>
 	<div id="wrap">
