@@ -18,7 +18,6 @@ public class MOVIETRAPServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 			// command를 입력받을 변수
 			String command = request.getParameter("command");
 			

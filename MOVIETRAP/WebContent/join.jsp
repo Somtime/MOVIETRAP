@@ -4,7 +4,9 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="assets/css/movietrap.css" type="text/css" rel="stylesheet"> 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>Join</title>
 </head>
@@ -78,23 +80,24 @@
 <script type="text/javascript">
 	
 	$("#user_id").blur(function() {
-		var user_id = $('user_id').val();
+		var user_id = $('#user_id').val();
 		
 		$.ajax({
 			url : 'MOVIETRAPServlet?command=idcheck',
 			async: false,
 			type : 'get',
-			dataType: 'json',
+			datatype : 'text',
 			data : {
-				email : user_id
+				"email" : user_id
 			},
-			success : function(data) {
-				console.log("data : " + data)
+			success : function(result) {
+				const json = JSON.parse(result)
 				
-				const jsonIdCheck = JSON.parse(data)
-				console.log("jsonIdCheck : " + jsonIdCheck)
+				console.log("result : " + result)
+				console.log("result : " + json.idCheck)
 				
-				if (data.idcheck == 1) {
+				
+				if (json.idCheck == 1) {
 					// 아이디가 중복인 경우
 					$('#id_check').text("사용중인 아이디입니다.");
 					$("#id_check").css('color', 'red');

@@ -7,16 +7,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import controller.dao.MemberDAO;
 
 public class idCheckAction implements Action {
 
-	@SuppressWarnings("unchecked")
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-        response.setContentType("text/html; charset=utf-8");
+		response.setCharacterEncoding("utf-8");
+        response.setContentType("text/plain");
 	
 		PrintWriter out = response.getWriter();
 		
@@ -25,13 +25,19 @@ public class idCheckAction implements Action {
 		MemberDAO mDao = MemberDAO.getInstance();
 		int idCheck = mDao.idCheck(email);
 		
-		JSONObject idCheckResult = new JSONObject();
+		JSONObject jsonObject = new JSONObject();
 		
-		idCheckResult.put("idcheck", idCheck);
+		jsonObject.put("idCheck" ,idCheck);
 		
-		String jsonIdCheck = idCheckResult.toJSONString();
+		JSONArray jsonArray = new JSONArray();
 		
-		out.print(jsonIdCheck);
+		jsonArray.add(jsonObject);
+		
+		JSONObject mainObject = new JSONObject();
+		
+		mainObject.put("idCheckList" ,jsonArray);
+		
+		out.print(jsonObject.toJSONString());
 	}
 
 }

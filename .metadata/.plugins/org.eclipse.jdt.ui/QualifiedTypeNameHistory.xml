@@ -16,4 +16,8 @@
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="util.DBManager"/>
     <fullyQualifiedTypeName name="controller.dao.MemberDAO"/>
+    <fullyQualifiedTypeName name="controller.action.idCheckAction"/>
+    <fullyQualifiedTypeName name="java.io.PrintWriter"/>
+    <fullyQualifiedTypeName name="org.json.simple.JSONObject"/>
+    <fullyQualifiedTypeName name="org.json.simple.JSONArray"/>
 </qualifiedTypeNameHistroy>
