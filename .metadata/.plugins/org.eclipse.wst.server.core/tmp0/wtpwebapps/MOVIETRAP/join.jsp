@@ -5,13 +5,17 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="assets/css/movietrap.css" type="text/css" rel="stylesheet"> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <title>Join</title>
 </head>
 <body>
-<form class="login_join_form">
+<form method="post" class="login_join_form">
 	<div class="container">
+	
     <label for="id"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+    <input type="email" placeholder="Enter Email" id="user_id" name="email" required>
+    <div id="id_check"></div>
+    
     <input name="newsletter_yn" type="checkbox" value="y"> Notify me with new releases!<br>     
     
     <label for="id"><b>Name</b></label>
@@ -67,8 +71,37 @@
         <p style="font-size: .8rem;">3 or 4 digits usually found on the signature strip</p>
  
     <!-- Buttons -->
-    <button type="submit">Register</button>    
+    <button type="submit" id="submit">Register</button>    
 </div>
 </form>
+
+<script type="text/javascript">
+	
+	$("#user_id").blur(function() {
+		var user_id = $('user_id').val();
+		
+		$.ajax({
+			url : '',
+			type : 'post',
+			success : function(data) {
+				console.log("1: 중복 0: 중복x  : " + data);
+				
+				if (data == 1) {
+					// 아이디가 중복인 경우
+					$('#id_check').text("사용중인 아이디입니다.");
+					$("#id_check").css('color', 'red');
+					$('#submit').attr('disabled', true);
+				}
+			},
+			error : function() {
+				console.log("아이디 중복체크 실패");
+				
+			}
+			
+		});
+		
+	});
+	
+</script>
 </body>
 </html>
