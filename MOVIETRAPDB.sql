@@ -14,7 +14,7 @@ GRANT dba to MOVIETRAPDB;
 COMMIT;
 
 
----- Å×ÀÌºí ¹× ½ÃÄö½º »ý¼º-----
+---- ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½-----
 
 -- Member Table
 DROP TABLE member CASCADE CONSTRAINTS;
@@ -58,24 +58,24 @@ cseq        NUMBER  PRIMARY KEY,
 send_id   VARCHAR2(50)   REFERENCES member(email),
 rcvd_id   VARCHAR2(50)    REFERENCES member(email),
 chat_content VARCHAR2(50)   NOT NULL,
-chat_time    TIMESTAMP      DEFAULT SYSDATE
+chat_time    TIMESTAMP      DEFAULT SYSDATE 
 );
 
 --QNA sequence
 DROP SEQUENCE qna_seq;
 CREATE SEQUENCE qna_seq START WITH 1; 
 
----- µ¥ÀÌÅÍ »ðÀÔ 
+---- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 
 -- member 
 INSERT INTO member (email, pwd, name, phone, pay_name, pay_num, pay_num_lstfour, pay_cvc) values
-('kdpark@email.com','1111','¹Ú±æµ¿','010-1111-1111','payname','111111111111','1111','111');
+('kdpark@email.com','1111','ï¿½Ú±æµ¿','010-1111-1111','payname','111111111111','1111','111');
 INSERT INTO member (email, pwd, name, phone, admin) values
-('admin','2222','°ü¸®ÀÚ','0','y');
+('admin','2222','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','0','y');
 
 -- qna
-INSERT INTO qna(cseq, send_id, rcvd_id, chat_content) values(qna_seq.nextval, 'kdpark@email.com', 'admin','Áú¹®');
-INSERT INTO qna(cseq, send_id, rcvd_id, chat_content) values(qna_seq.nextval, 'admin', 'kdpark@email.com','´äº¯');
+INSERT INTO qna(cseq, send_id, rcvd_id, chat_content) values(qna_seq.nextval, 'kdpark@email.com', 'admin','ï¿½ï¿½ï¿½ï¿½');
+INSERT INTO qna(cseq, send_id, rcvd_id, chat_content) values(qna_seq.nextval, 'admin', 'kdpark@email.com','ï¿½äº¯');
 
 COMMIT;
 
