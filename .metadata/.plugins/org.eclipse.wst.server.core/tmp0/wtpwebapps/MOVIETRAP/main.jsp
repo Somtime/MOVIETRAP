@@ -7,6 +7,7 @@
 <meta charset="EUC-KR">
 <link href="assets/css/main.css" type="text/css" rel="stylesheet"> 
 <title>Main</title> 
+
 </head>
 <body>
 	<div id="wrap">
@@ -61,18 +62,7 @@
 		</div>
 	</div>
 </div>
-
-<div class="chat-popup" id="myForm">
-  <form action="/action_page.php" class="form-container">
-    <h1>Chat</h1>
-
-    <label for="msg"><b>Message</b></label>
-    <textarea placeholder="Type message.." name="msg" required></textarea>
-
-    <button type="submit" class="btn">Send</button>
-    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-  </form>
-</div>
+<!-- QNA pop up -->
 
 <script type="text/javascript">
 //pic slide 
@@ -106,9 +96,7 @@
 	buttonRight.addEventListener('click', function(){
 		document.getElementById('slider').scrollLeft += 180
 	})
-
-//pop up chat 
-
+//timer test
 
 </script>
 </body>

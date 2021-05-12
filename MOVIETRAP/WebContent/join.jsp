@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -81,10 +80,13 @@
 		var user_id = $('user_id').val();
 		
 		$.ajax({
-			url : '',
+			url : 'MOVIETRAPServlet?command=idcheck',
 			type : 'post',
+			data : {
+				userid : 'email'
+			},
 			success : function(data) {
-				console.log("1: 중복 0: 중복x  : " + data);
+				console.log("ajax data : " + data);
 				
 				if (data == 1) {
 					// 아이디가 중복인 경우
