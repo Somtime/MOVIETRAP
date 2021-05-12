@@ -3,10 +3,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="assets/css/movietrap.css" type="text/css" rel="stylesheet"> 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"
-  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-  crossorigin="anonymous"></script>
+<link href="assets/css/movietrap.css" type="text/css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>Join</title>
 </head>
@@ -79,6 +76,7 @@
 
 <script type="text/javascript">
 	
+	// ID 중복 확인
 	$("#user_id").blur(function() {
 		var user_id = $('#user_id').val();
 		
@@ -93,28 +91,25 @@
 			success : function(result) {
 				const json = JSON.parse(result)
 				
-				console.log("result : " + result)
-				console.log("result : " + json.idCheck)
-				
-				
 				if (json.idCheck == 1) {
 					// 아이디가 중복인 경우
 					$('#id_check').text("사용중인 아이디입니다.");
 					$("#id_check").css('color', 'red');
 					$('#submit').attr('disabled', true);
 				} else {
+					// 아이디가 중복이 아닌 경우
 					$('#id_check').text("사용 가능한 아이디입니다.");
 					$("#id_check").css('color', 'blue');
 				}
 			},
 			error : function() {
-				console.log("아이디 중복체크 실패");
-				
+				console.log("아이디 중복체크 실패");	
 			}
-			
 		});
-		
 	});
+	
+	// 비밀번호 확인
+	
 	
 </script>
 </body>

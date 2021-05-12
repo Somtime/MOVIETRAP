@@ -16,8 +16,8 @@ public class idCheckAction implements Action {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("utf-8");
-        response.setContentType("text/plain");
-	
+        response.setContentType("text/html");
+        
 		PrintWriter out = response.getWriter();
 		
 		String email = request.getParameter("email");
@@ -29,15 +29,15 @@ public class idCheckAction implements Action {
 		
 		jsonObject.put("idCheck" ,idCheck);
 		
-		JSONArray jsonArray = new JSONArray();
+//		JSONArray jsonArray = new JSONArray();
+//		
+//		jsonArray.add(jsonObject);
+//		
+//		JSONObject mainObject = new JSONObject();
+//		
+//		mainObject.put("idCheckList" ,jsonArray);
 		
-		jsonArray.add(jsonObject);
-		
-		JSONObject mainObject = new JSONObject();
-		
-		mainObject.put("idCheckList" ,jsonArray);
-		
-		out.print(jsonObject.toJSONString());
+		out.print(jsonObject);
 	}
 
 }
