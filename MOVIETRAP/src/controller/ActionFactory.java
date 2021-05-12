@@ -34,8 +34,7 @@ public class ActionFactory {
 			action = new MembershipAction();
 		} else if (command.equals("idcheck")) {
 			action = new idCheckAction();
-		}
-		
+		} 
 		return action;
 	}
 }
