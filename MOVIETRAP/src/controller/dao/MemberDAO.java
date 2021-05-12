@@ -25,10 +25,12 @@ public class MemberDAO {
 			con = DBManager.getConnection();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, userid);
+		
 			
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				result = 1;
+				System.out.println(rs.getString("name"));
 			}
 			
 		} catch (Exception e) {

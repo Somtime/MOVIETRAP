@@ -4,7 +4,8 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="assets/css/movietrap.css" type="text/css" rel="stylesheet"> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>Join</title>
 </head>
 <body>
@@ -81,18 +82,26 @@
 		
 		$.ajax({
 			url : 'MOVIETRAPServlet?command=idcheck',
-			type : 'post',
+			async: false,
+			type : 'get',
+			dataType: 'json',
 			data : {
-				userid : 'email'
+				email : user_id
 			},
 			success : function(data) {
-				console.log("ajax data : " + data);
+				console.log("data : " + data)
 				
-				if (data == 1) {
+				const jsonIdCheck = JSON.parse(data)
+				console.log("jsonIdCheck : " + jsonIdCheck)
+				
+				if (data.idcheck == 1) {
 					// 아이디가 중복인 경우
 					$('#id_check').text("사용중인 아이디입니다.");
 					$("#id_check").css('color', 'red');
 					$('#submit').attr('disabled', true);
+				} else {
+					$('#id_check').text("사용 가능한 아이디입니다.");
+					$("#id_check").css('color', 'blue');
 				}
 			},
 			error : function() {
