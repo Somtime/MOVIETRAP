@@ -6,9 +6,10 @@ public class MemberVO {
 	private String email;
 	private String pwd;
 	private String name;
+	private String phone;
 	private String image;
 	private Timestamp regdate;
-	private char newletter;
+	private String newsletter;
 	private String pay_name;
 	private int pay_num;
 	private int pay_num_lstfour;
@@ -45,11 +46,11 @@ public class MemberVO {
 	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
 	}
-	public char getNewletter() {
-		return newletter;
+	public String getnewsletter() {
+		return newsletter;
 	}
-	public void setNewletter(char newletter) {
-		this.newletter = newletter;
+	public void setnewsletter(String newsletter) {
+		this.newsletter = newsletter;
 	}
 	public String getPay_name() {
 		return pay_name;
@@ -80,6 +81,12 @@ public class MemberVO {
 	}
 	public void setPay_date(Timestamp pay_date) {
 		this.pay_date = pay_date;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	
 }
