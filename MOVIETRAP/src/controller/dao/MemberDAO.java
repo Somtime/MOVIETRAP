@@ -24,6 +24,7 @@ public class MemberDAO {
 		try {
 			con = DBManager.getConnection();
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
 			
 			rs = pstmt.executeQuery();
 			if (rs.next()) {

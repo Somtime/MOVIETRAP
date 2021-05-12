@@ -4,6 +4,7 @@ import controller.action.Action;
 import controller.action.EditPayAction;
 import controller.action.LoginFormAction;
 import controller.action.MembershipAction;
+import controller.action.idCheckAction;
 
 public class ActionFactory {
 	// Variable
@@ -31,6 +32,8 @@ public class ActionFactory {
 			action = new EditPayAction();
 		} else if (command.equals("membership")) {
 			action = new MembershipAction();
+		} else if (command.equals("idcheck")) {
+			action = new idCheckAction();
 		}
 		
 		return action;
