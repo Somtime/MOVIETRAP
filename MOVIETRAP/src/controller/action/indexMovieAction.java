@@ -18,7 +18,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 
-public class indexMovieAction implements Action {
+public class indexMovieAction implements Action { 
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
