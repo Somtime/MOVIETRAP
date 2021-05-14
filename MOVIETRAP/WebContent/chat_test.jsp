@@ -91,7 +91,7 @@
 	<form>
 	
 		<button id="qna_btn" onclick="qna()">
-			Q&A
+			<input type="text" value="Q&A">
 		</button>
 	  	
 		<div id="qna_container">

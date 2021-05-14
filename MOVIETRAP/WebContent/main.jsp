@@ -7,7 +7,17 @@
 <meta charset="EUC-KR">
 <link href="assets/css/main.css" type="text/css" rel="stylesheet"> 
 <title>Main</title> 
-
+<script type="text/javascript">
+	function qna() {
+		
+		if (document.getElementById("qna_container").style.display == "none") {
+			document.getElementById("qna_container").style.display = "block";
+		} else {
+			document.getElementById("qna_container").style.display = "none";
+		}
+		
+	}
+</script>
 </head>
 <body>
 	<div id="wrap">
@@ -62,7 +72,34 @@
 		</div>
 	</div>
 </div>
+
 <!-- QNA pop up -->
+	<form>
+	
+		<button id="qna_btn" value="Q&A" onclick="qna()"></button>
+	  	
+		<div id="qna_container">
+		
+	  		<div id="qna_header">  
+		    <h2>LIVE CHAT</h2>
+		   </div>
+	    			
+			<div id="qna_section">
+			   <p>chat content</p>
+			</div>
+	   			
+	      	<div id="qna_footer">
+	      		<div id ="qna_footer_text">
+					<input type="text" required>
+				</div>
+				<div id="qna_footer_submit">
+					<input type="submit" value="send">
+				</div>
+			</div>
+			
+		</div>
+		
+	</form>
 
 <script type="text/javascript">
 //pic slide 
