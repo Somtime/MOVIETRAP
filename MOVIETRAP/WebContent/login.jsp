@@ -28,10 +28,11 @@ function PwdFunction() {
     <input type="checkbox" onclick="PwdFunction()">Show Password
     
     <button type="submit">Login</button>
-    <button onclick="MOVIETRAPServlet?command=join">Register</button>
     <div class="container" style="background-color:#f1f1f1">
     <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
+    <span class="psw">Forgot <a href="#">password?</a><br>
+  	<a href="MOVIETRAPServlet?command=join_form">Sign up</a></span>    
+       
   </div>
  </div>
 </form>

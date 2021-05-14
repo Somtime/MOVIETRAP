@@ -46,7 +46,7 @@
 </style>
 </head>
 <body>
-<form method="post" class="login_join_form">
+<form method="post" class="login_join_form" name="join_form" action="MOVIETRAPServlet?command=join" >
 	<div class="container">
 	
     <label for="id"><b>Email</b></label>

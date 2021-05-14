@@ -2,6 +2,8 @@ package controller;
 
 import controller.action.Action;
 import controller.action.EditPayAction;
+import controller.action.JoinAction;
+import controller.action.JoinFormAction;
 import controller.action.LoginFormAction;
 import controller.action.MembershipAction;
 import controller.action.idCheckAction;
@@ -34,7 +36,11 @@ public class ActionFactory {
 			action = new MembershipAction();
 		} else if (command.equals("idcheck")) {
 			action = new idCheckAction();
-		} 
+		} else if (command.equals("join_form")) {
+			action = new JoinFormAction();
+		} else if(command.equals("join")) {
+			action = new JoinAction();
+		}
 		return action;
 	}
 }
