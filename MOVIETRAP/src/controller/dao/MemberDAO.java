@@ -14,7 +14,7 @@ public class MemberDAO {
 		return instance;
 	}
 	
-	// ���̵� �ߺ� Ȯ�� �޼ҵ� 1:�ߺ� 0:�ߺ�x
+	// 占쏙옙占싱듸옙 占쌩븝옙 확占쏙옙 占쌨소듸옙 1:占쌩븝옙 0:占쌩븝옙x
 	public int idCheck(String userid) {
 		int result = 0;
 		Connection con = null;
@@ -42,7 +42,7 @@ public class MemberDAO {
 		
 		return result;
 	}
-	//화원 가입 
+	//�솕�썝 媛��엯 
 	public void insertMember(MemberVO memberVO) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -70,7 +70,7 @@ public class MemberDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "UPDATE member SET pwd=?, pay_name=?, pay_num=?, "+
-		"pay_num_lstfour=?, pay_cvc=? WHERE email LIKE '%'||?||'%' ";
+		"pay_num_lstfour=?, pay_cvc=? WHERE email=?";
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -89,7 +89,7 @@ public class MemberDAO {
 	public void newsletterUpdate(MemberVO memberVO) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE member SET newsletter=? WHERE email LIKE '%'||?||'%' ";
+		String sql = "UPDATE member SET newsletter=? WHERE email=?";
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);

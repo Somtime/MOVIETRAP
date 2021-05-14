@@ -1,95 +1,120 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
-.qna_footer {
-height: 150px;
-}
-.msg {
-	left: 100px;	
-}
-.qna_container {
-    display: flex;
-    justify-content: center;
-}
-/* from w3 */
-.padding_chatbox{
-	z-index:3;
-	display:none;
-	padding-top:100px;
-	float:center;
-	top:0;
-/* 	width: 700px; */
-	height:100%;
-	overflow: hidden;
-	background-color: transparent;
-	margin:auto;
-	background-color:#C8C8C8;
-	position:relative;
-	outline:0;
-	width: 400px;
-	height: 450px;
-	position:relative;animation:animatebottom 0.4s
-}
-.modal_content,.w3-hover-shadow:hover{
-	box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19)
-}
-@keyframes animatebottom{
-	from{bottom:-300px;opacity:0} to{bottom:0;opacity:1}}
-.padding{
-	padding:0.01em 16px
-}
-.padding:after,.padding:before, .qna_color{
-	color:#fff!important;
-	background-color:#009688!important
-}
-.qna_bttn:hover{
-	color:#000!important;background-color:#ccc!important} /* 1/11 */
-</style>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
-<body>
-  <button onclick="document.getElementById('qna').style.display='block'" 
-  	class="qna_bttn">LIVE CHAT</button>
-  	
-	<div class="qna_container">
- 		<div id="qna" class="padding_chatbox"> 
-      			<header class="padding qna_color"> 
-      			  <span onclick="document.getElementById('qna').style.display='none'" 
-  				    class="qna_bttn ">&times;</span>  
-  				    <h2>LIVE CHAT</h2>
-   			   </header>
-     			   <p>chat content</p>
-            	<form>
-    			  	<footer class="qna_footer qna_color padding"> <!-- qna_footer qna_color padding -->
-    				<input style="float:center;" type="text" class="msg" name="" style="height:80px; width:400px;"
-    				required minlength="1" maxlength="100">
-    				  <input type="submit" value="send">
-        			</footer> 
-      			</form>     
-      </div>
-      </div>
-      <div id="demo">     
-      <button type="button" onclick="loadDoc()">Change Content</button>
-      </div>
 
-<script>
-function loadDoc() {
-	  var xhttp = new XMLHttpRequest();
-	  xhttp.onreadystatechange = function() {
-	    if (this.readyState == 4 && this.status == 200) {
-	      document.getElementById("demo").innerHTML = this.responseText;
-	    }
-	  };
-	  xhttp.open("GET", "ajax_info.txt", true);
-	  xhttp.send();
+#qna_btn {
+	position: absolute;
+	bottom: 5%;
+	right: 0;
+}
+
+#qna_container {
+	display:none;
+	margin: 0 auto;
+	position: absolute;
+	height: 400px;
+	width: 250px;
+	right: 5%;
+	bottom: 5%;
+	border: 1px solid black;
+}
+
+#qna_header {
+	display: inline-block;
+	width: 100%;
+	margin: 0;
+	height: 20%;
+	border: 1px solid black;
+}
+
+#qna_section {
+	display: inline-block;
+	width: 100%;
+	margin: 0;
+	height: 70%;
+	border: 1px solid black;
+}
+
+#qna_footer {
+	display: inline-block;
+	width: 100%;
+	margin: 0;
+	height: 10%;
+	border: 1px solid black;
+}
+
+#qna_footer_text {
+	float: left;
+	margin: 0;
+	width: 70%;
+	height: 100%;
+}
+
+#qna_footer_text input[type="text"] {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+    border: 0;
+}
+
+#qna_footer_submit {
+	float: right;
+	margin: 0;
+	width: 30%;
+	height: 100%;
+}
+
+#qna_footer_submit input[type="submit"] {
+	width: 100%;
+	height: 100%;
+}
+
+
+</style>
+<script type="text/javascript">
+	function qna() {
+		
+		if (document.getElementById("qna_container").style.display == "none") {
+			document.getElementById("qna_container").style.display = "block";
+		} else {
+			document.getElementById("qna_container").style.display = "none";
+		}
+		
 	}
-	
-	
 </script>
+<body>
+	<form>
+	
+		<button id="qna_btn" onclick="qna()">
+			Q&A
+		</button>
+	  	
+		<div id="qna_container">
+		
+	  		<div id="qna_header">  
+		    <h2>LIVE CHAT</h2>
+		   </div>
+	    			
+			<div id="qna_section">
+			   <p>chat content</p>
+			</div>
+	   			
+	      	<div id="qna_footer">
+	      		<div id ="qna_footer_text">
+					<input type="text" required>
+				</div>
+				<div id="qna_footer_submit">
+					<input type="submit" value="send">
+				</div>
+			</div>
+			
+		</div>
+		
+	</form>
 </body>
 </html>
