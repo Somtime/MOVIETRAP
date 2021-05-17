@@ -76,7 +76,7 @@
 <!-- QNA pop up -->
 	<form>
 	
-		<button id="qna_btn" value="Q&A" onclick="qna()"></button>
+		<button id="qna_btn" onclick="qna()">Q&A</button>
 	  	
 		<div id="qna_container">
 		
