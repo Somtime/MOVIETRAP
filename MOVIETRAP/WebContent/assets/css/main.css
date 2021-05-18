@@ -1,24 +1,32 @@
 @charset "EUC-KR";
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
-div#main_movie {
+div#main_movie_title {
     margin: 10px;
     width: 100%;
     height: 400px;
 }
-
-div#genre_movie {
-    margin: 10px;
+/*--  main movie trailer: main.jsp ------------------------------------ */
+#main_movie {
+	 position: relative;
 }
-/*-- genre thumbnail slide ------------------------------------ */
-#content-wrapper{
+#main_movie_trailer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
+}
+/*--  main.jsp : genre thumbnail slide ------------------------------------ */
+#thumbnail_slideshow_wrapper{
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
+	margin: 10px;
 }
 
-.column{
+.thumbnail_slideshow_row{
 	width: 100%;
 	padding: 10px;
 
@@ -40,7 +48,7 @@ div#trend_movie img:hover{
 	opacity: 1;
 }
 
-#slide-wrapper{
+#thumbnail_wrapper{
 	display: flex;
 	align-items: center;
 	width: 100%;
@@ -54,17 +62,6 @@ div#trend_movie img:hover{
 	overflow-x: auto;
 
 }
-
-#slider::-webkit-scrollbar {
-		width: 0px;
-
-}
-
-#slider::-webkit-scrollbar-track {
-    -webkit-box-shadow: none;
-
-}
-
 .arrow{
 	width: 30px;
 	height: 30px;
@@ -78,7 +75,8 @@ div#trend_movie img:hover{
 	height: 35px;
 }
 
-/* Q&A */
+/*-- main.jsp : Q&A ------------------------------------ */
+
 #qna_btn {
 	position: absolute;
 	bottom: 5%;
@@ -110,7 +108,7 @@ div#trend_movie img:hover{
 	display: inline-block;
 	width: 100%;
 	margin: 0;
-	height: 70%;
+	height: 60%;
 	border: 1px solid black;
 }
 
@@ -118,7 +116,7 @@ div#trend_movie img:hover{
 	display: inline-block;
 	width: 100%;
 	margin: 0;
-	height: 10%;
+	height: 20%;
 	border: 1px solid black;
 }
 

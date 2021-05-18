@@ -7,53 +7,16 @@
 <meta charset="EUC-KR">
 <link href="assets/css/main.css" type="text/css" rel="stylesheet"> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<title>Main</title> 
-<script type="text/javascript">
-	function qna() {
-		
-		if (document.getElementById("qna_container").style.display == "none") {
-			document.getElementById("qna_container").style.display = "block";
-		} else {
-			document.getElementById("qna_container").style.display = "none";
-		}
-	}
-	
-	$(document).ready(function(){
-		$.ajax ({
-			url : "MOVIETRAPServlet?command=main",
-			async : false,
-			type : 'get',
-			datatype : 'json',
-			success : function(result){
-				const json =  JSON.parse(result)
-				var trend = json["trendData"]
-				var pop = json["popData"]
-				var video = json["videoData"]
-				var thumbnails = document.getElementsByClassName('thumbnail')
-				
-				for (var i = 0; i<= Object.keys(trend).length; i++){
-					$('.thumbnail' + i).attr('src', 'http://image.tmdb.org/t/p//w200' + trend[Object.keys(trend)[i]]["poster_path"]);
-					$('.thumbnail' + i).css('display', 'block');
-					console.log("title : " + trend[Object.keys(trend)[i]]["title"])
-					console.log("overview : " + trend[Object.keys(trend)[i]]["overview"])
-					console.log("vote_average : " + trend[Object.keys(trend)[i]]["vote_average"])
-					console.log("poster_path : " + trend[Object.keys(trend)[i]]["poster_path"])
-					console.log('http://image.tmdb.org/t/p/original' + trend[Object.keys(trend)[i]]["poster_path"])
-				}
-			},
-			error : function() {
-				console.log("ajax : fail")
-			}
-		});
-		
-	})
-</script>
+<title>MOVIETRAP</title> 
 </head>
 <body>
-	<div id="wrap">
-	
-		<div id="main_movie">
-			
+	<div id="main_movie"> 
+		<div id="main_movie_trailer"> 
+			<iframe width="90%" height="700px"
+			src="https://www.youtube.com/embed/tgbNymZ7vqY">
+			</iframe>
+		</div>
+		<div id="main_movie_title">		
 			<div id="main_movie_title">
 				<input type="text" value="Main Movie Title">
 			</div>
@@ -71,25 +34,11 @@
 			</div>
 		</div>
 		
-		<div id="genre_movie">
-			
-			<div id="genre_movie_genre">
-				<input type="text" value="genre">
-			</div>
-			
-			<div id="genre_movie_thumnail">
-				<img id="genre_movie_thumnail_src"/>
-			</div>
-			
-		</div>
-	
-	</div>
-
-<div id="content-wrapper">
-	<div class="column">
-		<div id="slide-wrapper" >
+<div id="thumbnail_slideshow_wrapper">  
+	<div class="thumbnail_slideshow_row">  
+		<div id="thumbnail_wrapper" > 
 			<img id="slideLeft" class="arrow" src="assets/images/heart.png">
-			<div id="trend_movie" style="height: 300px;">
+			<div id="trend_movie" style="height: 300px; overflow-x:hidden;">
 				<img class="thumbnail0" src="assets/images/heart.png" style="display: none;">
 				<img class="thumbnail1" src="assets/images/heart.png" style="display: none;">
 				<img class="thumbnail2" src="assets/images/heart.png" style="display: none;">
@@ -119,6 +68,9 @@
 			<img id="slideRight" class="arrow" src="assets/images/heart.png">
 		</div>
 	</div>
+</div>
+	
+
 </div>
 
 <!-- QNA pop up -->
@@ -155,14 +107,51 @@
 	let buttonLeft = document.getElementById('slideLeft');
 
 	buttonLeft.addEventListener('click', function(){
-		document.getElementById('trend_movie').scrollLeft -= 200
+		document.getElementById('trend_movie').scrollLeft -= 500
 	})
 
 	buttonRight.addEventListener('click', function(){
-		document.getElementById('trend_movie').scrollLeft += 200
+		document.getElementById('trend_movie').scrollLeft += 500
+})
+//qna
+	function qna() {
+		
+		if (document.getElementById("qna_container").style.display == "none") {
+			document.getElementById("qna_container").style.display = "block";
+		} else {
+			document.getElementById("qna_container").style.display = "none";
+		}
+	}
+//movie info AJAX	
+	$(document).ready(function(){
+		$.ajax ({
+			url : "MOVIETRAPServlet?command=main",
+			async : false,
+			type : 'get',
+			datatype : 'json',
+			success : function(result){
+				const json =  JSON.parse(result)
+				var trend = json["trendData"]
+				var pop = json["popData"]
+				var video = json["videoData"]
+				var thumbnails = document.getElementsByClassName('thumbnail')
+				
+				for (var i = 0; i<= Object.keys(trend).length; i++){
+					$('.thumbnail' + i).attr('src', 'http://image.tmdb.org/t/p//w200' + trend[Object.keys(trend)[i]]["poster_path"]);
+					$('.thumbnail' + i).css('display', 'block');
+					console.log("title : " + trend[Object.keys(trend)[i]]["title"])
+					console.log("overview : " + trend[Object.keys(trend)[i]]["overview"])
+					console.log("vote_average : " + trend[Object.keys(trend)[i]]["vote_average"])
+					console.log("poster_path : " + trend[Object.keys(trend)[i]]["poster_path"])
+					console.log('http://image.tmdb.org/t/p/original' + trend[Object.keys(trend)[i]]["poster_path"])
+				}
+			},
+			error : function() {
+				console.log("ajax : fail")
+			}
+		});
+		
 	})
-//timer test
-
 </script>
 </body>
 </html>
