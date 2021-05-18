@@ -6,6 +6,7 @@
 <head>
 <meta charset="EUC-KR">
 <link href="assets/css/main.css" type="text/css" rel="stylesheet"> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>Main</title> 
 <script type="text/javascript">
 	function qna() {
@@ -15,8 +16,37 @@
 		} else {
 			document.getElementById("qna_container").style.display = "none";
 		}
-		
 	}
+	
+	$(document).ready(function(){
+		$.ajax ({
+			url : "MOVIETRAPServlet?command=main",
+			async : false,
+			type : 'get',
+			datatype : 'json',
+			success : function(result){
+				const json =  JSON.parse(result)
+				var trend = json["trendData"]
+				var pop = json["popData"]
+				var video = json["videoData"]
+				var thumbnails = document.getElementsByClassName('thumbnail')
+				
+				for (var i = 0; i<= Object.keys(trend).length; i++){
+					$('.thumbnail' + i).attr('src', 'http://image.tmdb.org/t/p//w200' + trend[Object.keys(trend)[i]]["poster_path"]);
+					$('.thumbnail' + i).css('display', 'block');
+					console.log("title : " + trend[Object.keys(trend)[i]]["title"])
+					console.log("overview : " + trend[Object.keys(trend)[i]]["overview"])
+					console.log("vote_average : " + trend[Object.keys(trend)[i]]["vote_average"])
+					console.log("poster_path : " + trend[Object.keys(trend)[i]]["poster_path"])
+					console.log('http://image.tmdb.org/t/p/original' + trend[Object.keys(trend)[i]]["poster_path"])
+				}
+			},
+			error : function() {
+				console.log("ajax : fail")
+			}
+		});
+		
+	})
 </script>
 </head>
 <body>
@@ -48,7 +78,7 @@
 			</div>
 			
 			<div id="genre_movie_thumnail">
-				<img src="" />
+				<img id="genre_movie_thumnail_src"/>
 			</div>
 			
 		</div>
@@ -59,14 +89,32 @@
 	<div class="column">
 		<div id="slide-wrapper" >
 			<img id="slideLeft" class="arrow" src="assets/images/heart.png">
-			<div id="slider">
-				<img class="thumbnail active" src="assets/images/heart.png">
-				<img class="thumbnail" src="assets/images/logo.png">
-				<img class="thumbnail" src="assets/images/logo.png">
-				<img class="thumbnail" src="assets/images/logo.png">
-				<img class="thumbnail" src="assets/images/logo.png">
-				<img class="thumbnail" src="assets/images/logo.png">
-				<img class="thumbnail" src="assets/images/logo.png">
+			<div id="trend_movie" style="height: 300px;">
+				<img class="thumbnail0" src="assets/images/heart.png" style="display: none;">
+				<img class="thumbnail1" src="assets/images/heart.png" style="display: none;">
+				<img class="thumbnail2" src="assets/images/heart.png" style="display: none;">
+				<img class="thumbnail3" src="assets/images/heart.png" style="display: none;">
+				<img class="thumbnail4" src="assets/images/heart.png" style="display: none;">
+				<img class="thumbnail5" src="assets/images/heart.png" style="display: none;">
+				<img class="thumbnail6" src="assets/images/heart.png" style="display: none;">
+				<img class="thumbnail7" src="assets/images/heart.png" style="display: none;">
+				<img class="thumbnail8" src="assets/images/heart.png" style="display: none;">
+				<img class="thumbnail9" src="assets/images/heart.png" style="display: none;">
+				<img class="thumbnail10" src="assets/images/heart.png" style="display: none;">
+				<img class="thumbnail11" src="assets/images/heart.png" style="display: none;">
+				<img class="thumbnail12" src="assets/images/heart.png" style="display: none;">
+				<img class="thumbnail13" src="assets/images/heart.png" style="display: none;">
+				<img class="thumbnail14" src="assets/images/heart.png" style="display: none;">
+				<img class="thumbnail15" src="assets/images/heart.png" style="display: none;">
+				<img class="thumbnail16" src="assets/images/heart.png" style="display: none;">
+				<img class="thumbnail17" src="assets/images/heart.png" style="display: none;">
+				<img class="thumbnail18" src="assets/images/heart.png" style="display: none;">
+				<img class="thumbnail19" src="assets/images/heart.png" style="display: none;">
+				<img class="thumbnail20" src="assets/images/heart.png" style="display: none;">
+				<img class="thumbnail21" src="assets/images/heart.png" style="display: none;">
+				<img class="thumbnail22" src="assets/images/heart.png" style="display: none;">
+				<img class="thumbnail23" src="assets/images/heart.png" style="display: none;">
+				<img class="thumbnail24" src="assets/images/heart.png" style="display: none;">
 			</div>
 			<img id="slideRight" class="arrow" src="assets/images/heart.png">
 		</div>
@@ -103,35 +151,15 @@
 
 <script type="text/javascript">
 //pic slide 
-	let thumbnails = document.getElementsByClassName('thumbnail')
-
-	let activeImages = document.getElementsByClassName('active')
-
-	for (var i=0; i < thumbnails.length; i++){
-
-		thumbnails[i].addEventListener('mouseover', function(){
-			console.log(activeImages)
-			
-			if (activeImages.length > 0){
-				activeImages[0].classList.remove('active')
-			}
-			
-
-			this.classList.add('active')
-			document.getElementById('featured').src = this.src
-		})
-	}
-
-
 	let buttonRight = document.getElementById('slideRight');
 	let buttonLeft = document.getElementById('slideLeft');
 
 	buttonLeft.addEventListener('click', function(){
-		document.getElementById('slider').scrollLeft -= 180
+		document.getElementById('trend_movie').scrollLeft -= 200
 	})
 
 	buttonRight.addEventListener('click', function(){
-		document.getElementById('slider').scrollLeft += 180
+		document.getElementById('trend_movie').scrollLeft += 200
 	})
 //timer test
 
