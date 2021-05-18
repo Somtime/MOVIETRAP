@@ -1,5 +1,4 @@
 package controller;
-
 import controller.action.Action;
 import controller.action.EditPayAction;
 import controller.action.JoinAction;
@@ -7,6 +6,8 @@ import controller.action.JoinFormAction;
 import controller.action.LoginFormAction;
 import controller.action.MembershipAction;
 import controller.action.idCheckAction;
+
+import controller.action.*;
 
 public class ActionFactory {
 	// Variable
@@ -40,6 +41,8 @@ public class ActionFactory {
 			action = new JoinFormAction();
 		} else if(command.equals("join")) {
 			action = new JoinAction();
+		} else if (command.equals("main")) {
+			action = new mainAction();
 		}
 		return action;
 	}

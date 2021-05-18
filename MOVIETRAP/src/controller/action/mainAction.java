@@ -1,0 +1,142 @@
+package controller.action;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.HashMap;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+
+public class mainAction implements Action { 
+
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		
+		HashMap<String, String> URL = new HashMap();				
+				
+		String trendURL = "https://api.themoviedb.org/3/trending/movie/week?api_key=e520d648beeee23f00a8b3386b9dec08";
+		String popURL = "https://api.themoviedb.org/3/discover/movie?api_key=e520d648beeee23f00a8b3386b9dec08&sort_by=popularity.desc";
+		String videoURL = "https://api.themoviedb.org/3/movie/567189/videos?api_key=e520d648beeee23f00a8b3386b9dec08";
+		
+		URL.put("trendURL", trendURL);
+		URL.put("popURL", popURL);
+		URL.put("videoURL", videoURL);
+		
+		String t = "title";
+		String i = "id";
+		
+		JSONObject result = new JSONObject();
+		for(String key : URL.keySet()) {
+			if (key.toString()=="trendURL") {
+				JSONObject trendData = new JSONObject();
+				trendData = getData(URL.get("trendURL"), t);
+				result.put("trendData", trendData);
+				//System.out.println("trendData : " + trendData); // UTF-8 안됨 // [Window - Preferences - General - Workspace] Text file encoding : Other : UTF-8 설정으로 해결
+			}
+			if(key.toString()=="popURL") {
+				JSONObject popData = new JSONObject();
+				popData = getData(URL.get("popURL"), t);
+				result.put("popData", popData);						
+			}
+			if(key.toString()=="videoURL") {
+				JSONObject videoData = new JSONObject();
+				videoData = getData(URL.get("videoURL"), i);
+				result.put("videoData", videoData);
+			}
+		}
+		
+		//System.out.println("result: " + result);
+		PrintWriter out = response.getWriter();
+		out.print(result);		
+	}
+
+	
+	private static JSONObject getData(String apiUrl, String objkey) {
+		
+		String responseBody = get(apiUrl);
+		// System.out.println("responseBody : " + responseBody); UTF-8 이상 없음
+		
+		JSONParser jsonParser = new JSONParser();
+		JSONObject jsonObject = new JSONObject();
+		try {
+			jsonObject = (JSONObject) jsonParser.parse(responseBody);
+		} catch (ParseException e) {
+			e.printStackTrace();
+			}
+		JSONArray jsonArray = (JSONArray)jsonObject.get("results");
+		JSONObject data = new JSONObject();
+		for (int i = 0; i < jsonArray.size(); i ++) {
+			JSONObject m = (JSONObject) jsonArray.get(i);
+			data.put(m.get(objkey), jsonArray.get(i));
+		}
+		return data;			
+		
+	}
+
+    private static String get(String apiUrl){
+        HttpURLConnection con = connect(apiUrl);
+        try {
+            con.setRequestMethod("GET");
+
+            int responseCode = con.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) { // 정상 호출
+                return readBody(con.getInputStream());
+            } else { // 에러 발생
+                return readBody(con.getErrorStream());
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("API 요청과 응답 실패 : ", e);
+        } finally {
+            con.disconnect();
+        }
+    }
+
+
+    private static HttpURLConnection connect(String apiUrl){
+        try {
+            URL url = new URL(apiUrl);
+            return (HttpURLConnection)url.openConnection();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException("API URL이 잘못되었습니다. : " + apiUrl, e);
+        } catch (IOException e) {
+            throw new RuntimeException("연결이 실패했습니다. : " + apiUrl, e);
+        }
+    }
+
+
+    private static String readBody(InputStream body){
+        InputStreamReader streamReader = new InputStreamReader(body);
+
+
+        try (BufferedReader lineReader = new BufferedReader(streamReader)) {
+            StringBuilder responseBody = new StringBuilder();
+
+
+            String line;
+            while ((line = lineReader.readLine()) != null) {
+                responseBody.append(line);
+            }
+
+            return responseBody.toString();
+        } catch (IOException e) {
+            throw new RuntimeException("API 응답을 읽는데 실패했습니다. : " , e);
+        }
+    }
+    
+}
