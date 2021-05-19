@@ -2,21 +2,24 @@
     pageEncoding="EUC-KR"%>
 <%@ include file="header.jsp" %>
 <!DOCTYPE html>
-<html>
+<html >
 <head>
 <meta charset="EUC-KR">
 <link href="assets/css/main.css" type="text/css" rel="stylesheet"> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/li
+bs/jquery/3.5.1/jquery.min.js"></script>
 <title>MOVIETRAP</title> 
 </head>
-<body>
-	<div id="main_movie"> 
-		<div id="main_movie_trailer"> 
-			<iframe width="90%" height="700px"
-			src="https://www.youtube.com/embed/tgbNymZ7vqY">
-			</iframe>
+<body style="background-color: black;">
+	<div id="main_movie">
+		<div id="main_movie_trailer" >
+		<iframe width="100%" height="100%" src="https://www.youtube.com/embed/kRpkRkO9KUI">
+		</iframe>
 		</div>
-		<div id="main_movie_title">		
+
+		
+		<div id="main_movie_info">	
+			
 			<div id="main_movie_title">
 				<input type="text" value="Main Movie Title">
 			</div>
@@ -32,7 +35,8 @@
 			<div id="main_watch_later">
 				<input type="button" value="play">
 			</div>
-		</div>
+			</div>
+	</div>
 		
 <div id="thumbnail_slideshow_wrapper">  
 	<div class="thumbnail_slideshow_row">  
@@ -70,34 +74,33 @@
 	</div>
 </div>
 	
-
-</div>
-
 <!-- QNA pop up -->
 	<form>
 	
-		<button id="qna_btn" onclick="qna()">Q&A</button>
-	  	
-		<div id="qna_container">
-		
-	  		<div id="qna_header">  
-		    <h2>LIVE CHAT</h2>
-		   </div>
-	    			
-			<div id="qna_section">
-			   <p>chat content</p>
-			</div>
-	   			
-	      	<div id="qna_footer">
-	      		<div id ="qna_footer_text">
-					<input type="text" required>
-				</div>
-				<div id="qna_footer_submit">
+<div class="chat-box">
+<div class="chat-closed"> Chat Now </div>
+<div class="chat-header hide"><div class="box"></div>Online Support</div>
+<div class="chat-content-container hide">
+
+<div class="chat-content">
+
+*<br>
+Your chat content...
+*<br>
+
+*<br>
+Your chat content…
+</div>
+<!-- 	<div id ="chat-input"> -->
+		<textarea  id ="chat-input" name="item3" cols="30" rows="5"></textarea> 
+					
+<!-- 				</div> -->
+				<div id="chat-submit">
 					<input type="submit" value="send">
 				</div>
-			</div>
-			
-		</div>
+
+</div>
+</div>
 		
 	</form>
 
@@ -114,16 +117,19 @@
 		document.getElementById('trend_movie').scrollLeft += 500
 })
 //qna
-	function qna() {
-		
-		if (document.getElementById("qna_container").style.display == "none") {
-			document.getElementById("qna_container").style.display = "block";
-		} else {
-			document.getElementById("qna_container").style.display = "none";
-		}
-	}
+$(document).ready(function(){
+    $(".chat-closed").on("click",function(e){
+        $(".chat-header,.chat-content-container").removeClass("hide");
+        $(this).addClass("hide");
+    });
+
+    $(".chat-header").on("click",function(e){
+        $(".chat-header,.chat-content-container").addClass("hide");
+        $(".chat-closed").removeClass("hide");
+    });
+});
 //movie info AJAX	
-	$(document).ready(function(){
+$(document).ready(function(){
 		$.ajax ({
 			url : "MOVIETRAPServlet?command=main",
 			async : false,
@@ -134,7 +140,6 @@
 				var trend = json["trendData"]
 				var pop = json["popData"]
 				var video = json["videoData"]
-				var thumbnails = document.getElementsByClassName('thumbnail')
 				
 				for (var i = 0; i<= Object.keys(trend).length; i++){
 					$('.thumbnail' + i).attr('src', 'http://image.tmdb.org/t/p//w200' + trend[Object.keys(trend)[i]]["poster_path"]);

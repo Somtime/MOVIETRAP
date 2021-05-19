@@ -1,21 +1,36 @@
 @charset "EUC-KR";
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
+body {
+	background-color: black;
+}
 div#main_movie_title {
     margin: 10px;
     width: 100%;
-    height: 400px;
 }
 /*--  main movie trailer: main.jsp ------------------------------------ */
 #main_movie {
-	 position: relative;
+	width: 100%;
 }
+
 #main_movie_trailer {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%) 
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+
+#main_movie_trailer iframe {
+position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+}
+#main_movie_title {
+/* 	background: none; */
 }
 /*--  main.jsp : genre thumbnail slide ------------------------------------ */
 #thumbnail_slideshow_wrapper{
@@ -77,71 +92,69 @@ div#trend_movie img:hover{
 
 /*-- main.jsp : Q&A ------------------------------------ */
 
-#qna_btn {
-	position: absolute;
-	bottom: 5%;
-	right: 0;
+.chat-box {
+    position:fixed;
+    right:15px;
+    bottom:0;
+    box-shadow:0 0 0.1em #000;
 }
 
-#qna_container {
-	display:none;
-	margin: 0 auto;
-	position: absolute;
-	height: 400px;
-	width: 250px;
-	right: 5%;
-	bottom: 5%;
-	border: 1px solid black;
-	z-index: 9;
-	background-color: white;
+.chat-closed {
+ height: 50px;
+      left: 90%;
+      bottom: 20%;
+      width: 100px;
+      background: none repeat scroll 0 0 #FF0000;
+      border: medium none;
+      color: #FFFFFF;
+      
+      text-align: center;
 }
 
-#qna_header {
+.chat-header {
+    width: 250px;
+    height: 35px;
+    background-color: #FF0000;
+    line-height: 33px;
+      color: #FFFFFF;
+    text-indent: 20px;
+    border:1px solid #777;
+    border-bottom:none;
+}
+
+.chat-content-container {
+    width:250px;
+    height:300px;
+    background:white;
+    border:1px solid #777;
+    overflow-y:auto;
+    word-wrap: break-word;
+}
+.chat-content {
 	display: inline-block;
-	width: 100%;
-	margin: 0;
+	height: 70%;
+}
+.box{
+    width:10px;
+    height:10px;
+    background: black;
+    float:left;
+    position:relative;
+    top: 11px;
+    left: 10px;
+}
+
+.hide {
+    display:none;
+}
+#chat-input input[type="text"] {
+	display: inline-block;
 	height: 20%;
-	border: 1px solid black;
-}
 
-#qna_section {
+}
+#chat-submit {
 	display: inline-block;
-	width: 100%;
-	margin: 0;
-	height: 60%;
-	border: 1px solid black;
-}
-
-#qna_footer {
-	display: inline-block;
-	width: 100%;
-	margin: 0;
-	height: 20%;
-	border: 1px solid black;
-}
-
-#qna_footer_text {
-	float: left;
-	margin: 0;
-	width: 70%;
-	height: 100%;
-}
-
-#qna_footer_text input[type="text"] {
-	width: 100%;
-	height: 100%;
-	padding: 0;
-    border: 0;
-}
-
-#qna_footer_submit {
-	float: right;
-	margin: 0;
-	width: 30%;
-	height: 100%;
-}
-
-#qna_footer_submit input[type="submit"] {
-	width: 100%;
-	height: 100%;
+	height: 10%;
+		bottom: 0px;
+	
 }

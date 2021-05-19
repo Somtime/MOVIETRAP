@@ -61,7 +61,7 @@ public class mainAction implements Action {
 			}
 		}
 		
-		//System.out.println("result: " + result);
+		System.out.println("result: " + result);
 		PrintWriter out = response.getWriter();
 		out.print(result);		
 	}
