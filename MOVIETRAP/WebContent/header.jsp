@@ -8,10 +8,14 @@
 <meta charset="EUC-KR">
 <link href="assets/css/header.css" type="text/css" rel="stylesheet" >  
 <title>Header</title>
+<style>
+body {
+	z-index: 5;
+	}
+</style>
 </head>
 <body>
 	<header>
-	
 		<div id="logo" onclick="location='main.jsp'">
 				<img src="assets/images/logo.png" /> 
 		</div>

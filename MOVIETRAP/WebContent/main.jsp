@@ -41,7 +41,7 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 <div id="thumbnail_slideshow_wrapper">  
 	<div class="thumbnail_slideshow_row">  
 		<div id="thumbnail_wrapper" > 
-			<img id="slideLeft" class="arrow" src="assets/images/heart.png">
+			<img id="slideLeft" class="arrow" src="assets/images/left_arrow.png">
 			<div id="trend_movie" style="height: 300px; overflow-x:hidden;">
 				<img class="thumbnail0" src="assets/images/heart.png" style="display: none;">
 				<img class="thumbnail1" src="assets/images/heart.png" style="display: none;">
@@ -69,7 +69,7 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 				<img class="thumbnail23" src="assets/images/heart.png" style="display: none;">
 				<img class="thumbnail24" src="assets/images/heart.png" style="display: none;">
 			</div>
-			<img id="slideRight" class="arrow" src="assets/images/heart.png">
+			<img id="slideRight" class="arrow" src="assets/images/arrow.png">
 		</div>
 	</div>
 </div>
