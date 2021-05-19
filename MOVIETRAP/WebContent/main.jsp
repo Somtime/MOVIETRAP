@@ -43,31 +43,6 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 		<div id="thumbnail_wrapper" > 
 			<img id="slideLeft" class="arrow" src="assets/images/left_arrow.png">
 			<div id="trend_movie" style="height: 300px; overflow-x:hidden;">
-				<img class="thumbnail0" src="assets/images/heart.png" style="display: none;">
-				<img class="thumbnail1" src="assets/images/heart.png" style="display: none;">
-				<img class="thumbnail2" src="assets/images/heart.png" style="display: none;">
-				<img class="thumbnail3" src="assets/images/heart.png" style="display: none;">
-				<img class="thumbnail4" src="assets/images/heart.png" style="display: none;">
-				<img class="thumbnail5" src="assets/images/heart.png" style="display: none;">
-				<img class="thumbnail6" src="assets/images/heart.png" style="display: none;">
-				<img class="thumbnail7" src="assets/images/heart.png" style="display: none;">
-				<img class="thumbnail8" src="assets/images/heart.png" style="display: none;">
-				<img class="thumbnail9" src="assets/images/heart.png" style="display: none;">
-				<img class="thumbnail10" src="assets/images/heart.png" style="display: none;">
-				<img class="thumbnail11" src="assets/images/heart.png" style="display: none;">
-				<img class="thumbnail12" src="assets/images/heart.png" style="display: none;">
-				<img class="thumbnail13" src="assets/images/heart.png" style="display: none;">
-				<img class="thumbnail14" src="assets/images/heart.png" style="display: none;">
-				<img class="thumbnail15" src="assets/images/heart.png" style="display: none;">
-				<img class="thumbnail16" src="assets/images/heart.png" style="display: none;">
-				<img class="thumbnail17" src="assets/images/heart.png" style="display: none;">
-				<img class="thumbnail18" src="assets/images/heart.png" style="display: none;">
-				<img class="thumbnail19" src="assets/images/heart.png" style="display: none;">
-				<img class="thumbnail20" src="assets/images/heart.png" style="display: none;">
-				<img class="thumbnail21" src="assets/images/heart.png" style="display: none;">
-				<img class="thumbnail22" src="assets/images/heart.png" style="display: none;">
-				<img class="thumbnail23" src="assets/images/heart.png" style="display: none;">
-				<img class="thumbnail24" src="assets/images/heart.png" style="display: none;">
 			</div>
 			<img id="slideRight" class="arrow" src="assets/images/arrow.png">
 		</div>
@@ -117,7 +92,7 @@ Your chat content¡¦
 		document.getElementById('trend_movie').scrollLeft += 500
 })
 //qna
-$(document).ready(function(){
+ $(document).ready(function(){
     $(".chat-closed").on("click",function(e){
         $(".chat-header,.chat-content-container").removeClass("hide");
         $(this).addClass("hide");
@@ -128,10 +103,12 @@ $(document).ready(function(){
         $(".chat-closed").removeClass("hide");
     });
 });
+	 
+	
 //movie info AJAX	
 $(document).ready(function(){
 		$.ajax ({
-			url : "MOVIETRAPServlet?command=main",
+			url : 'MOVIETRAPServlet?command=main',
 			async : false,
 			type : 'get',
 			datatype : 'json',
@@ -141,14 +118,13 @@ $(document).ready(function(){
 				var pop = json["popData"]
 				var video = json["videoData"]
 				
-				for (var i = 0; i<= Object.keys(trend).length; i++){
-					$('.thumbnail' + i).attr('src', 'http://image.tmdb.org/t/p//w200' + trend[Object.keys(trend)[i]]["poster_path"]);
-					$('.thumbnail' + i).css('display', 'block');
-					console.log("title : " + trend[Object.keys(trend)[i]]["title"])
-					console.log("overview : " + trend[Object.keys(trend)[i]]["overview"])
-					console.log("vote_average : " + trend[Object.keys(trend)[i]]["vote_average"])
-					console.log("poster_path : " + trend[Object.keys(trend)[i]]["poster_path"])
-					console.log('http://image.tmdb.org/t/p/original' + trend[Object.keys(trend)[i]]["poster_path"])
+				for (var i = 0; i <= Object.keys(trend).length; i++) {
+					document.querySelector('#trend_movie').innerHTML += '<div><img src='+'http://www.themoviedb.org/t/p/w200' + trend[Object.keys(trend)[i]]["poster_path"] +
+																		' alt=' + trend[Object.keys(trend)[i]]["id"] +
+																		' onclick="moviepage(this)" /></div>';
+					
+					console.log(trend[Object.keys(trend)[i]]["poster_path"])
+					console.log(trend[Object.keys(trend)[i]]["id"])
 				}
 			},
 			error : function() {
@@ -156,7 +132,16 @@ $(document).ready(function(){
 			}
 		});
 		
-	})
+	});
+	
+ 	//send data;
+ 	 function moviepage(img){
+	var id = img.getAttribute('alt'); 		
+		var url = "MOVIETRAPServlet?command=moviepage&movieid="+id;
+		console.log(id)
+		location.href = url;	  
+	  
+	}
 </script>
 </body>
 </html>
