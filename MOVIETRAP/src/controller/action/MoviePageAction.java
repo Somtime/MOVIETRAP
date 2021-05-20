@@ -22,7 +22,8 @@ public class MoviePageAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("movieId");
+		String id = request.getParameter("movieid");
+		String url =  "moviepage.jsp";
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
@@ -31,25 +32,42 @@ public class MoviePageAction implements Action {
 		
 		String videoURL = "https://api.themoviedb.org/3/movie/"+id+"/videos?api_key=e520d648beeee23f00a8b3386b9dec08";
 		String movieDetailURL ="https://api.themoviedb.org/3/movie/"+id+"?api_key=e520d648beeee23f00a8b3386b9dec08&language=en-US";
-		
 		URL.put("videoData", videoURL);	// results : key
 		URL.put("movieDetailData", movieDetailURL); // : genre , overview, vote_average
 		
-		JSONObject result = new JSONObject();
+		JSONObject videoData = new JSONObject();
+		JSONObject movieDetailData = new JSONObject();
+		JSONArray video = new JSONArray();
+		//JSONObject result = new JSONObject();
 		for (String key : URL.keySet()) {
 			if (key.toString().equals("videoData")) {
-				JSONObject videoData = getData(URL.get(key));
-				result.put("videoData" , videoData);
+				 videoData = (JSONObject) getData(URL.get(key)).get("movieDetail");
+				 video = (JSONArray) videoData.get("results");			 
 			}
 			if (key.toString().equals("movieDetailData")) {
-				JSONObject movieDetailData = getData(URL.get(key));
-				result.put("movieDetailData", movieDetailData);
+				 movieDetailData = getData(URL.get(key));
 			}
 			
-			System.out.println("MoviePageAction");
-			System.out.println("result : " + result);
-			response.getWriter().print(result);
-		}
+		} 
+		/*
+		 * System.out.println(id); System.out.println("video :" +video);
+		 * System.out.println("videoData : " + videoData);
+		 * System.out.println("movieDetailData : " + movieDetailData);
+		 */
+		
+		JSONObject v = (JSONObject) video.get(0);
+		System.out.println("v : " + v);
+		String key = v.get("key").toString();
+		
+		
+		System.out.println("key : " + key);
+		
+		request.setAttribute("detail", movieDetailData);	
+		request.setAttribute("key", key);
+		
+		request.getRequestDispatcher(url).forward(request, response);
+		
+		
 		
 	}
 
