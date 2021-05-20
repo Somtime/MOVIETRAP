@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ include file="header.jsp" %>
-
 <!DOCTYPE html>
 <html >
 <head>
 <meta charset="EUC-KR">
 <link href="assets/css/main.css" type="text/css" rel="stylesheet"> 
-<script src="main.js"></script>
 <script src="https://ajax.googleapis.com/ajax/li
 bs/jquery/3.5.1/jquery.min.js"></script>
 <title>MOVIETRAP</title> 
@@ -15,8 +13,8 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 <body style="background-color: black;">
 	<div id="main_movie">
 		<div id="main_movie_trailer" >
-			<iframe id="main_movie_frame" width="100%" height="100%" src="">
-			</iframe>
+		<iframe width="100%" height="100%" src="https://www.youtube.com/embed/kRpkRkO9KUI">
+		</iframe>
 		</div>
 
 		
@@ -44,7 +42,7 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 	<div class="thumbnail_slideshow_row">  
 		<div id="thumbnail_wrapper" > 
 			<img id="slideLeft" class="arrow" src="assets/images/left_arrow.png">
-			<div id="trend_movie">
+			<div id="trend_movie" style="height: 300px; overflow-x:hidden;">
 			</div>
 			<img id="slideRight" class="arrow" src="assets/images/arrow.png">
 		</div>
@@ -52,7 +50,7 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 </div>
 	
 <!-- QNA pop up -->
-<form name="frm" method="post">
+	<form>
 	
 <div class="chat-box">
 <div class="chat-closed"> Chat Now </div>
@@ -73,17 +71,26 @@ Your chat content…
 					
 <!-- 				</div> -->
 				<div id="chat-submit">
-<!-- 					<input type="submit" value="send"> -->
-					<input class="btn" type="button" name="btn_search" value="search" onClick="qna_send()">
-					
+					<input type="submit" value="send">
 				</div>
 
 </div>
 </div>
 		
-</form>
+	</form>
 
 <script type="text/javascript">
+//pic slide 
+	let buttonRight = document.getElementById('slideRight');
+	let buttonLeft = document.getElementById('slideLeft');
+
+	buttonLeft.addEventListener('click', function(){
+		document.getElementById('trend_movie').scrollLeft -= 500
+	})
+
+	buttonRight.addEventListener('click', function(){
+		document.getElementById('trend_movie').scrollLeft += 500
+})
 //qna
  $(document).ready(function(){
     $(".chat-closed").on("click",function(e){
@@ -109,23 +116,16 @@ $(document).ready(function(){
 				const json =  JSON.parse(result)
 				var trend = json["trendData"]
 				var pop = json["popData"]
-				var trailerkey = json["popmoviekey"]
-				
-				// 메인 동영상 src 인기 영상 트레일러로 변경
-				if (trailerkey != null) {
-					console.log(trailerkey);
-					document.getElementById('main_movie_frame').src = "https://youtube.com/embed/" + trailerkey + "?autoplay=1&mute=1";
-				}	
-				// 메인 동영상 src 인기 영상 트레일러로 변경 끝 
-				
-				// trend_movie div 생성 및 포스터 이미지 삽입
+				var video = json["videoData"]
+								
 				for (var i = 0; i <= Object.keys(trend).length; i++) {
 					document.querySelector('#trend_movie').innerHTML += '<div><img src='+'http://www.themoviedb.org/t/p/w200' + trend[Object.keys(trend)[i]]["poster_path"] +
 																		' alt=' + trend[Object.keys(trend)[i]]["id"] +
 																		' onclick="moviepage(this)" /></div>';
+					
+					console.log(trend[Object.keys(trend)[i]]["poster_path"])
+					console.log(trend[Object.keys(trend)[i]]["id"])
 				}
-				// trend_movie div 생성 및 포스터 이미지 삽입 끝
-				
 			},
 			error : function() {
 				console.log("ajax : fail")
@@ -134,6 +134,14 @@ $(document).ready(function(){
 		
 	});
 	
+ 	//send data;
+ 	 function moviepage(img){
+	var id = img.getAttribute('alt'); 		
+		var url = "MOVIETRAPServlet?command=moviepage&movieid="+id;
+		console.log(id)
+		location.href = url;	  
+	  
+	}
 </script>
 </body>
 </html>

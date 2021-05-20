@@ -134,9 +134,6 @@ $(document).ready(function(){
 				}
 				// trend_movie div 생성 및 포스터 이미지 삽입 끝
 				
-				
-				
-				
 			},
 			error : function() {
 				console.log("ajax : fail")

@@ -24,6 +24,7 @@
 <div id="movie_trailer"  >
 	<iframe src="https://www.youtube.com/embed/${key}?autoplay=1&mute=1"></iframe>
 </div>
+<<<<<<< HEAD
 <div style="display:none">	
 
 	<div id="detail_wrapper">
@@ -46,6 +47,14 @@
 		</div>
 	</div>	
 	
+=======
+<div style="color:white;">	
+	${title}
+	${overview}
+	${release_date}
+	${vote_average}
+	${genres_array}	
+>>>>>>> branch 'master' of https://github.com/Somtime/MOVIETRAP.git
 </div>
 
 </body>

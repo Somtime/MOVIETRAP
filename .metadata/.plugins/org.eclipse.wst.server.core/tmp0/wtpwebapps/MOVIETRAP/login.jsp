@@ -18,23 +18,23 @@ function PwdFunction() {
 </script>
 </head>
 <body>
-<form class="login_join_form">
-  <div class="container">
-	<label for="id"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
-    
-    <label for="pwd"><b>Password</b></label>
-    <input type="password" id="login_pwd" placeholder="Enter Password" name="pwd" required>
-    <input type="checkbox" onclick="PwdFunction()">Show Password
-    
-    <button type="submit">Login</button>
-    <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a><br>
-  	<a href="MOVIETRAPServlet?command=join_form">Sign up</a></span>    
-       
-  </div>
- </div>
+<form method="post" action="MOVIETRAPServlet?command=login" name="frm" class="login_join_form">
+	<div class="container">
+		<label for="id"><b>Email</b></label>
+	    <input type="text" placeholder="Enter Email" name="email" required>
+	    <label for="pwd"><b>Password</b></label>
+	    <input type="password" id="login_pwd" placeholder="Enter Password" name="pwd" required>
+	    <input type="checkbox" onclick="PwdFunction()">Show Password
+	    <button type="submit">Login</button>
+	    
+   		<div class="container" style="background-color:#f1f1f1">
+   		
+	    <button type="button" class="cancelbtn">Cancel</button>
+	    <span class="psw">Forgot <a href="#">password?</a><br>
+	  	<a href="MOVIETRAPServlet?command=join_form">Sign up</a></span>    
+	
+		</div>
+	</div>
 </form>
 </body>
 </html>
