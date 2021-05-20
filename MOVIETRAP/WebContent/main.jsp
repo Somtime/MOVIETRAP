@@ -13,9 +13,9 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 <title>MOVIETRAP</title> 
 </head>
 <body style="background-color: black;">
-	<div id="main_movie">
-		<div id="main_movie_trailer" >
-			<iframe id="main_movie_frame" width="100%" height="100%" src="">
+	<div id="main_movie" style="overflow-y: hidden; overflow-x: hidden;">
+		<div id="main_movie_trailer" style="overflow-y: hidden; overflow-x: hidden;">
+			<iframe id="main_movie_frame" width="100%" height="100%" style="overflow-y: hidden; overflow-x: hidden;" src="">
 			</iframe>
 		</div>
 
