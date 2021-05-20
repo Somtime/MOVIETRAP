@@ -7,6 +7,7 @@
 <head>
 <meta charset="EUC-KR">
 <link href="assets/css/main.css" type="text/css" rel="stylesheet"> 
+<script src="main.js"></script>
 <script src="https://ajax.googleapis.com/ajax/li
 bs/jquery/3.5.1/jquery.min.js"></script>
 <title>MOVIETRAP</title> 
@@ -43,7 +44,7 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 	<div class="thumbnail_slideshow_row">  
 		<div id="thumbnail_wrapper" > 
 			<img id="slideLeft" class="arrow" src="assets/images/left_arrow.png">
-			<div id="trend_movie" style="height: 300px; overflow-x:hidden;">
+			<div id="trend_movie">
 			</div>
 			<img id="slideRight" class="arrow" src="assets/images/arrow.png">
 		</div>
@@ -51,7 +52,7 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 </div>
 	
 <!-- QNA pop up -->
-	<form>
+<form name="frm" method="post">
 	
 <div class="chat-box">
 <div class="chat-closed"> Chat Now </div>
@@ -72,26 +73,17 @@ Your chat content…
 					
 <!-- 				</div> -->
 				<div id="chat-submit">
-					<input type="submit" value="send">
+<!-- 					<input type="submit" value="send"> -->
+					<input class="btn" type="button" name="btn_search" value="search" onClick="qna_send()">
+					
 				</div>
 
 </div>
 </div>
 		
-	</form>
+</form>
 
 <script type="text/javascript">
-//pic slide 
-	let buttonRight = document.getElementById('slideRight');
-	let buttonLeft = document.getElementById('slideLeft');
-
-	buttonLeft.addEventListener('click', function(){
-		document.getElementById('trend_movie').scrollLeft -= 500
-	})
-
-	buttonRight.addEventListener('click', function(){
-		document.getElementById('trend_movie').scrollLeft += 500
-})
 //qna
  $(document).ready(function(){
     $(".chat-closed").on("click",function(e){
@@ -142,14 +134,6 @@ $(document).ready(function(){
 		
 	});
 	
- 	//send data;
- 	 function moviepage(img){
-	var id = img.getAttribute('alt'); 		
-		var url = "MOVIETRAPServlet?command=moviepage&movieid="+id;
-		console.log(id)
-		location.href = url;	  
-	  
-	}
 </script>
 </body>
 </html>
