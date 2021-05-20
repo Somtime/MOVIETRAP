@@ -69,12 +69,12 @@ Your chat content...
 Your chat content¡¦
 </div>
 <!-- 	<div id ="chat-input"> -->
-		<textarea  id ="chat-input" name="item3" cols="30" rows="5"></textarea> 
+		<textarea  id ="chat_content" name="chat_content" cols="30" rows="5"></textarea> 
 					
 <!-- 				</div> -->
 				<div id="chat-submit">
 <!-- 					<input type="submit" value="send"> -->
-					<input class="btn" type="button" name="btn_search" value="search" onClick="qna_send()">
+				<input class="btn" type="button" name="btn_search" value="send" onClick="qna_send()">
 					
 				</div>
 
@@ -133,7 +133,23 @@ $(document).ready(function(){
 		});
 		
 	});
+$(document).ready(function(){
+	$.ajax ({
+		url : 'MOVIETRAPServlet?command=qna_send',
+		async : false,
+		type : 'get',
+		datatype : 'json',
+		success : function(result){
+			const json =  JSON.parse(result)
+			
+			${'#chat_content'}.text(json.)
+		},
+		error : function() {
+			console.log("ajax : fail")
+		}
+	});
 	
+});	
 </script>
 </body>
 </html>

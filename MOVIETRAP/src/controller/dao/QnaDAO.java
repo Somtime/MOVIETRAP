@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import org.json.simple.JSONObject;
+
 import controller.dto.QnaVO;
 import util.DBManager;
 
@@ -15,11 +17,13 @@ public class QnaDAO {
 		return instance;
 	}
 	
-	public void qnaWrite(QnaVO qna) {
+	public JSONObject qnaWrite(QnaVO qna) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "INSERT INTO qna(cseq, send_id, "+
 		"rcvd_id, chat_content, chat_time)";
+		JSONObject json = new JSONObject();
+
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -27,12 +31,13 @@ public class QnaDAO {
 			pstmt.setString(1, qna.getSend_id());
 			pstmt.setString(2, qna.getRcvd_id());
 			pstmt.setString(3, qna.getChat_content());
-			
+			json.put(qna, json);
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
 			DBManager.close(conn, pstmt);
 		}
+		return json ;
 	}
 
 	public ArrayList<QnaVO> qnaList(String email) {
