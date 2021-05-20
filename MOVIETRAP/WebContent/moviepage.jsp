@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@ include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,13 +10,41 @@
 	body{
 		background-color: black;
 	}
+	
+	iframe {
+		width:100vw;
+		height:100vh; 
+	}
+	#movie_trailer {
+		color:white;
+	}
+	
 </style>
 <body>
-<div id="movie_trailer">
-	<iframe width="100%" height="100" src="https://www.youtube.com/embed/${key}"/>
-	</iframe>
+<div id="movie_trailer"  >
+	<iframe src="https://www.youtube.com/embed/${key}?autoplay=1&mute=1"></iframe>
 </div>
-<div>	
+<div style="display:none">	
+
+	<div id="detail_wrapper">
+	
+		<div id="movie_title">
+			<h2>title</H2>
+		</div>
+		
+		<div id="movie_genre">
+			<h2>genre</h2>
+		</div>
+		
+		<div id="movie_description">
+			<h3>overview</h3>
+		</div>
+		
+		<div id="movie_rationgscore">
+			<img src="assets/images/star.png"/>
+			<h1>vote_avg</h1>
+		</div>
+	</div>	
 	
 </div>
 

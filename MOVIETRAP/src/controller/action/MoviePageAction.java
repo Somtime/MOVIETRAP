@@ -45,7 +45,9 @@ public class MoviePageAction implements Action {
 				 video = (JSONArray) videoData.get("results");			 
 			}
 			if (key.toString().equals("movieDetailData")) {
-				 movieDetailData = getData(URL.get(key));
+				 JSONObject m = getData(URL.get(key));
+				 movieDetailData = (JSONObject) m.get("movieDetail");
+				 
 			}
 			
 		} 
@@ -59,11 +61,13 @@ public class MoviePageAction implements Action {
 		System.out.println("v : " + v);
 		String key = v.get("key").toString();
 		
-		
+		System.out.println("detail :" + movieDetailData);
 		System.out.println("key : " + key);
 		
 		request.setAttribute("detail", movieDetailData);	
 		request.setAttribute("key", key);
+		
+		
 		
 		request.getRequestDispatcher(url).forward(request, response);
 		
