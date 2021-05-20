@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ include file="header.jsp" %>
+
 <!DOCTYPE html>
 <html >
 <head>
@@ -13,8 +14,8 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 <body style="background-color: black;">
 	<div id="main_movie">
 		<div id="main_movie_trailer" >
-		<iframe width="100%" height="100%" src="https://www.youtube.com/embed/kRpkRkO9KUI">
-		</iframe>
+			<iframe id="main_movie_frame" width="100%" height="100%" src="https://www.youtube.com/embed/kRpkRkO9KUI">
+			</iframe>
 		</div>
 
 		
@@ -116,16 +117,26 @@ $(document).ready(function(){
 				const json =  JSON.parse(result)
 				var trend = json["trendData"]
 				var pop = json["popData"]
-				var video = json["videoData"]
+				var trailerkey = json["popmoviekey"]
 				
+
+				if (trailerkey != null) {
+					console.log(trailerkey);
+					document.getElementById('main_movie_frame').src = "https://youtube.com/embed/" + trailerkey;
+				}	
+				
+				
+				// trend_movie div 생성 및 포스터 이미지 삽입
 				for (var i = 0; i <= Object.keys(trend).length; i++) {
 					document.querySelector('#trend_movie').innerHTML += '<div><img src='+'http://www.themoviedb.org/t/p/w200' + trend[Object.keys(trend)[i]]["poster_path"] +
 																		' alt=' + trend[Object.keys(trend)[i]]["id"] +
 																		' onclick="moviepage(this)" /></div>';
-					
-					console.log(trend[Object.keys(trend)[i]]["poster_path"])
-					console.log(trend[Object.keys(trend)[i]]["id"])
 				}
+				// trend_movie div 생성 및 포스터 이미지 삽입 끝
+				
+				
+				
+				
 			},
 			error : function() {
 				console.log("ajax : fail")

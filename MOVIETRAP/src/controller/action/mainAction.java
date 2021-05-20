@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.ServletException;
@@ -32,11 +33,10 @@ public class mainAction implements Action {
 				
 		String trendURL = "https://api.themoviedb.org/3/trending/movie/week?api_key=e520d648beeee23f00a8b3386b9dec08";
 		String popURL = "https://api.themoviedb.org/3/discover/movie?api_key=e520d648beeee23f00a8b3386b9dec08&sort_by=popularity.desc";
-		String videoURL = "https://api.themoviedb.org/3/movie/567189/videos?api_key=e520d648beeee23f00a8b3386b9dec08";
+		//String videoURL = "https://api.themoviedb.org/3/movie/399566/videos?api_key=e520d648beeee23f00a8b3386b9dec08";
 		
 		URL.put("trendURL", trendURL);
 		URL.put("popURL", popURL);
-		URL.put("videoURL", videoURL);
 		
 		String t = "title";
 		String i = "id";
@@ -54,14 +54,28 @@ public class mainAction implements Action {
 				popData = getData(URL.get("popURL"), t);
 				result.put("popData", popData);						
 			}
-			if(key.toString()=="videoURL") {
-				JSONObject videoData = new JSONObject();
-				videoData = getData(URL.get("videoURL"), i);
-				result.put("videoData", videoData);
-			}
 		}
 		
-		System.out.println("result: " + result);
+		// popData에서 인기 영화의 movieid 값 뽑아오기
+		JSONObject tobj = (JSONObject) getData(popURL, t);
+		ArrayList<String> objectKeys = new ArrayList<String>(tobj.keySet());
+		JSONObject obj = (JSONObject) tobj.get(objectKeys.get(0));
+		String movieid = obj.get("id").toString();
+		// 끝 : movieid
+		
+		String videoURL = "https://api.themoviedb.org/3/movie/" + movieid + "/videos?api_key=e520d648beeee23f00a8b3386b9dec08";
+		
+		// movieid 를 url에 넣어서 JSON 정보를 얻어와서 트레일러 key 얻음
+		JSONObject videoData = new JSONObject();
+		videoData = getData(videoURL);
+		JSONObject video = (JSONObject) videoData.get(0);
+		String trailerkey = video.get("key").toString();
+		// 끝 : trailerkey
+		
+		// popmoviekey를 key로 result에 넣음
+		result.put("popmoviekey", trailerkey);
+		System.out.println(result);
+		
 		PrintWriter out = response.getWriter();
 		out.print(result);		
 	}
@@ -84,6 +98,27 @@ public class mainAction implements Action {
 		for (int i = 0; i < jsonArray.size(); i ++) {
 			JSONObject m = (JSONObject) jsonArray.get(i);
 			data.put(m.get(objkey), jsonArray.get(i));
+		}
+		return data;			
+		
+	}
+	
+	private static JSONObject getData(String apiUrl) {
+		
+		String responseBody = get(apiUrl);
+		// System.out.println("responseBody : " + responseBody); UTF-8 이상 없음
+		
+		JSONParser jsonParser = new JSONParser();
+		JSONObject jsonObject = new JSONObject();
+		try {
+			jsonObject = (JSONObject) jsonParser.parse(responseBody);
+		} catch (ParseException e) {
+			e.printStackTrace();
+			}
+		JSONArray jsonArray = (JSONArray)jsonObject.get("results");
+		JSONObject data = new JSONObject();
+		for (int i = 0; i < jsonArray.size(); i ++) {
+			data.put(i, jsonArray.get(i));
 		}
 		return data;			
 		
