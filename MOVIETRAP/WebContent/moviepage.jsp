@@ -14,7 +14,7 @@
 </style>
 <body>
 <div id="movie_trailer">
-	<iframe width="100%" height="100" src="https://youtube.com/embed/"+${key}"/>
+	<iframe width="100%" height="100" src="https://youtube.com/embed/"+${key}/>
 	</iframe>
 </div>
 <div>	
