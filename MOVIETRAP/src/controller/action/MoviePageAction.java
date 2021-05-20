@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import javax.servlet.ServletException;
@@ -54,21 +56,43 @@ public class MoviePageAction implements Action {
 		 * System.out.println("videoData : " + videoData);
 		 * System.out.println("movieDetailData : " + movieDetailData);
 		 */
-		
+		System.out.println("video: " +video);
 		JSONObject v = (JSONObject) video.get(0);
-		System.out.println("v : " + v);
+//		System.out.println("v : " + v);
 		String key = v.get("key").toString();
 		
-		
+		System.out.println("movieDetailData: " +movieDetailData);
 		System.out.println("key : " + key);
 		
+		JSONObject movieDetail=(JSONObject) movieDetailData.get("movieDetail");
+		System.out.println("movieDetail : " + movieDetail);
+		String title = movieDetail.get("title").toString();
+		String overview = movieDetail.get("overview").toString();
+		String release_date = movieDetail.get("release_date").toString();
+		String vote_average = movieDetail.get("vote_average").toString();	
+		//creating array of genres
+		JSONArray genres = (JSONArray) movieDetail.get("genres");
+		String[] genres_array = new String[genres.size()];
+		for(int i=0; i<genres.size(); i++) {
+		JSONObject g = (JSONObject) genres.get(i);
+		genres_array[i] = g.get("name").toString();
+		}
+		//sysout test
+		System.out.println("title: "+title);
+		System.out.println("overview: " + overview);
+		System.out.println("release date: "+release_date);
+		System.out.println("vote_average: "+vote_average);
+		System.out.println("genres: "+ Arrays.toString(genres_array));
+		//set attribute for moviepage.jsp
 		request.setAttribute("detail", movieDetailData);	
 		request.setAttribute("key", key);
+		request.setAttribute("title", title);
+		request.setAttribute("overview", overview);
+		request.setAttribute("release_date", release_date);
+		request.setAttribute("vote_average", vote_average);
+		request.setAttribute("genres_array", genres_array);
 		
 		request.getRequestDispatcher(url).forward(request, response);
-		
-		
-		
 	}
 
 	private static JSONObject getData(String apiUrl) {
