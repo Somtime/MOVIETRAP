@@ -28,12 +28,12 @@ public class mainAction implements Action {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
+		String url = "main.jsp";
 		
 		HashMap<String, String> URL = new HashMap();				
 				
 		String trendURL = "https://api.themoviedb.org/3/trending/movie/week?api_key=e520d648beeee23f00a8b3386b9dec08";
 		String popURL = "https://api.themoviedb.org/3/discover/movie?api_key=e520d648beeee23f00a8b3386b9dec08&sort_by=popularity.desc";
-		//String videoURL = "https://api.themoviedb.org/3/movie/399566/videos?api_key=e520d648beeee23f00a8b3386b9dec08";
 		
 		URL.put("trendURL", trendURL);
 		URL.put("popURL", popURL);
@@ -77,7 +77,8 @@ public class mainAction implements Action {
 		System.out.println(result);
 		
 		PrintWriter out = response.getWriter();
-		out.print(result);		
+		out.print(result);
+		
 	}
 
 	

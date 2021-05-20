@@ -156,7 +156,7 @@ public class MemberDAO {
 				member.setPhone(rs.getString("phone"));
 				member.setImage(rs.getString("image"));
 				member.setRegdate(rs.getTimestamp("regdate"));
-				member.setnewsletter(rs.getString("newsleter"));
+				member.setnewsletter(rs.getString("newsletter"));
 				member.setPay_name(rs.getString("pay_name"));
 				member.setPay_num(rs.getInt("pay_num"));
 				member.setPay_num_lstfour(rs.getInt("pay_num_lstfour"));

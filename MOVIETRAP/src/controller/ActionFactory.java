@@ -37,6 +37,8 @@ public class ActionFactory {
 			action = new mainAction();
 		} else if (command.equals("moviepage")) {
 			action = new MoviePageAction();
+		} else if (command.equals("login")) {
+			action = new LoginAction();
 		}
 		
 		

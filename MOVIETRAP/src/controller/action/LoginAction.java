@@ -21,18 +21,18 @@ public class LoginAction implements Action {
 		
 		MemberDAO mDao = MemberDAO.getInstance();
 		int loginCheck = mDao.loginCheck(email, pwd);
-		// loginCheck => 1: ¼º°ø 0:½ÇÆĞ 2:°èÁ¤Á¤º¸¾øÀ½
+		// loginCheck => 1: ì¼ì¹˜ 0: ë¶ˆì¼ì¹˜ -1:ê³„ì •ì •ë³´ ì—†ìŒ
 		
 		if (loginCheck == 1) {
 			MemberVO loginUser = mDao.memberInfo(email);
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", loginUser);
-			url = "MOVIETRAPServlet?command=main";
+			url = "main.jsp";
 		} else if (loginCheck == 0) {
-			message = "ºñ¹Ğ¹øÈ£¸¦ È®ÀÎÇØÁÖ¼¼¿ä.";
+			message = "ë¹„ë°€ë²ˆí˜¸ë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”.";
 			request.setAttribute("message", message);
 		} else {
-			message = "Á¸ÀçÇÏÁö ¾Ê´Â °èÁ¤ÀÔ´Ï´Ù. °èÁ¤À» È®ÀÎÇØÁÖ¼¼¿ä.";
+			message = "ì´ë©”ì¼ì„ í™•ì¸í•´ì£¼ì„¸ìš”.";
 			request.setAttribute("message", message);
 		}
 		
