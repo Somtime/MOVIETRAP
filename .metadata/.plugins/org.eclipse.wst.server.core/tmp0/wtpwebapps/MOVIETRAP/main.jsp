@@ -14,7 +14,7 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 <body style="background-color: black;">
 	<div id="main_movie">
 		<div id="main_movie_trailer" >
-			<iframe id="main_movie_frame" width="100%" height="100%" src="https://www.youtube.com/embed/kRpkRkO9KUI">
+			<iframe id="main_movie_frame" width="100%" height="100%" src="">
 			</iframe>
 		</div>
 
@@ -119,12 +119,12 @@ $(document).ready(function(){
 				var pop = json["popData"]
 				var trailerkey = json["popmoviekey"]
 				
-
+				// 메인 동영상 src 인기 영상 트레일러로 변경
 				if (trailerkey != null) {
 					console.log(trailerkey);
-					document.getElementById('main_movie_frame').src = "https://youtube.com/embed/" + trailerkey;
+					document.getElementById('main_movie_frame').src = "https://youtube.com/embed/" + trailerkey + "?autoplay=1&mute=1";
 				}	
-				
+				// 메인 동영상 src 인기 영상 트레일러로 변경 끝 
 				
 				// trend_movie div 생성 및 포스터 이미지 삽입
 				for (var i = 0; i <= Object.keys(trend).length; i++) {
