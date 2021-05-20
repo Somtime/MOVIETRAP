@@ -24,37 +24,37 @@
 <div id="movie_trailer"  >
 	<iframe src="https://www.youtube.com/embed/${key}?autoplay=1&mute=1"></iframe>
 </div>
-<<<<<<< HEAD
+
 <div style="display:none">	
 
 	<div id="detail_wrapper">
 	
 		<div id="movie_title">
-			<h2>title</H2>
+			<h2>${title}</H2>
 		</div>
 		
 		<div id="movie_genre">
-			<h2>genre</h2>
+			<h2>${genres_array}</h2>
 		</div>
 		
 		<div id="movie_description">
-			<h3>overview</h3>
+			<h3>${overview}</h3>
 		</div>
 		
-		<div id="movie_rationgscore">
+		<div id="movie_rationgscore" >
 			<img src="assets/images/star.png"/>
-			<h1>vote_avg</h1>
+			<h1>${vote_average}</h1>
 		</div>
 	</div>	
 	
-=======
+
 <div style="color:white;">	
-	${title}
-	${overview}
+	
+	
 	${release_date}
-	${vote_average}
-	${genres_array}	
->>>>>>> branch 'master' of https://github.com/Somtime/MOVIETRAP.git
+	
+	
+
 </div>
 
 </body>

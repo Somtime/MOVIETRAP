@@ -47,9 +47,7 @@ public class MoviePageAction implements Action {
 				 video = (JSONArray) videoData.get("results");			 
 			}
 			if (key.toString().equals("movieDetailData")) {
-				 JSONObject m = getData(URL.get(key));
-				 movieDetailData = (JSONObject) m.get("movieDetail");
-				 
+				 movieDetailData = getData(URL.get(key));
 			}
 			
 		} 
@@ -63,11 +61,7 @@ public class MoviePageAction implements Action {
 //		System.out.println("v : " + v);
 		String key = v.get("key").toString();
 		
-
-		System.out.println("detail :" + movieDetailData);
-
 		System.out.println("movieDetailData: " +movieDetailData);
-
 		System.out.println("key : " + key);
 		
 		JSONObject movieDetail=(JSONObject) movieDetailData.get("movieDetail");
@@ -97,8 +91,6 @@ public class MoviePageAction implements Action {
 		request.setAttribute("release_date", release_date);
 		request.setAttribute("vote_average", vote_average);
 		request.setAttribute("genres_array", Arrays.toString(genres_array));
-		
-		
 		
 		request.getRequestDispatcher(url).forward(request, response);
 	}
