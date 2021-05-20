@@ -26,17 +26,27 @@ body {
 		
 		<div id="genre">
 			<select>
-				<option value="genre1">Horror</option>
-				<option value="genre2">Romantic Comedy</option>
-				<option value="genre3">SF/Fantasy</option>
-				<option value="genre4">Thriller</option>
-				<option value="genre5">Drama</option>
-				<option value="genre6">Documentary</option>
-				<option value="genre7">Mystery</option>
-				<option value="genre8">Comedy</option>
-				<option value="genre9">Action</option>
-				<option value="genre10">Animation</option>
-				<option value="genre11">Kids</option>
+				<option name="28">Action</option>
+				<option name="12">Adventure</option>
+				<option name="16">Animation</option>
+				<option name="35">Comedy</option>
+				<option name="80">Crime</option>
+				<option name="99">Documentary</option>
+				<option name="18">Drama</option>
+				<option name="10751">Family</option>
+				<option name="14">Fantasy</option>
+				<option name="36">History</option>
+				<option name="27">Horror</option>
+				<option name="10402">Music</option>
+				<option name="9648">Mystery</option>
+				<option name="10749">Romance</option>
+				<option name="878">Science Fiction</option>
+				<option name="10770">Movie</option>
+				<option name="53">Thriller</option>
+				<option name="10752">War</option>
+				<option name="37">Western</option>
+
+
 			</select>
 		</div>
 		

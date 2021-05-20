@@ -162,9 +162,7 @@ public class MemberDAO {
 				member.setPay_num_lstfour(rs.getInt("pay_num_lstfour"));
 				member.setPay_cvc(rs.getInt("pay_cvc"));
 				member.setPay_date(rs.getTimestamp("pay_date"));
-			}
-			
-			
+			}			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

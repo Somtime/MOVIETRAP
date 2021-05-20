@@ -90,7 +90,7 @@ public class MoviePageAction implements Action {
 		request.setAttribute("overview", overview);
 		request.setAttribute("release_date", release_date);
 		request.setAttribute("vote_average", vote_average);
-		request.setAttribute("genres_array", genres_array);
+		request.setAttribute("genres_array", Arrays.toString(genres_array));
 		
 		request.getRequestDispatcher(url).forward(request, response);
 	}

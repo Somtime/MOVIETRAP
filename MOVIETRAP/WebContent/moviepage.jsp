@@ -17,8 +17,12 @@
 	<iframe width="100%" height="100" src="https://www.youtube.com/embed/${key}"/>
 	</iframe>
 </div>
-<div>	
-	
+<div style="color:white;">	
+	${title}
+	${overview}
+	${release_date}
+	${vote_average}
+	${genres_array}	
 </div>
 
 </body>
