@@ -25,26 +25,26 @@ body {
 		</div>
 		
 		<div id="genre">
-			<select>
-				<option name="28">Action</option>
-				<option name="12">Adventure</option>
-				<option name="16">Animation</option>
-				<option name="35">Comedy</option>
-				<option name="80">Crime</option>
-				<option name="99">Documentary</option>
-				<option name="18">Drama</option>
-				<option name="10751">Family</option>
-				<option name="14">Fantasy</option>
-				<option name="36">History</option>
-				<option name="27">Horror</option>
-				<option name="10402">Music</option>
-				<option name="9648">Mystery</option>
-				<option name="10749">Romance</option>
-				<option name="878">Science Fiction</option>
-				<option name="10770">Movie</option>
-				<option name="53">Thriller</option>
-				<option name="10752">War</option>
-				<option name="37">Western</option>
+			<select name="genre">
+				<option value="28">Action</option>
+				<option value="12">Adventure</option>
+				<option value="16">Animation</option>
+				<option value="35">Comedy</option>
+				<option value="80">Crime</option>
+				<option value="99">Documentary</option>
+				<option value="18">Drama</option>
+				<option value="10751">Family</option>
+				<option value="14">Fantasy</option>
+				<option value="36">History</option>
+				<option value="27">Horror</option>
+				<option value="10402">Music</option>
+				<option value="9648">Mystery</option>
+				<option value="10749">Romance</option>
+				<option value="878">Science Fiction</option>
+				<option value="10770">Movie</option>
+				<option value="53">Thriller</option>
+				<option value="10752">War</option>
+				<option value="37">Western</option>
 
 
 			</select>

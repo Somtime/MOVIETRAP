@@ -39,6 +39,10 @@ public class ActionFactory {
 			action = new MoviePageAction();
 		} else if (command.equals("login")) {
 			action = new LoginAction();
+		} else if (command.equals("genre_movie")) {
+			action = new GenreMovieAction();
+		} else if (command.equals("qna_send")) {
+			action = new QnaSendAction();
 		}
 		
 		

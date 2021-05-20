@@ -69,13 +69,15 @@ div#trend_movie img:hover{
 	align-items: center;
 	width: 100%;
 	height: 300px;
+	overflow: hidden;
 }
 
 #trend_movie{
 	width: 100%;
+	height: 300px;
 	display: flex;
 	flex-wrap: nowrap;
-	overflow-x: auto;
+	overflow: hidden;
 
 }
 .arrow{
