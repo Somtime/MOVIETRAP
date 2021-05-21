@@ -23,7 +23,7 @@ div#main_movie_title {
 
 
 #main_movie_trailer iframe {
-position: absolute;
+  position: absolute;
   top: 50%;
   left: 50%;
   width: 100vw;
