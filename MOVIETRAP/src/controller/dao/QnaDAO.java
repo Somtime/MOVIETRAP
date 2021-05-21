@@ -20,7 +20,7 @@ public class QnaDAO {
 	public void qnaWrite(QnaVO qna) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO qna(cseq, send_id, rcvd_id, chat_content,) VALUES(qna_seq.nextval, ?, ?, ?)";
+		String sql = "INSERT INTO qna(cseq, send_id, rcvd_id, chat_content) VALUES(qna_seq.nextval, ?, ?, ?)";
 
 		try {
 			conn = DBManager.getConnection();
@@ -41,7 +41,7 @@ public class QnaDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM qna WHERE send_id=? || rcvd_id=? ";
+		String sql = "SELECT * FROM qna WHERE send_id=? OR rcvd_id=? ";
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -63,7 +63,7 @@ public class QnaDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(conn, pstmt);
+			DBManager.close(conn, pstmt, rs);
 		}
 		return qnaList;
 	}
