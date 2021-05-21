@@ -29,8 +29,6 @@ public class GenreMovieAction implements Action {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
 		
-		String url = "genre_movie.jsp";
-		
 		int genre = Integer.parseInt(request.getParameter("genre"));
 		
 		String genreURL = "https://api.themoviedb.org/3/discover/movie?api_key=e520d648beeee23f00a8b3386b9dec08&language=en-US&sort_by=popularity.desc&include_adult=false"
@@ -50,25 +48,26 @@ public class GenreMovieAction implements Action {
 		JSONArray jsonArray = (JSONArray) jsonObject.get("results");
 		
 		JSONArray data = new JSONArray();
+		
 		for (int i = 0; i < jsonArray.size(); i++) {
 			JSONObject j = (JSONObject) jsonArray.get(i);
-			
+			 
+			System.out.println(j);
 			
 			// 영화의 id값을 얻어서 api에서 video key를 따옴
-			String videoURL = "https://api.themoviedb.org/3/movie/" + j.get("id") + "/videos?api_key=e520d648beeee23f00a8b3386b9dec08";
-			String resBody = get(videoURL);
-			
-			
-			JSONObject jObject = new JSONObject();
-			try {
-				jObject = (JSONObject) parser.parse(resBody);
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-			
-			JSONArray jArray = (JSONArray) jObject.get("results");
-			JSONObject jobj = (JSONObject) jArray.get(0);
-			j.put("key", jobj.get("key"));
+//			String videoURL = "https://api.themoviedb.org/3/movie/" + j.get("id") + "/videos?api_key=e520d648beeee23f00a8b3386b9dec08";
+//			String resBody = get(videoURL);			
+//			JSONObject jObject = new JSONObject();
+//			try {
+//				jObject = (JSONObject) parser.parse(resBody);
+//			} catch (ParseException e) {
+//				e.printStackTrace();
+//			}
+//			
+//			JSONArray jArray = (JSONArray) jObject.get("results");
+//			JSONObject jobj = (JSONObject) jArray.get(0);
+//			System.out.println(jArray.get(0));
+//			j.put("key", jobj.get("key"));
 			// j에 각 키값을 넣음
 			
 			// JSONArray 타입의 data 변수에 각 반복문 마다 j값을 add해줌
@@ -79,9 +78,9 @@ public class GenreMovieAction implements Action {
 		PrintWriter out = response.getWriter();
 		out.print(data);
 		
+
 		
-		RequestDispatcher rd = request.getRequestDispatcher(url);
-		rd.forward(request,response);
+		
 	}
 	
 

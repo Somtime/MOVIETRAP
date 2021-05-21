@@ -13,6 +13,32 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 <title>MOVIETRAP</title>
 </head>
 <body style="background-color: black;">
+
+	<div id="main_movie" style="overflow-y: hidden; overflow-x: hidden;">
+		<div id="main_movie_trailer"
+			style="overflow-y: hidden; overflow-x: hidden;">
+			<iframe id="main_movie_frame" width="100%" height="100%"
+				style="overflow-y: hidden; overflow-x: hidden;" src=""> </iframe>
+				
+			<div id="detail_wrapper">
+				<div id="main_detail">
+					<div id="movie_title">
+						<h1>${title}</h1>
+						<h3>${release_date}</h3>
+					</div>
+	
+					<div id="movie_genre">
+						<h2></h2>
+					</div>
+	
+					<div id="movie_description">
+						<h2></h2>
+					</div>
+	
+					<div id="movie_rationgscore">
+						<img src="assets/images/star.png" width="50px" height="50px" />
+						
+
 	<div class="main_movie_container">
 		<div id="main_movie" > <!-- style="overflow-y: hidden; overflow-x: hidden;" -->
 			<div id="main_movie_trailer">
@@ -47,6 +73,7 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 <!-- 						<div id="main_watch_later"> -->
 							<img src="assets/images/main-heart.png" />
 						</div>
+
 					</div>
 				</div>
 			</div>
