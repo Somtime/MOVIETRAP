@@ -1,6 +1,5 @@
 package controller;
 import controller.action.*;
-
 public class ActionFactory {
 	// Variable
 	private static ActionFactory instance = new ActionFactory();
