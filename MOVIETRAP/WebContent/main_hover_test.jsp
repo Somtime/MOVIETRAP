@@ -186,11 +186,11 @@ window.onload = function() {
 				// trend_movie div 생성 및 포스터 이미지 삽입 끝
 				
 				//main_trailer_detail 삽입
-					document.querySelector('#movie_title').h1.innerHTML =  pop[Object.keys(pop)[0]]["title"];
-					document.querySelector('#movie_title').h3.innerHTML =  pop[Object.keys(pop)[0]]["release_date"];
-					document.querySelector('#movie_genre').h2.innerHTML =  pop[Object.keys(pop)[0]]["genre"];
-					document.querySelector('#movie_description').h2.innerHTML =  pop[Object.keys(pop)[0]]["overview"];
-					document.querySelector('#movie_rationgscore').innerHTML =  pop[Object.keys(pop)[0]]["vote_average"];
+					document.querySelector('#main_movie_title').h1.innerHTML =  pop[Object.keys(pop)[0]]["title"];
+					document.querySelector('#main_movie_title').h3.innerHTML =  pop[Object.keys(pop)[0]]["release_date"];
+					document.querySelector('#main_movie_genre').h2.innerHTML =  pop[Object.keys(pop)[0]]["genre"];
+					document.querySelector('#main_movie_description').h2.innerHTML =  pop[Object.keys(pop)[0]]["overview"];
+					document.querySelector('#main_movie_rationgscore').innerHTML =  pop[Object.keys(pop)[0]]["vote_average"];
 			},
 			error : function() {
 				console.log("ajax : fail")
