@@ -7,7 +7,6 @@
 <head>
 <meta charset="EUC-KR">
 <link href="assets/css/main.css" type="text/css" rel="stylesheet"> 
-<script src="main.js"></script>
 <script src="https://ajax.googleapis.com/ajax/li
 bs/jquery/3.5.1/jquery.min.js"></script>
 <title>MOVIETRAP</title> 
@@ -51,39 +50,53 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 	</div>
 </div>
 	
-<!-- QNA pop up -->
-<form name="frm" method="post">
-	
+<!-- QNA / Chat pop up -->
+<form name="frm" method="post" onclick= "MOVIETRAPServlet?command=qna_send">
 <div class="chat-box">
-<div class="chat-closed"> Chat Now </div>
-<div class="chat-header hide"><div class="box"></div>Online Support</div>
-<div class="chat-content-container hide">
-
-<div class="chat-content">
-
-*<br>
-Your chat content...
-*<br>
-
-*<br>
-Your chat content…
-</div>
+	<div class="chat-closed"> Chat Now </div>
+		<div class="chat-header hide"><div class="box"></div>Online Support</div>
+			<div class="chat-content-container hide">
+			<div class="chat-content">
+			</div>
 <!-- 	<div id ="chat-input"> -->
-		<textarea  id ="chat_content" name="chat_content" cols="30" rows="5"></textarea> 
-					
+			<textarea  id ="chat_content" name="chat_content" cols="30" rows="5"></textarea> 
 <!-- 				</div> -->
-				<div id="chat-submit">
-<!-- 					<input type="submit" value="send"> -->
-				<input class="btn" type="button" name="btn_search" value="send" onClick="qna_send()">
-					
-				</div>
-
-</div>
-</div>
-		
+			<div id="chat-submit">
+<!-- 		<input type="submit" value="send"> -->
+			<input class="btn" type="submit" name="qna_send" value="send" >
+<!-- 			onClick="qna_send()" -->
+		</div>
+	</div>
+</div>		
 </form>
 
 <script type="text/javascript">
+//send data for each movie(thumbnail);
+ function moviepage(img){
+var id = img.getAttribute('alt'); 		
+	var url = "MOVIETRAPServlet?command=moviepage&movieid="+id;
+	console.log(id)
+	location.href = url;	  
+ 
+}
+//qna send msg
+function qna_send() {
+var theForm = document.frm;
+theForm.action =  "MOVIETRAPServlet?command=qna_send"; 
+theForm.submit();
+}
+//pic slide 
+let buttonRight = document.getElementById('slideRight');
+let buttonLeft = document.getElementById('slideLeft');
+
+buttonLeft.addEventListener('click', function(){
+	document.getElementById('trend_movie').scrollLeft -= 500
+})
+
+buttonRight.addEventListener('click', function(){
+	document.getElementById('trend_movie').scrollLeft += 500
+})
+
 //qna
  $(document).ready(function(){
     $(".chat-closed").on("click",function(e){
@@ -126,14 +139,21 @@ window.onload = function(){
 				}
 				// trend_movie div 생성 및 포스터 이미지 삽입 끝
 				
-				$.ajax ({
+				$('.chat-header').click(function() {
+					$.ajax ({
 						url : 'MOVIETRAPServlet?command=qna_send',
 						async : false,
 						type : 'get',
-						datatype : 'json',
+						datatype : 'json',	
+						data : {
+							
+						},
 						success : function(result2){
 							const json2 =  JSON.parse(result2)
 							
+//  							var x = document.getElementByClassName('chat_content')
+// 							  x[0].innerHTML = json2;
+
 							console.log(result2)
 						},
 						error : function() {
@@ -145,7 +165,9 @@ window.onload = function(){
 				error : function() {
 					console.log("ajax : fail")
 				}
-		});
+	
+				})
+						});
 		
 	};
 </script>

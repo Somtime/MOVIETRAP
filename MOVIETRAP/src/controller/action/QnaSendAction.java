@@ -1,6 +1,7 @@
 package controller.action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -22,8 +23,13 @@ public class QnaSendAction implements Action {
 		qna.setChat_content(request.getParameter("chat_content"));
 		
 		QnaDAO qDao = QnaDAO.getInstance();
-		JSONObject json = qDao.qnaWrite(qna);
-		request.setAttribute("live_qna", qDao);
+		JSONObject result2 = new JSONObject(); 
+		result2.put("qna", qDao.qnaWrite(qna));
+		
+		System.out.println("result2: "+result2);
+		
+		PrintWriter out = response.getWriter();
+		out.print(result2);
 		
 	}
 

@@ -28,7 +28,6 @@ public class idCheckAction implements Action {
 		JSONObject jsonObject = new JSONObject();
 		
 		jsonObject.put("idCheck" ,idCheck);
-		
 //		JSONArray jsonArray = new JSONArray();
 //		
 //		jsonArray.add(jsonObject);
