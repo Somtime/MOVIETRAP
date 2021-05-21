@@ -19,40 +19,34 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 			<iframe id="main_movie_frame" width="100%" height="100%"
 				style="overflow-y: hidden; overflow-x: hidden;" src=""> </iframe>
 				
-			<div id="detail_wrapper">
+		<div id="main_movie_info">
 				<div id="main_detail">
-					<div id="movie_title">
+					<div id="main_movie_title">
 						<h1>${title}</h1>
 						<h3>${release_date}</h3>
 					</div>
 	
-					<div id="movie_genre">
+					<div id="main_movie_genre">
 						<h2>${genres_array}</h2>
 					</div>
 	
-					<div id="movie_description">
+					<div id="main_movie_description">
 						<h2>${overview}</h2>
 					</div>
 	
-					<div id="movie_rationgscore">
+					<div id="main_movie_rationgscore">
 						<img src="assets/images/star.png" width="50px" height="50px" />
 						${vote_average}
 					</div>
-				</div>
-			</div>
+	
 
-		</div>
+<!-- 			<div id="main_movie_title"> -->
+<!-- 				<input type="text" value="Main Movie Title"> -->
+<!-- 			</div> -->
 
-
-		<div id="main_movie_info">
-
-			<div id="main_movie_title">
-				<input type="text" value="Main Movie Title">
-			</div>
-
-			<div id="main_movie_description">
-				<input type="text" value="description">
-			</div>
+<!-- 			<div id="main_movie_description"> -->
+<!-- 				<input type="text" value="description"> -->
+<!-- 			</div> -->
 
 			<div id="main_play_button">
 				<input type="button" value="play">
@@ -62,6 +56,7 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 				<input type="button" value="play">
 			</div>
 		</div>
+	</div>
 	</div>
 
 	<div id="thumbnail_slideshow_wrapper">
