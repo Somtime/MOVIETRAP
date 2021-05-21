@@ -44,8 +44,33 @@ div#main_movie_title {
 	height: 100%;
   
 }
-#main_movie_title {
-/* 	background: none; */
+.main_movie_container {
+  position: relative;
+}
+.main_movie_info_hover {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* .main_movie_container:hover .vid { */
+/*   opacity: 0.3; */
+/* } */
+
+.main_movie_container:hover .main_movie_info_hover {
+  opacity: 1;
+}
+
+.main_movie_info {
+  background-color: transparent;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
 }
 /*--  main.jsp : genre thumbnail slide ------------------------------------ */
 #thumbnail_slideshow_wrapper{

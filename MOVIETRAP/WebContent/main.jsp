@@ -13,50 +13,44 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 <title>MOVIETRAP</title>
 </head>
 <body style="background-color: black;">
-	<div id="main_movie" style="overflow-y: hidden; overflow-x: hidden;">
-		<div id="main_movie_trailer"
-			style="overflow-y: hidden; overflow-x: hidden;">
-			<iframe id="main_movie_frame" width="100%" height="100%"
-				style="overflow-y: hidden; overflow-x: hidden;" src=""> </iframe>
-				
-		<div id="main_movie_info">
-				<div id="main_detail">
-					<div id="main_movie_title">
-						<h1>${title}</h1>
-						<h3>${release_date}</h3>
-					</div>
-	
-					<div id="main_movie_genre">
-						<h2>${genres_array}</h2>
-					</div>
-	
-					<div id="main_movie_description">
-						<h2>${overview}</h2>
-					</div>
-	
-					<div id="main_movie_rationgscore">
-						<img src="assets/images/star.png" width="50px" height="50px" />
-						${vote_average}
-					</div>
-	
+	<div class="main_movie_container">
+		<div id="main_movie" > <!-- style="overflow-y: hidden; overflow-x: hidden;" -->
+			<div id="main_movie_trailer">
+				<iframe id="main_movie_frame" src=""> </iframe> <!-- class="vid" -->
+<!-- <iframe id="main_movie_frame" class="vid" width="100%" height="100%" style="overflow-y: hidden; overflow-x: hidden;" src=""> </iframe> -->
+				<div class="main_movie_info_hover">
+					<div class="main_movie_info">
+						<div id="main_movie_title">
+							<h1>${title}</h1>
+							<h3>${release_date}</h3>
+						</div>
 
-<!-- 			<div id="main_movie_title"> -->
-<!-- 				<input type="text" value="Main Movie Title"> -->
-<!-- 			</div> -->
+						<div id="main_movie_genre">
+							<h2>${genres_array}</h2>
+						</div>
 
-<!-- 			<div id="main_movie_description"> -->
-<!-- 				<input type="text" value="description"> -->
-<!-- 			</div> -->
+						<div id="main_movie_description">
+							<h2>${overview}</h2>
+						</div>
 
-			<div id="main_play_button">
-				<input type="button" value="play">
-			</div>
+						<div id="main_movie_rationgscore">
+							<img src="assets/images/star.png" width="50px" height="50px" />
+							${vote_average}
+						</div>
 
-			<div id="main_watch_later">
-				<input type="button" value="play">
+						<div id="main_button">
+							<a href="MOVIETRAPServlet?command=moviepage&movieid="+id>
+							<img src="assets/images/main-play.png" />
+							</a>
+<!-- 						</div> -->
+
+<!-- 						<div id="main_watch_later"> -->
+							<img src="assets/images/main-heart.png" />
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 
 	<div id="thumbnail_slideshow_wrapper">
