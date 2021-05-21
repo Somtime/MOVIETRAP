@@ -78,7 +78,7 @@ public class GenreMovieAction implements Action {
 		PrintWriter out = response.getWriter();
 		out.print(data);
 		
-	
+
 		
 		
 	}
