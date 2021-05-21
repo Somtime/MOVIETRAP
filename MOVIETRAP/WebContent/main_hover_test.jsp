@@ -50,6 +50,7 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 				<div class="main_movie_info_hover">
 					<div class="main_movie_info">
 						<div id="main_movie_title">
+							<h1>THIS IS A TEST</h1>
 							<h1>${title}</h1>
 							<h3>${release_date}</h3>
 						</div>
@@ -186,10 +187,10 @@ window.onload = function() {
 				// trend_movie div 생성 및 포스터 이미지 삽입 끝
 				
 				//main_trailer_detail 삽입
-					document.querySelector('#main_movie_title').h1.innerHTML =  pop[Object.keys(pop)[0]]["title"];
-					document.querySelector('#main_movie_title').h3.innerHTML =  pop[Object.keys(pop)[0]]["release_date"];
-					document.querySelector('#main_movie_genre').h2.innerHTML =  pop[Object.keys(pop)[0]]["genre"];
-					document.querySelector('#main_movie_description').h2.innerHTML =  pop[Object.keys(pop)[0]]["overview"];
+					document.querySelector('#main_movie_title').innerHTML =  pop[Object.keys(pop)[0]]["title"];
+					document.querySelector('#main_movie_title').innerHTML =  pop[Object.keys(pop)[0]]["release_date"];
+					document.querySelector('#main_movie_genre').innerHTML =  pop[Object.keys(pop)[0]]["genres"];
+					document.querySelector('#main_movie_description').innerHTML =  pop[Object.keys(pop)[0]]["overview"];
 					document.querySelector('#main_movie_rationgscore').innerHTML =  pop[Object.keys(pop)[0]]["vote_average"];
 			},
 			error : function() {

@@ -11,12 +11,14 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 <style>
 body {
 	background-color: black;
-	
 }
 
 iframe {
 	width: 100vw;
 	height: 100vh;
+	border: 0px;
+    margin: 0px;
+    padding: 0px;
 }
 
 #movie_trailer {
@@ -42,8 +44,6 @@ iframe {
 #movie_description {
 	width: 60%;
 }
-
-
 </style>
 <body >
 	<div id="movie_trailer">
