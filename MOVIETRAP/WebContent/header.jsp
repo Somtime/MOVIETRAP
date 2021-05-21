@@ -24,32 +24,31 @@ body {
 			<input type="search" placeholder="search">
 		</div>
 		
-		<div id="genre">
-			<select name="genre">
-			<option value="28"><a href="MOVIETRAPServlet?command=genre_movie&genre=28">Action</a></option>
-				<option value="12"><a href="MOVIETRAPServlet?command=genre_movie&genre=12">Adventure</a></option>
-				<option value="16"><a href="MOVIETRAPServlet?command=genre_movie&genre=16">Animation</a></option>
-				<option value="35"><a href="MOVIETRAPServlet?command=genre_movie&genre=35">Comedy</a></option>
-				<option value="80"><a href="MOVIETRAPServlet?command=genre_movie&genre=80">Crime</a></option>
-				<option value="99"><a href="MOVIETRAPServlet?command=genre_movie&genre=99">Documentary</a></option>
-				<option value="18"><a href="MOVIETRAPServlet?command=genre_movie&genre=18">Drama</a></option>
-				<option value="10751"><a href="MOVIETRAPServlet?command=genre_movie&genre=10751">Family</a></option>
-				<option value="14"><a href="MOVIETRAPServlet?command=genre_movie&genre=14">Fantasy</a></option>
-				<option value="36"><a href="MOVIETRAPServlet?command=genre_movie&genre=36">History</a></option>
-				<option value="27"><a href="MOVIETRAPServlet?command=genre_movie&genre=27">Horror</a></option>
-				<option value="10402"><a href="MOVIETRAPServlet?command=genre_movie&genre=10402">Music</a></option>
-				<option value="9648"><a href="MOVIETRAPServlet?command=genre_movie&genre=9648">Mystery</a></option>
-				<option value="10749"><a href="MOVIETRAPServlet?command=genre_movie&genre=10749">Romance</a></option>
-				<option value="878"><a href="MOVIETRAPServlet?command=genre_movie&genre=878">Science Fiction</a></option>
-				<option value="10770"><a href="MOVIETRAPServlet?command=genre_movie&genre=10770">TV Movie</a></option>
-				<option value="53"><a href="MOVIETRAPServlet?command=genre_movie&genre=53">Thriller</a></option>
-				<option value="10752"><a href="MOVIETRAPServlet?command=genre_movie&genre=10752">War</a></option>
-				<option value="37"><a href="MOVIETRAPServlet?command=genre_movie&genre=37">Western</a></option>
+	        <div class="dropdown">
+  <button class="dropbtn">SELECT GENRES</button>
+  <div class="dropdown-content">
+ <a href="MOVIETRAPServlet?command=genre_movie&genre=28">Action</a> 
+			 	<a href="MOVIETRAPServlet?command=genre_movie&genre=12">Adventure </a> 
+			 	<a href="MOVIETRAPServlet?command=genre_movie&genre=16">Animation</a>  
+			 	<a href="MOVIETRAPServlet?command=genre_movie&genre=35">Comedy</a>  
+				 <a href="MOVIETRAPServlet?command=genre_movie&genre=80">Crime</a>  
+			 	<a href="MOVIETRAPServlet?command=genre_movie&genre=99">Documentary</a> 
+			 	<a href="MOVIETRAPServlet?command=genre_movie&genre=18">Drama</a>  
+			 	<a href="MOVIETRAPServlet?command=genre_movie&genre=10751">Family</a>  
+			 	<a href="MOVIETRAPServlet?command=genre_movie&genre=14">Fantasy</a>  
+				 <a href="MOVIETRAPServlet?command=genre_movie&genre=36">History</a>  
+				 <a href="MOVIETRAPServlet?command=genre_movie&genre=27">Horror</a>  
+				 <a href="MOVIETRAPServlet?command=genre_movie&genre=10402">Music</a>  
+				 <a href="MOVIETRAPServlet?command=genre_movie&genre=9648">Mystery</a>  
+				 <a href="MOVIETRAPServlet?command=genre_movie&genre=10749">Romance</a>  
+				 <a href="MOVIETRAPServlet?command=genre_movie&genre=878">Science Fiction</a>  
+				 <a href="MOVIETRAPServlet?command=genre_movie&genre=10770">TV Movie</a>  
+				 <a href="MOVIETRAPServlet?command=genre_movie&genre=53">Thriller</a>  
+				 <a href="MOVIETRAPServlet?command=genre_movie&genre=10752">War</a>  
+				 <a href="MOVIETRAPServlet?command=genre_movie&genre=37">Western</a>  
+  </div>
+</div>
 
-
-			</select>
-		</div>
-		
 		<div id="user_icon" onclick="location='MOVIETRAPServlet?command=membership'">
 			<img src="assets/images/user.png" />
 		</div>
