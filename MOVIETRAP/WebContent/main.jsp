@@ -139,37 +139,37 @@ window.onload = function(){
 				}
 				// trend_movie div 생성 및 포스터 이미지 삽입 끝
 				
-				$('.chat-header').click(function() {
-					$.ajax ({
-						url : 'MOVIETRAPServlet?command=qna_send',
-						async : false,
-						type : 'get',
-						datatype : 'json',	
-						data : {
-							
-						},
-						success : function(result2){
-							const json2 =  JSON.parse(result2)
-							
-//  							var x = document.getElementByClassName('chat_content')
-// 							  x[0].innerHTML = json2;
-
-							console.log(result2)
-						},
-						error : function() {
-							console.log("ajax : fail")
-						}
-					});
+				
+					
 					
 				},
 				error : function() {
 					console.log("ajax : fail")
 				}
-	
-				})
-						});
+		});
 		
-	};
+};
+	
+$.ajax ({
+	url : 'MOVIETRAPServlet?command=qna_send',
+	async : false,
+	type : 'get',
+	datatype : 'json',	
+	data : {
+		
+	},
+	success : function(result2){
+		const json2 =  JSON.parse(result2)
+		
+		//var x = document.getElementByClassName('chat_content')
+		//x[0].innerHTML = json2;
+
+		console.log(result2)
+	},
+	error : function() {
+		console.log("ajax : fail")
+	}
+});
 </script>
 </body>
 </html>
