@@ -26,25 +26,25 @@ body {
 		
 		<div id="genre">
 			<select name="genre">
-				<option value="28">Action</option>
-				<option value="12">Adventure</option>
-				<option value="16">Animation</option>
-				<option value="35">Comedy</option>
-				<option value="80">Crime</option>
-				<option value="99">Documentary</option>
-				<option value="18">Drama</option>
-				<option value="10751">Family</option>
-				<option value="14">Fantasy</option>
-				<option value="36">History</option>
-				<option value="27">Horror</option>
-				<option value="10402">Music</option>
-				<option value="9648">Mystery</option>
-				<option value="10749">Romance</option>
-				<option value="878">Science Fiction</option>
-				<option value="10770">Movie</option>
-				<option value="53">Thriller</option>
-				<option value="10752">War</option>
-				<option value="37">Western</option>
+			<option value="28"><a href="MOVIETRAPServlet?command=genre_movie&genre=28">Action</a></option>
+				<option value="12"><a href="MOVIETRAPServlet?command=genre_movie&genre=12">Adventure</a></option>
+				<option value="16"><a href="MOVIETRAPServlet?command=genre_movie&genre=16">Animation</a></option>
+				<option value="35"><a href="MOVIETRAPServlet?command=genre_movie&genre=35">Comedy</a></option>
+				<option value="80"><a href="MOVIETRAPServlet?command=genre_movie&genre=80">Crime</a></option>
+				<option value="99"><a href="MOVIETRAPServlet?command=genre_movie&genre=99">Documentary</a></option>
+				<option value="18"><a href="MOVIETRAPServlet?command=genre_movie&genre=18">Drama</a></option>
+				<option value="10751"><a href="MOVIETRAPServlet?command=genre_movie&genre=10751">Family</a></option>
+				<option value="14"><a href="MOVIETRAPServlet?command=genre_movie&genre=14">Fantasy</a></option>
+				<option value="36"><a href="MOVIETRAPServlet?command=genre_movie&genre=36">History</a></option>
+				<option value="27"><a href="MOVIETRAPServlet?command=genre_movie&genre=27">Horror</a></option>
+				<option value="10402"><a href="MOVIETRAPServlet?command=genre_movie&genre=10402">Music</a></option>
+				<option value="9648"><a href="MOVIETRAPServlet?command=genre_movie&genre=9648">Mystery</a></option>
+				<option value="10749"><a href="MOVIETRAPServlet?command=genre_movie&genre=10749">Romance</a></option>
+				<option value="878"><a href="MOVIETRAPServlet?command=genre_movie&genre=878">Science Fiction</a></option>
+				<option value="10770"><a href="MOVIETRAPServlet?command=genre_movie&genre=10770">TV Movie</a></option>
+				<option value="53"><a href="MOVIETRAPServlet?command=genre_movie&genre=53">Thriller</a></option>
+				<option value="10752"><a href="MOVIETRAPServlet?command=genre_movie&genre=10752">War</a></option>
+				<option value="37"><a href="MOVIETRAPServlet?command=genre_movie&genre=37">Western</a></option>
 
 
 			</select>
