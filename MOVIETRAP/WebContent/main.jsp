@@ -13,6 +13,7 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 <title>MOVIETRAP</title>
 </head>
 <body style="background-color: black;">
+
 	<div id="main_movie" style="overflow-y: hidden; overflow-x: hidden;">
 		<div id="main_movie_trailer"
 			style="overflow-y: hidden; overflow-x: hidden;">
@@ -37,29 +38,44 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 					<div id="movie_rationgscore">
 						<img src="assets/images/star.png" width="50px" height="50px" />
 						
+
+	<div class="main_movie_container">
+		<div id="main_movie" > <!-- style="overflow-y: hidden; overflow-x: hidden;" -->
+			<div id="main_movie_trailer">
+				<iframe id="main_movie_frame" src=""> </iframe> <!-- class="vid" -->
+<!-- <iframe id="main_movie_frame" class="vid" width="100%" height="100%" style="overflow-y: hidden; overflow-x: hidden;" src=""> </iframe> -->
+				<div class="main_movie_info_hover">
+					<div class="main_movie_info">
+						<div id="main_movie_title">
+							<h1>${title}</h1>
+							<h3>${release_date}</h3>
+						</div>
+
+						<div id="main_movie_genre">
+							<h2>${genres_array}</h2>
+						</div>
+
+						<div id="main_movie_description">
+							<h2>${overview}</h2>
+						</div>
+
+						<div id="main_movie_rationgscore">
+							<img src="assets/images/star.png" width="50px" height="50px" />
+							${vote_average}
+						</div>
+
+						<div id="main_button">
+							<a href="MOVIETRAPServlet?command=moviepage&movieid="+id>
+							<img src="assets/images/main-play.png" />
+							</a>
+<!-- 						</div> -->
+
+<!-- 						<div id="main_watch_later"> -->
+							<img src="assets/images/main-heart.png" />
+						</div>
+
 					</div>
 				</div>
-			</div>
-
-		</div>
-
-
-		<div id="main_movie_info">
-
-			<div id="main_movie_title">
-				<input type="text" value="Main Movie Title">
-			</div>
-
-			<div id="main_movie_description">
-				<input type="text" value="description">
-			</div>
-
-			<div id="main_play_button">
-				<input type="button" value="play">
-			</div>
-
-			<div id="main_watch_later">
-				<input type="button" value="play">
 			</div>
 		</div>
 	</div>
@@ -75,8 +91,7 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 	</div>
 
 	<!-- QNA / Chat pop up -->
-	<form name="frm" method="post"
-		onclick="MOVIETRAPServlet?command=qna_send">
+	<form name="frm" method="post" onclick="MOVIETRAPServlet?command=qna_send">
 		<div class="chat-box">
 			<div class="chat-closed">Chat Now</div>
 			<div class="chat-header hide">
@@ -84,14 +99,12 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 				Online Support
 			</div>
 			<div class="chat-content-container hide">
-				<div class="chat-content"></div>
-				<!-- 	<div id ="chat-input"> -->
-				<textarea id="chat_content" name="chat_content" cols="30" rows="5"></textarea>
-				<!-- 				</div> -->
-				<div id="chat-submit">
-					<!-- 		<input type="submit" value="send"> -->
-					<input class="btn" type="submit" name="qna_send" value="send">
-					<!-- 			onClick="qna_send()" -->
+				<div id="chat_section" class="chat-content">
+					<!-- ì±„íŒ… ë‚´ìš© ìœ„ì¹˜ -->
+				</div>
+				<div id="chat_footer">
+					<textarea id="chat_content" name="chat_content" cols="25" rows="5"></textarea>
+					<input id="chat-submit" class="btn" type="submit" name="qna_send" value="send">
 				</div>
 			</div>
 		</div>
@@ -151,23 +164,23 @@ window.onload = function() {
 				var pop = json["popData"]
 				var trailerkey = json["popmoviekey"]
 				
-				// ¸ŞÀÎ µ¿¿µ»ó src ÀÎ±â ¿µ»ó Æ®·¹ÀÏ·¯·Î º¯°æ
+				// ë©”ì¸ ë™ì˜ìƒ src ì¸ê¸° ì˜ìƒ íŠ¸ë ˆì¼ëŸ¬ë¡œ ë³€ê²½
 				if (trailerkey != null) {
 					console.log(trailerkey);
 					document.getElementById('main_movie_frame').src = "https://youtube.com/embed/" + trailerkey + "?autoplay=1&mute=1";
 				}	
-				// ¸ŞÀÎ µ¿¿µ»ó src ÀÎ±â ¿µ»ó Æ®·¹ÀÏ·¯·Î º¯°æ ³¡ 
+				// ë©”ì¸ ë™ì˜ìƒ src ì¸ê¸° ì˜ìƒ íŠ¸ë ˆì¼ëŸ¬ë¡œ ë³€ê²½ ë 
 				
-				// trend_movie div »ı¼º ¹× Æ÷½ºÅÍ ÀÌ¹ÌÁö »ğÀÔ
+				// trend_movie div ìƒì„± ë° í¬ìŠ¤í„° ì´ë¯¸ì§€ ì‚½ì…
 				for (var i = 0; i <= Object.keys(trend).length; i++) {
 					document.querySelector('#trend_movie').innerHTML += '<div class="container"><img src='+'http://www.themoviedb.org/t/p/w200' + trend[Object.keys(trend)[i]]["poster_path"] +
 																		' alt=' + trend[Object.keys(trend)[i]]["id"] +
 																		' onclick="moviepage(this)" /></div>';
 				}
 
-				// trend_movie div »ı¼º ¹× Æ÷½ºÅÍ ÀÌ¹ÌÁö »ğÀÔ ³¡
+				// trend_movie div ìƒì„± ë° í¬ìŠ¤í„° ì´ë¯¸ì§€ ì‚½ì… ë
 				
-				//main_trailer_detail »ğÀÔ
+				//main_trailer_detail ì‚½ì…
 					document.querySelector('#movie_title').h1.innerHTML =  pop[Object.keys(pop)[0]]["title"];
 					document.querySelector('#movie_title').h3.innerHTML =  pop[Object.keys(pop)[0]]["release_date"];
 					document.querySelector('#movie_genre').h2.innerHTML =  pop[Object.keys(pop)[0]]["genre"];
@@ -187,13 +200,20 @@ $.ajax ({
 	async : false,
 	type : 'get',
 	datatype : 'json',
-	success : function(result2){
-		const json2 =  JSON.parse(result2)
+	success : function(result) {
+		const json = JSON.parse(result);
+		var user_id = "${sessionScope.loginUser.email}";
 		
-		//var x = document.getElementByClassName('chat_content')
-		//x[0].innerHTML = json2;
-
-		console.log(result2)
+		console.log(json[0]["chat_content"]);
+		for (var i = 0; i < json.length; i++) {// todo : ì™¼ìª¾ì˜¤ë¥¸ã„´ìª½ êµ¬ë¶„í• êº¼ ìƒê°í•„ìš”
+			if (user_id == json[i]["send_id"]) {
+				document.querySelector('#chat_section').innerHTML += '<div ' + 'float:right' + '>' + json[i]["chat_content"] + '</div><br>';
+			} else {
+				document.querySelector('#chat_section').innerHTML += '<div ' + 'float:left' + '>' + json[i]["chat_content"] + '</div><br>';
+			}
+		}
+		
+		
 	},
 	error : function() {
 		console.log("ajax : fail")

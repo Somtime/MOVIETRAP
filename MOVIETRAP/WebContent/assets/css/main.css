@@ -9,18 +9,26 @@ div#main_movie_title {
     width: 100%;
 }
 /*--  main movie trailer: main.jsp ------------------------------------ */
-
+#main_button img {
+	height: 35px;
+	width: 80px;	
+}
 #main_movie {
+	overflow-y: hidden;
+	overflow-x: hidden;
 	width: 100%;
 }
 
 #main_movie_trailer {
   position: relative;
-  overflow: hidden;
-  width: 100vw;
+	overflow-y: hidden;
+	overflow-x: hidden;  width: 100vw;
   height: 100vh;
 }
 
+#main_movie:hover #main_movie_frame {
+	  opacity: 0.3;
+}
 
 #main_movie_trailer iframe {
   position: absolute;
@@ -29,9 +37,40 @@ div#main_movie_title {
   width: 100vw;
   height: 100vh;
   transform: translate(-50%, -50%);
+  
+  	overflow-y: hidden;
+	overflow-x: hidden;
+	width: 100%;
+	height: 100%;
+  
 }
-#main_movie_title {
-/* 	background: none; */
+.main_movie_container {
+  position: relative;
+}
+.main_movie_info_hover {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* .main_movie_container:hover .vid { */
+/*   opacity: 0.3; */
+/* } */
+
+.main_movie_container:hover .main_movie_info_hover {
+  opacity: 1;
+}
+
+.main_movie_info {
+  background-color: transparent;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
 }
 /*--  main.jsp : genre thumbnail slide ------------------------------------ */
 #thumbnail_slideshow_wrapper{

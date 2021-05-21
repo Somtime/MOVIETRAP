@@ -28,7 +28,6 @@ public class GenreMovieAction implements Action {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
-		String url = "genre_movie.jsp";
 		
 		int genre = Integer.parseInt(request.getParameter("genre"));
 		
@@ -79,7 +78,7 @@ public class GenreMovieAction implements Action {
 		PrintWriter out = response.getWriter();
 		out.print(data);
 		
-		request.getRequestDispatcher(url).forward(request, response);
+	
 		
 		
 	}

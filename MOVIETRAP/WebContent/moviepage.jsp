@@ -67,7 +67,7 @@ iframe {
 
 		<div id="movie_rationgscore">
 			<img src="assets/images/star.png" width="50px" height="50px" />
-			${vote_average}
+			<strong>${vote_average}</strong> /10
 		</div>
 		
 	</div>	
