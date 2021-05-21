@@ -22,9 +22,13 @@ public class QnaSendAction implements Action {
 		qna.setSend_id(request.getParameter("send_id"));
 		qna.setChat_content(request.getParameter("chat_content"));
 		
+		// 채팅 인서트
 		QnaDAO qDao = QnaDAO.getInstance();
+		qDao.qnaWrite(qna);
+		//
+		
+		
 		JSONObject result2 = new JSONObject(); 
-		result2.put("qna", qDao.qnaWrite(qna));
 		
 		System.out.println("result2: "+result2);
 		

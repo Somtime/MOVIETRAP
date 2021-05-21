@@ -112,13 +112,13 @@ buttonRight.addEventListener('click', function(){
 	 
 	
 //movie info AJAX	
-window.onload = function(){
+window.onload = function() {
 		$.ajax ({
 			url : 'MOVIETRAPServlet?command=main',
 			async : false,
 			type : 'get',
 			datatype : 'json',
-			success : function(result){
+			success : function(result) {
 				const json =  JSON.parse(result)
 				var trend = json["trendData"]
 				var pop = json["popData"]
@@ -138,22 +138,20 @@ window.onload = function(){
 																		' onclick="moviepage(this)" /></div>';
 				}
 				// trend_movie div 생성 및 포스터 이미지 삽입 끝
-				
-				error : function() {
-					console.log("ajax : fail")
-				}
+			},
+			error : function() {
+				console.log("ajax : fail")
+			}
+			
 		});
 		
-};
+}
 	
 $.ajax ({
 	url : 'MOVIETRAPServlet?command=qna_send',
 	async : false,
 	type : 'get',
-	datatype : 'json',	
-	data : {
-		
-	},
+	datatype : 'json',
 	success : function(result2){
 		const json2 =  JSON.parse(result2)
 		

@@ -17,26 +17,23 @@ public class QnaDAO {
 		return instance;
 	}
 	
-	public JSONObject qnaWrite(QnaVO qna) {
+	public void qnaWrite(QnaVO qna) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO qna(cseq, send_id, rcvd_id, chat_content, chat_time)";
-		JSONObject json = new JSONObject();
+		String sql = "INSERT INTO qna(cseq, send_id, rcvd_id, chat_content,) VALUES(qna_seq.nextval, ?, ?, ?)";
 
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			
 			pstmt.setString(1, qna.getSend_id());
 			pstmt.setString(2, qna.getRcvd_id());
 			pstmt.setString(3, qna.getChat_content());
-			json.put(qna, json);
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
 			DBManager.close(conn, pstmt);
 		}
-		return json ;
 	}
 
 	public ArrayList<QnaVO> qnaList(String email) {
@@ -54,13 +51,13 @@ public class QnaDAO {
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
-				QnaVO qVo = new QnaVO();
-				qVo.setCseq(rs.getInt("cseq"));
-				qVo.setRcvd_id(rs.getString("rcvd_id"));
-				qVo.setSend_id(rs.getString("send_id"));
-				qVo.setChat_content(rs.getString("chat_content"));
-				qVo.setChat_time(rs.getTimestamp("chat_time"));
-				qnaList.add(qVo);
+				QnaVO qna = new QnaVO();
+				qna.setCseq(rs.getInt("cseq"));
+				qna.setRcvd_id(rs.getString("rcvd_id"));
+				qna.setSend_id(rs.getString("send_id"));
+				qna.setChat_content(rs.getString("chat_content"));
+				qna.setChat_time(rs.getTimestamp("chat_time"));
+				qnaList.add(qna);
 			}
 			
 		} catch(Exception e) {
@@ -82,13 +79,13 @@ public class QnaDAO {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 		while(rs.next()) {
-			QnaVO qVo = new QnaVO();
-			qVo.setCseq(rs.getInt("cseq"));
-			qVo.setRcvd_id(rs.getString("rcvd_id"));
-			qVo.setSend_id(rs.getString("send_id"));
-			qVo.setChat_content(rs.getString("chat_content"));
-			qVo.setChat_time(rs.getTimestamp("chat_time"));
-			qnaList.add(qVo);		
+			QnaVO qna = new QnaVO();
+			qna.setCseq(rs.getInt("cseq"));
+			qna.setRcvd_id(rs.getString("rcvd_id"));
+			qna.setSend_id(rs.getString("send_id"));
+			qna.setChat_content(rs.getString("chat_content"));
+			qna.setChat_time(rs.getTimestamp("chat_time"));
+			qnaList.add(qna);		
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
