@@ -13,9 +13,9 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 <title>MOVIETRAP</title> 
 </head>
 <body style="background-color: black;">
-	<div id="main_movie">
-		<div id="main_movie_trailer" >
-			<iframe id="main_movie_frame" width="100%" height="100%" src="">
+	<div id="main_movie" style="overflow-y: hidden; overflow-x: hidden;">
+		<div id="main_movie_trailer" style="overflow-y: hidden; overflow-x: hidden;">
+			<iframe id="main_movie_frame" width="100%" height="100%" style="overflow-y: hidden; overflow-x: hidden;" src="">
 			</iframe>
 		</div>
 
@@ -69,12 +69,12 @@ Your chat content...
 Your chat content…
 </div>
 <!-- 	<div id ="chat-input"> -->
-		<textarea  id ="chat-input" name="item3" cols="30" rows="5"></textarea> 
+		<textarea  id ="chat_content" name="chat_content" cols="30" rows="5"></textarea> 
 					
 <!-- 				</div> -->
 				<div id="chat-submit">
 <!-- 					<input type="submit" value="send"> -->
-					<input class="btn" type="button" name="btn_search" value="search" onClick="qna_send()">
+				<input class="btn" type="button" name="btn_search" value="send" onClick="qna_send()">
 					
 				</div>
 
@@ -99,7 +99,7 @@ Your chat content…
 	 
 	
 //movie info AJAX	
-$(document).ready(function(){
+window.onload = function(){
 		$.ajax ({
 			url : 'MOVIETRAPServlet?command=main',
 			async : false,
@@ -126,14 +126,28 @@ $(document).ready(function(){
 				}
 				// trend_movie div 생성 및 포스터 이미지 삽입 끝
 				
-			},
-			error : function() {
-				console.log("ajax : fail")
-			}
+				$.ajax ({
+						url : 'MOVIETRAPServlet?command=qna_send',
+						async : false,
+						type : 'get',
+						datatype : 'json',
+						success : function(result2){
+							const json2 =  JSON.parse(result2)
+							
+							console.log(result2)
+						},
+						error : function() {
+							console.log("ajax : fail")
+						}
+					});
+					
+				},
+				error : function() {
+					console.log("ajax : fail")
+				}
 		});
 		
-	});
-	
+	};
 </script>
 </body>
 </html>

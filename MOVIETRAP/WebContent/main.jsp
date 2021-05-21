@@ -99,7 +99,7 @@ Your chat content…
 	 
 	
 //movie info AJAX	
-$(document).ready(function(){
+window.onload = function(){
 		$.ajax ({
 			url : 'MOVIETRAPServlet?command=main',
 			async : false,
@@ -126,30 +126,28 @@ $(document).ready(function(){
 				}
 				// trend_movie div 생성 및 포스터 이미지 삽입 끝
 				
-			},
-			error : function() {
-				console.log("ajax : fail")
-			}
+				$.ajax ({
+						url : 'MOVIETRAPServlet?command=qna_send',
+						async : false,
+						type : 'get',
+						datatype : 'json',
+						success : function(result2){
+							const json2 =  JSON.parse(result2)
+							
+							console.log(result2)
+						},
+						error : function() {
+							console.log("ajax : fail")
+						}
+					});
+					
+				},
+				error : function() {
+					console.log("ajax : fail")
+				}
 		});
 		
-	});
-$(document).ready(function(){
-	$.ajax ({
-		url : 'MOVIETRAPServlet?command=qna_send',
-		async : false,
-		type : 'get',
-		datatype : 'json',
-		success : function(result){
-			const json =  JSON.parse(result)
-			
-			${'#chat_content'}.text(json.)
-		},
-		error : function() {
-			console.log("ajax : fail")
-		}
-	});
-	
-});	
+	};
 </script>
 </body>
 </html>

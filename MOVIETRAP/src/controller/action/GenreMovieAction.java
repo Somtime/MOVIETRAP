@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -12,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.jasper.tagplugins.jstl.core.Out;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -42,10 +44,37 @@ public class GenreMovieAction implements Action {
 			e.printStackTrace();
 		}
 		
-		JSONArray j = (JSONArray) jsonObject.get("results");
-		System.out.println("j : " + j);
+		JSONArray jsonArray = (JSONArray) jsonObject.get("results");
 		
+		JSONArray data = new JSONArray();
+		for (int i = 0; i < jsonArray.size(); i++) {
+			JSONObject j = (JSONObject) jsonArray.get(i);
+			
+			
+			// 영화의 id값을 얻어서 api에서 video key를 따옴
+			String videoURL = "https://api.themoviedb.org/3/movie/" + j.get("id") + "/videos?api_key=e520d648beeee23f00a8b3386b9dec08";
+			String resBody = get(videoURL);
+			
+			
+			JSONObject jObject = new JSONObject();
+			try {
+				jObject = (JSONObject) parser.parse(resBody);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			
+			JSONArray jArray = (JSONArray) jObject.get("results");
+			JSONObject jobj = (JSONObject) jArray.get(0);
+			j.put("key", jobj.get("key"));
+			// j에 각 키값을 넣음
+			
+			// JSONArray 타입의 data 변수에 각 반복문 마다 j값을 add해줌
+			data.add(j);
+		}
+		System.out.println("GenreMovieAction data : " + data);
 		
+		PrintWriter out = response.getWriter();
+		out.print(data);
 	}
 	
 	private static String get(String apiUrl){
