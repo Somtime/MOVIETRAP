@@ -14,7 +14,7 @@ public class LoginAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "MOVIETRAPServlet?command=login";
+		String url = "MOVIETRAPServlet?command=index";
 		String email = request.getParameter("email");
 		String pwd = request.getParameter("pwd");
 		String message = "";

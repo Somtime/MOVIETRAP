@@ -64,24 +64,24 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 	</div>
 
 	<!-- QNA / Chat pop up -->
-	<form name="frm" method="post" onclick="MOVIETRAPServlet?command=qna_send">
-		<div class="chat-box">
-			<div class="chat-closed">Chat Now</div>
-			<div class="chat-header hide">
-				<div class="box"></div>
-				Online Support
-			</div>
-			<div class="chat-content-container hide">
-				<div id="chat_section" class="chat-content">
-					<!-- 채팅 내용 위치 -->
-				</div>
-				<div id="chat_footer">
-					<textarea id="chat_content" name="chat_content" cols="25" rows="5"></textarea>
-					<input id="chat-submit" class="btn" type="submit" name="qna_send" value="send">
-				</div>
-			</div>
-		</div>
-	</form>
+	 <form name="frm" method="post" onclick="MOVIETRAPServlet?command=qna_send">
+        <div class="chat-box">
+            <div class="chat-closed">Chat Now</div>
+            <div class="chat-header hide">
+                <div class="box"></div>
+                Online Support
+            </div>
+            <div class="chat-content-container hide">
+                <div id="chat_section" class="chat-content">
+                    <!-- 채팅 내용 위치 -->
+                </div>
+                <div id="chat_footer">
+                    <textarea id="chat_content" name="chat_content" cols="25" rows="5"></textarea>
+                    <input id="chat-submit" class="btn" type="submit" name="qna_send" value="send">
+                </div>
+            </div>
+        </div>
+    </form>
 
 	<script type="text/javascript">
 //send data for each movie(thumbnail);
@@ -167,30 +167,29 @@ window.onload = function() {
 		});
 		
 }
-	
 $.ajax ({
-	url : 'MOVIETRAPServlet?command=qna_send',
-	async : false,
-	type : 'get',
-	datatype : 'json',
-	success : function(result) {
-		const json = JSON.parse(result);
-		var user_id = "${sessionScope.loginUser.email}";
-		
-		console.log(json[0]["chat_content"]);
-		for (var i = 0; i < json.length; i++) {// todo : 왼쪾오른ㄴ쪽 구분할꺼 생각필요
-			if (user_id == json[i]["send_id"]) {
-				document.querySelector('#chat_section').innerHTML += '<div ' + 'float:right' + '>' + json[i]["chat_content"] + '</div><br>';
-			} else {
-				document.querySelector('#chat_section').innerHTML += '<div ' + 'float:left' + '>' + json[i]["chat_content"] + '</div><br>';
-			}
-		}
-		
-		
-	},
-	error : function() {
-		console.log("ajax : fail")
-	}
+    url : 'MOVIETRAPServlet?command=qna_send',
+    async : false,
+    type : 'get',
+    datatype : 'json',
+    success : function(result) {
+        const json = JSON.parse(result);
+        var user_id = "${sessionScope.loginUser.email}";
+        
+        console.log(json[0]["chat_content"]);
+        for (var i = 0; i < json.length; i++) {// todo : 왼쪾오른ㄴ쪽 구분할꺼 생각필요
+            if (user_id == json[i]["send_id"]) {
+                document.querySelector('#chat_section').innerHTML += '<div ' + 'float:right' + '>' + json[i]["chat_content"] + '</div><br>';
+            } else {
+                document.querySelector('#chat_section').innerHTML += '<div ' + 'float:left' + '>' + json[i]["chat_content"] + '</div><br>';
+            }
+        }
+        
+        
+    },
+    error : function() {
+        console.log("ajax : fail")
+    }
 });
 </script>
 </body>
