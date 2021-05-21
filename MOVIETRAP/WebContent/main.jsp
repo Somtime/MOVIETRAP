@@ -90,7 +90,7 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 //send data for each movie(thumbnail);
  function moviepage(img){
 var id = img.getAttribute('alt'); 		
-	var url = "MOVIETRAPServlet?command=moviepage&movieid="+id;
+var url = "MOVIETRAPServlet?command=moviepage&movieid="+id;
 	console.log(id)
 	location.href = url;	  
  
