@@ -20,8 +20,7 @@ public class QnaDAO {
 	public JSONObject qnaWrite(QnaVO qna) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO qna(cseq, send_id, "+
-		"rcvd_id, chat_content, chat_time)";
+		String sql = "INSERT INTO qna(cseq, send_id, rcvd_id, chat_content, chat_time)";
 		JSONObject json = new JSONObject();
 
 		try {
