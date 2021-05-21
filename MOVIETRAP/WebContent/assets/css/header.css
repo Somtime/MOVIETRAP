@@ -11,7 +11,7 @@ header {
 
 #logo, #search, #genre, #user_icon, #watch_later, #set {
 	float: left;
-	align-content: center;
+	align-content: center; 
 }
 
 #logo {
