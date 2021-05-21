@@ -9,7 +9,7 @@
 <link href="assets/css/header.css" type="text/css" rel="stylesheet" >  
 <title>Header</title>
 <style>
-body {
+body {    
 	z-index: 9;
 	}
 </style>
