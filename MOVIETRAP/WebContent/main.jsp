@@ -27,16 +27,16 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 					</div>
 	
 					<div id="movie_genre">
-						<h2>${genres_array}</h2>
+						<h2></h2>
 					</div>
 	
 					<div id="movie_description">
-						<h2>${overview}</h2>
+						<h2></h2>
 					</div>
 	
 					<div id="movie_rationgscore">
 						<img src="assets/images/star.png" width="50px" height="50px" />
-						${vote_average}
+						
 					</div>
 				</div>
 			</div>
