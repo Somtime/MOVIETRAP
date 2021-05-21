@@ -11,7 +11,7 @@ div#main_movie_title {
 /*--  main movie trailer: main.jsp ------------------------------------ */
 #main_button img {
 	height: 35px;
-	width: 80px;	
+	width: 80px;	 
 }
 #main_movie {
 	overflow-y: hidden;

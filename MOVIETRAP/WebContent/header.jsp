@@ -20,7 +20,7 @@ body {
 				<img src="assets/images/logo.png" /> 
 		</div>
 		
-		<div id="search">
+		<div id="search">  
 			<input type="search" placeholder="search">
 		</div>
 		
