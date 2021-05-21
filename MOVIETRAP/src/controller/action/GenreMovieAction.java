@@ -9,6 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,6 +28,8 @@ public class GenreMovieAction implements Action {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
+		
+		String url = "genre_movie.jsp";
 		
 		int genre = Integer.parseInt(request.getParameter("genre"));
 		
@@ -75,7 +78,13 @@ public class GenreMovieAction implements Action {
 		
 		PrintWriter out = response.getWriter();
 		out.print(data);
+		
+		
+		RequestDispatcher rd = request.getRequestDispatcher(url);
+		rd.forward(request,response);
 	}
+	
+
 	
 	private static String get(String apiUrl){
         HttpURLConnection con = connect(apiUrl);
