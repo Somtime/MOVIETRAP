@@ -39,7 +39,7 @@ public class ActionFactory {
 		} else if (command.equals("login")) {
 			action = new LoginAction();
 		} else if (command.equals("genre_movie")) {
-			action = new GenreMovieAction();
+			action = new GenreMovieGoAction();
 		} else if (command.equals("qna_send")) {
 			action = new QnaSendAction();
 		}

@@ -9,7 +9,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-	
+	<input id="genre" type="hidden" value="${genre_num}">
 	<div id="wrap">
 		
 		<div id="genre_movie_genre">
@@ -23,6 +23,8 @@
 	</div>	
 
 <script type="text/javascript">
+var genre = $('#genre').val();
+console.log(genre);
 
 $(document).ready(function(){
 	$.ajax ({
@@ -30,6 +32,9 @@ $(document).ready(function(){
 		async : false,
 		type : 'get',
 		datatype : 'json',
+		data : {
+			"genre" : genre
+		},
 		success : function(result) {
 			const json = JSON.parse(result)
 			console.log(json[0]["poster_path"])
