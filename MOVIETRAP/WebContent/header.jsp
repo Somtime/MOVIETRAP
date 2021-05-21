@@ -8,7 +8,7 @@
 <meta charset="EUC-KR">
 <link href="assets/css/header.css" type="text/css" rel="stylesheet" >  
 <title>Header</title>
-<style>
+<style>    
 body {    
 	z-index: 9;
 	}
