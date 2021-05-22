@@ -1,40 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ include file="header.jsp"%>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
 <link href="assets/css/main.css" type="text/css" rel="stylesheet">
-<script
-	src="https://ajax.googleapis.com/ajax/li
-bs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>MOVIETRAP</title>
+<style>
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
+</style>
 </head>
 <body style="background-color: black;">
 	<div class="main_movie_container">
 		<div id="main_movie" > <!-- style="overflow-y: hidden; overflow-x: hidden;" -->
 			<div id="main_movie_trailer">
-				<iframe id="main_movie_frame" src=""> </iframe> <!-- class="vid" -->
-<!-- <iframe id="main_movie_frame" class="vid" width="100%" height="100%" style="overflow-y: hidden; overflow-x: hidden;" src=""> </iframe> -->
+				<iframe id="main_movie_frame" src=""> </iframe> 
 				<div class="main_movie_info_hover">
 					<div class="main_movie_info" style="color:white;">
-						<div id="main_movie_title" ></div>
-						<div id="main_movie_release_date"></div>
-						<div id="main_movie_genre"></div>
-						<div id="main_movie_description"></div>
-						<div id="main_movie_rationgscore">
-							<img src="assets/images/star.png" width="50px" height="50px" />
-						</div>
-
 						<div id="main_button">
 							<a href="MOVIETRAPServlet?command=moviepage&movieid="+id>
 							<img src="assets/images/main-play.png" />
 							</a>
-<!-- 						</div> -->
-
-<!-- 						<div id="main_watch_later"> -->
 							<img src="assets/images/main-heart.png" />
 						</div>
 					</div>
@@ -129,11 +120,10 @@ window.onload = function() {
 				var genre = pop[Object.keys(pop)[0]]["genre"]
 				
 				//main_trailer_detail 삽입
-				
-				document.querySelector('#main_movie_title').innerHTML =  pop[Object.keys(pop)[0]]["title"];
-				document.querySelector('#main_movie_release_date').innerHTML =  pop[Object.keys(pop)[0]]["release_date"];
-				document.querySelector('#main_movie_description').innerHTML =  pop[Object.keys(pop)[0]]["overview"];
-				document.querySelector('#main_movie_rationgscore').innerHTML =  pop[Object.keys(pop)[0]]["vote_average"];
+document.querySelector('.main_movie_info').innerHTML += '<div id="main_movie_title">'+ pop[Object.keys(pop)[0]]["title"] +'</div>' +
+																		'<div id="main_movie_release_date">'+ pop[Object.keys(pop)[0]]["release_date"] +'</div>' +
+																		'<div id="main_movie_description">'+ pop[Object.keys(pop)[0]]["overview"] +'</div>' +
+																		'<div id="main_movie_rationgscore"><img src="assets/images/star.png" style="height: 50px; width:50px;"><strong>'+ pop[Object.keys(pop)[0]]["vote_average"] +'</strong> /10 </div>' ;				
 				
 				// 메인 동영상 src 인기 영상 트레일러로 변경
 				
@@ -186,3 +176,4 @@ $.ajax ({
 </script>
 </body>
 </html>
+

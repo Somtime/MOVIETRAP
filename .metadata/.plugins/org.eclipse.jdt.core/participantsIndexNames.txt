@@ -1,3 +1,0 @@
-INDEX VERSION 1.131
-D:\Project\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\689171145.index
-\MOVIETRAP\src

@@ -1,8 +1,0 @@
-@charset "EUC-KR";
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-
-div#main_movie {
-    margin: 10px;
-    width: 100%;
-    height: 400px;
-}
