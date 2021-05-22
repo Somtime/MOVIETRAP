@@ -23,9 +23,11 @@ a:hover, a:visited, a:link, a:active
 				<div class="main_movie_info_hover">
 					<div class="main_movie_info" style="color:white;">
 						<div id="main_button">
-							<a href="MOVIETRAPServlet?command=moviepage&movieid="+id>
+<!-- 							<div id="trailer_playbtn"> -->
+							<a id="trailer_playbtn">
 							<img src="assets/images/main-play.png" />
 							</a>
+<!-- 														</div> -->
 							<img src="assets/images/main-heart.png" />
 						</div>
 					</div>
@@ -121,7 +123,7 @@ window.onload = function() {
 				var trailer_id = json["trailer_id"]
 				
 				console.log("trailer_id: " +trailer_id)
-				
+				document.querySelector('#trailer_playbtn').href += 'MOVIETRAPServlet?command=moviepage&movieid='+trailer_id;
 				//main_trailer_detail 삽입
 				document.querySelector('.main_movie_info').innerHTML += '<div id="main_movie_title">'+ pop[Object.keys(pop)[0]]["title"] +'</div>' +
 																		'<div id="main_movie_release_date">'+ pop[Object.keys(pop)[0]]["release_date"] +'</div>' +
