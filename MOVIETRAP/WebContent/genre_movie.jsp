@@ -28,7 +28,7 @@ console.log(genre);
 
 $(document).ready(function(){
 	$.ajax ({
-		url : 'MOVIETRAPServlet?command=genre_movie',
+		url : 'MOVIETRAPServlet?command=genre_movie_list',
 		async : false,
 		type : 'get',
 		datatype : 'json',

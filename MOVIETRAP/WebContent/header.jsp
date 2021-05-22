@@ -28,6 +28,7 @@ body {
 <!--  		 <button class="dropbtn">SELECT GENRES</button> -->
 <!--  			 <div class="dropdown-content"> -->
  			 <select id="genre_select" onchange="selectGenre()">
+ 			 	 <option value= "" selected>SelectGenre</option>
 				 <option value="28">Action</option> 
 			 	 <option value="12">Adventure </option> 
 			  	 <option value="16">Animation</option>  

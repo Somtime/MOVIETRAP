@@ -44,7 +44,7 @@ public class GenreMovieAction implements Action {
 		}
 		
 		JSONArray jsonArray = (JSONArray) jsonObject.get("results");
-		
+		System.out.println(jsonArray);
 		JSONArray data = new JSONArray();
 		
 		for (int i = 0; i < jsonArray.size(); i++) {
