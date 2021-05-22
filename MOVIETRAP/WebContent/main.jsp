@@ -118,9 +118,12 @@ window.onload = function() {
 				var pop = json["popData"]
 				var trailerkey = json["popmoviekey"]
 				var genre = pop[Object.keys(pop)[0]]["genre"]
+				var trailer_id = json["trailer_id"]
+				
+				console.log("trailer_id: " +trailer_id)
 				
 				//main_trailer_detail 삽입
-document.querySelector('.main_movie_info').innerHTML += '<div id="main_movie_title">'+ pop[Object.keys(pop)[0]]["title"] +'</div>' +
+				document.querySelector('.main_movie_info').innerHTML += '<div id="main_movie_title">'+ pop[Object.keys(pop)[0]]["title"] +'</div>' +
 																		'<div id="main_movie_release_date">'+ pop[Object.keys(pop)[0]]["release_date"] +'</div>' +
 																		'<div id="main_movie_description">'+ pop[Object.keys(pop)[0]]["overview"] +'</div>' +
 																		'<div id="main_movie_rationgscore"><img src="assets/images/star.png" style="height: 50px; width:50px;"><strong>'+ pop[Object.keys(pop)[0]]["vote_average"] +'</strong> /10 </div>' ;				
