@@ -56,7 +56,17 @@ public class mainAction implements Action {
 			}
 		}
 		
-		JSONObject popData = (JSONObject) result.get("popData");
+		
+//		String responsebody = get(popURL);
+//		JSONParser parser = new JSONParser(); 
+//		JSONObject jsonObject = new JSONObject();
+//		try {
+//			 jsonObject = (JSONObject) parser.parse(responsebody);
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		JSONArray jsonArray =  (JSONArray) jsonObject.get("result");
 		
 		// popData에서 인기 영화의 movieid 값 뽑아오기
 		JSONObject tobj = (JSONObject) getData(popURL, t);
@@ -65,6 +75,7 @@ public class mainAction implements Action {
 		String movieid = obj.get("id").toString();
 		// 끝 : movieid
 		
+		
 		String videoURL = "https://api.themoviedb.org/3/movie/" + movieid + "/videos?api_key=e520d648beeee23f00a8b3386b9dec08";
 		
 		// movieid 를 url에 넣어서 JSON 정보를 얻어와서 트레일러 key 얻음
@@ -72,11 +83,29 @@ public class mainAction implements Action {
 		videoData = getData(videoURL);
 		JSONObject video = (JSONObject) videoData.get(0);
 		String trailerkey = video.get("key").toString();
+		System.out.println(video);
+
 		// 끝 : trailerkey
+		
+		//	get trailer genres
+		String movieDetailURL ="https://api.themoviedb.org/3/movie/"+movieid+"?api_key=e520d648beeee23f00a8b3386b9dec08&language=en-US";
+		
+		JSONObject movieDetailData = new JSONObject();
+		movieDetailData = getData(movieDetailURL);
+		JSONArray genres = (JSONArray) movieDetailData.get("genres");
+		JSONObject trailer_genres = new JSONObject();
+		for(int p=0; p<genres.size(); p++) {
+		 trailer_genres = (JSONObject) genres.get(p);
+		}
+		
+		//	push to result
+		result.put("genres", trailer_genres);
+		
 		
 		// popmoviekey를 key로 result에 넣음
 		result.put("popmoviekey", trailerkey);
 		System.out.println(result);
+	
 		
 		PrintWriter out = response.getWriter();
 		out.print(result);
