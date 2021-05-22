@@ -73,6 +73,9 @@ public class mainAction implements Action {
 		ArrayList<String> objectKeys = new ArrayList<String>(tobj.keySet());
 		JSONObject obj = (JSONObject) tobj.get(objectKeys.get(0));
 		String movieid = obj.get("id").toString();
+		//	trailer_id put into result
+		result.put("trailer_id", movieid);
+		System.out.println(obj);
 		// 끝 : movieid
 		
 		
@@ -88,18 +91,17 @@ public class mainAction implements Action {
 		// 끝 : trailerkey
 		
 		//	get trailer genres
-		String movieDetailURL ="https://api.themoviedb.org/3/movie/"+movieid+"?api_key=e520d648beeee23f00a8b3386b9dec08&language=en-US";
-		
-		JSONObject movieDetailData = new JSONObject();
-		movieDetailData = getData(movieDetailURL);
-		JSONArray genres = (JSONArray) movieDetailData.get("genres");
-		JSONObject trailer_genres = new JSONObject();
-		for(int p=0; p<genres.size(); p++) {
-		 trailer_genres = (JSONObject) genres.get(p);
-		}
+//		String movieDetailURL ="https://api.themoviedb.org/3/movie/"+ movieid +"?api_key=e520d648beeee23f00a8b3386b9dec08&language=en-US";
+//		JSONObject movieDetailData = getData(movieDetailURL);
+//		System.out.println(movieDetailData);
+//		JSONArray genres = (JSONArray) movieDetailData.get("genres");
+//		JSONObject trailer_genres = new JSONObject();
+//		for(int p=0; p<genres.size(); p++) {
+//		 trailer_genres = (JSONObject) genres.get(p);
+//		}
 		
 		//	push to result
-		result.put("genres", trailer_genres);
+//		result.put("genres", trailer_genres);
 		
 		
 		// popmoviekey를 key로 result에 넣음
