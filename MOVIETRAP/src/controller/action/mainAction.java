@@ -91,16 +91,16 @@ public class mainAction implements Action {
 		// 끝 : trailerkey
 		
 		//get trailer genres
-		System.out.println("movieid : " + movieid);
-		String movieDetailURL ="https://api.themoviedb.org/3/movie/"+ movieid +"?api_key=e520d648beeee23f00a8b3386b9dec08&language=en-US";
-		JSONObject movieDetailData = getData(movieDetailURL);
-		System.out.println(movieDetailData);
-		JSONArray genres = (JSONArray) movieDetailData.get("genres");
-		JSONObject trailer_genres = new JSONObject();
-		for(int p=0; p<genres.size(); p++) {
-		 trailer_genres = (JSONObject) genres.get(p);
-		}
-		
+//		System.out.println("movieid : " + movieid);
+//		String movieDetailURL ="https://api.themoviedb.org/3/movie/"+ movieid +"?api_key=e520d648beeee23f00a8b3386b9dec08&language=en-US";
+//		JSONObject movieDetailData = getData(movieDetailURL);
+//		System.out.println(movieDetailData);
+//		JSONArray genres = (JSONArray) movieDetailData.get("genres");
+//		JSONObject trailer_genres = new JSONObject();
+//		for(int p=0; p<genres.size(); p++) {
+//		 trailer_genres = (JSONObject) genres.get(p);
+//		}
+//		
 		//	push to result
 //		result.put("genres", trailer_genres);
 		
