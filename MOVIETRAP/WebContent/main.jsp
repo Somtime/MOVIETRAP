@@ -122,8 +122,10 @@ window.onload = function() {
 				var genre = pop[Object.keys(pop)[0]]["genre"]
 				var trailer_id = json["trailer_id"]
 				
+				//main_trailer play button
 				console.log("trailer_id: " +trailer_id)
 				document.querySelector('#trailer_playbtn').href += 'MOVIETRAPServlet?command=moviepage&movieid='+trailer_id;
+				
 				//main_trailer_detail 삽입
 				document.querySelector('.main_movie_info').innerHTML += '<div id="main_movie_title">'+ pop[Object.keys(pop)[0]]["title"] +'</div>' +
 																		'<div id="main_movie_release_date">'+ pop[Object.keys(pop)[0]]["release_date"] +'</div>' +
