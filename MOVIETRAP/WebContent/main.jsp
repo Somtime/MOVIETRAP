@@ -19,23 +19,13 @@ bs/jquery/3.5.1/jquery.min.js"></script>
 				<iframe id="main_movie_frame" src=""> </iframe> <!-- class="vid" -->
 <!-- <iframe id="main_movie_frame" class="vid" width="100%" height="100%" style="overflow-y: hidden; overflow-x: hidden;" src=""> </iframe> -->
 				<div class="main_movie_info_hover">
-					<div class="main_movie_info">
-						<div id="main_movie_title">
-							<h1>${title}</h1>
-							<h3>${release_date}</h3>
-						</div>
-
-						<div id="main_movie_genre">
-							<h2>${genres_array}</h2>
-						</div>
-
-						<div id="main_movie_description">
-							<h2>${overview}</h2>
-						</div>
-
+					<div class="main_movie_info" style="color:white;">
+						<div id="main_movie_title" ></div>
+						<div id="main_movie_release_date"></div>
+						<div id="main_movie_genre"></div>
+						<div id="main_movie_description"></div>
 						<div id="main_movie_rationgscore">
 							<img src="assets/images/star.png" width="50px" height="50px" />
-							${vote_average}
 						</div>
 
 						<div id="main_button">
@@ -136,9 +126,18 @@ window.onload = function() {
 				var trend = json["trendData"]
 				var pop = json["popData"]
 				var trailerkey = json["popmoviekey"]
+				var genre = pop[Object.keys(pop)[0]]["genre"]
+				
+				//main_trailer_detail 삽입
+				
+				document.querySelector('#main_movie_title').innerHTML =  pop[Object.keys(pop)[0]]["title"];
+				document.querySelector('#main_movie_release_date').innerHTML =  pop[Object.keys(pop)[0]]["release_date"];
+				document.querySelector('#main_movie_description').innerHTML =  pop[Object.keys(pop)[0]]["overview"];
+				document.querySelector('#main_movie_rationgscore').innerHTML =  pop[Object.keys(pop)[0]]["vote_average"];
 				
 				// 메인 동영상 src 인기 영상 트레일러로 변경
-				if (trailerkey != null) {
+				
+				if (trailerkey != null) {				
 					console.log(trailerkey);
 					document.getElementById('main_movie_frame').src = "https://youtube.com/embed/" + trailerkey + "?autoplay=1&mute=1";
 				}	
@@ -150,15 +149,8 @@ window.onload = function() {
 																		' alt=' + trend[Object.keys(trend)[i]]["id"] +
 																		' onclick="moviepage(this)" /></div>';
 				}
-
 				// trend_movie div 생성 및 포스터 이미지 삽입 끝
-				
-				//main_trailer_detail 삽입
-					document.querySelector('#movie_title').h1.innerHTML =  pop[Object.keys(pop)[0]]["title"];
-					document.querySelector('#movie_title').h3.innerHTML =  pop[Object.keys(pop)[0]]["release_date"];
-					document.querySelector('#movie_genre').h2.innerHTML =  pop[Object.keys(pop)[0]]["genre"];
-					document.querySelector('#movie_description').h2.innerHTML =  pop[Object.keys(pop)[0]]["overview"];
-					document.querySelector('#movie_rationgscore').innerHTML =  pop[Object.keys(pop)[0]]["vote_average"];
+
 			},
 			error : function() {
 				console.log("ajax : fail")
@@ -179,9 +171,9 @@ $.ajax ({
         console.log(json[0]["chat_content"]);
         for (var i = 0; i < json.length; i++) {// todo : 왼쪾오른ㄴ쪽 구분할꺼 생각필요
             if (user_id == json[i]["send_id"]) {
-                document.querySelector('#chat_section').innerHTML += '<div ' + 'float:right' + '>' + json[i]["chat_content"] + '</div><br>';
+                document.querySelector('#chat_section').innerHTML += '<div ' + 'style="float:right;"' + '>' + json[i]["chat_content"] + '</div><br>';
             } else {
-                document.querySelector('#chat_section').innerHTML += '<div ' + 'float:left' + '>' + json[i]["chat_content"] + '</div><br>';
+                document.querySelector('#chat_section').innerHTML += '<div ' + 'style="float:left;"' + '>' + json[i]["chat_content"] + '</div><br>';
             }
         }
         

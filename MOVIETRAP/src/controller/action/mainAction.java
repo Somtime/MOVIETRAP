@@ -56,6 +56,8 @@ public class mainAction implements Action {
 			}
 		}
 		
+		JSONObject popData = (JSONObject) result.get("popData");
+		
 		// popData에서 인기 영화의 movieid 값 뽑아오기
 		JSONObject tobj = (JSONObject) getData(popURL, t);
 		ArrayList<String> objectKeys = new ArrayList<String>(tobj.keySet());
