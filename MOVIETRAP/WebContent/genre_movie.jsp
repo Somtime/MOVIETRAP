@@ -23,6 +23,14 @@
 	</div>	
 
 <script type="text/javascript">
+
+function moviepage(img){
+	var id = img.getAttribute('alt'); 		
+		var url = "MOVIETRAPServlet?command=moviepage&movieid="+id;
+		console.log(id)
+		location.href = url;	  
+	}
+	
 var genre = $('#genre').val();
 console.log(genre);
 

@@ -26,7 +26,7 @@ public class GenreMovieAction implements Action {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
-		
+		 
 		int genre = Integer.parseInt(request.getParameter("genre"));
 		
 		String genreURL = "https://api.themoviedb.org/3/discover/movie?api_key=e520d648beeee23f00a8b3386b9dec08&language=en-US&sort_by=popularity.desc&include_adult=false"

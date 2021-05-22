@@ -29,7 +29,7 @@ public class mainAction implements Action {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
 		String url = "main.jsp";
-		
+		 
 		HashMap<String, String> URL = new HashMap();				
 				
 		String trendURL = "https://api.themoviedb.org/3/trending/movie/week?api_key=e520d648beeee23f00a8b3386b9dec08";

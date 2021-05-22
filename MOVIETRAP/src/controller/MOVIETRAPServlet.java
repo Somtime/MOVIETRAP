@@ -14,21 +14,21 @@ public class MOVIETRAPServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     public MOVIETRAPServlet() {
-        super();
+        super(); 
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			// command¸¦ ÀÔ·Â¹ÞÀ» º¯¼ö
+			// commandï¿½ï¿½ ï¿½Ô·Â¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			String command = request.getParameter("command");
 			
-			// consoleÃ¢¿¡ Ä¿¸Çµå Ç¥½Ã
+			// consoleÃ¢ï¿½ï¿½ Ä¿ï¿½Çµï¿½ Ç¥ï¿½ï¿½
 			System.out.println("MOVIETRAPServlet : " + command);
 			
-			// ActionFactory¿¡ command º¯¼ö ÀÔ·Â
+			// ActionFactoryï¿½ï¿½ command ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
 			ActionFactory af = ActionFactory.getInstance();
 			Action action = af.getAction(command);
 			
-			// Action ½ÇÇà
+			// Action ï¿½ï¿½ï¿½ï¿½
 			if (action != null) {
 				action.execute(request, response);
 			}
