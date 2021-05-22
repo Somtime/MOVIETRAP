@@ -57,12 +57,12 @@ body {
 		</div>
 		
 		<div id="watch_later">
-			<a href="">
+			<a href="" ></a>
 				<img src="assets/images/heart.png" />
 		</div>
 		
 		<div id="set">
-			<a href="">
+			<a href="" ></a>
 				<img src="assets/images/set.png" />
 		</div>
 	</header>

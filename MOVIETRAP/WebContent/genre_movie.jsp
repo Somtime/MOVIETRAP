@@ -24,7 +24,7 @@
 
 <script type="text/javascript">
 
-function moviepage(img){
+ function genreMovie(img){
 	var id = img.getAttribute('alt');
 		var url = "MOVIETRAPServlet?command=moviepage&movieid="+id;
 		console.log(id)
@@ -48,9 +48,8 @@ $(document).ready(function(){
 			console.log(json[0]["poster_path"])
 			
 			for (var i = 0; i < json.length; i++) {
-				document.querySelector('#genre_movie_list').innerHTML += '<div><img src='+'http://www.themoviedb.org/t/p/w200' + json[i]["poster_path"] +
-																	' alt=' + json[i]["id"] +
-																	' onclick="moviepage(this)" /></div>';
+				document.querySelector('#genre_movie_list').innerHTML += '<div><img src='+'http://www.themoviedb.org/t/p/w200' + json[i]["poster_path"] 
+																			+' alt='+json[i]["id"]+' onclick=genreMovie(this) /></div>';
 			}
 			
 		},
@@ -61,6 +60,11 @@ $(document).ready(function(){
 	});
 		
 });
+function NotReload() {
+	if( (event.ctrlKey == true && (event.keyCode == 78 || event.keyCode == 82)) || (event.keyCode == 116) ) 
+	{ event.keyCode = 0; event.cancelBubble = true; event.returnValue = false; } 
+	} 
+	document.onkeydown = NotReload;
 
 </script>
 </body>
