@@ -73,7 +73,6 @@ body {
 	position: relative;
 }
 #main_movie_description {
-	top: 3%;
     position: absolute;
     bottom: 5%;
   	float:left;

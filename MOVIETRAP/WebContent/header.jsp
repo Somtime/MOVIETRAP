@@ -23,10 +23,6 @@ body {
 		<div id="search">  
 			<input type="search" placeholder="search">
 		</div>
-		
-<!-- 	    <div class="dropdown"> -->
-<!--  		 <button class="dropbtn">SELECT GENRES</button> -->
-<!--  			 <div class="dropdown-content"> -->
  			 <select id="genre_select" onchange="selectGenre()">
  			 	 <option value= "" selected>SelectGenre</option>
 				 <option value="28">Action</option> 
@@ -49,9 +45,6 @@ body {
 				 <option value="10752">War</option>  
 				 <option value="37">Western</option>  
 			</select>
-<!--  			 </div> -->
-<!-- 		</div> -->
-
 		<div id="user_icon" onclick="location='MOVIETRAPServlet?command=membership'">
 			<img src="assets/images/user.png" />
 		</div>
