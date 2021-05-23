@@ -23,8 +23,8 @@
 	<input id="genre" type="hidden" value="${genre_num}">
 <!-- 	<div id="wrap"> -->
 		
-		<div id="genre_movie_genre">
-			<input type="text" value="Selected Genre">
+		<div id="genre_movie_genre" style="color:white; margin:20px;" >
+			<h1>${selected_genre}</h1>
 		</div>
 <!-- 		<div id="genre_movie_list_wrapper"> -->
 			<div id="genre_movie_list">	
@@ -69,11 +69,6 @@ $(document).ready(function(){
 	});
 		
 });
-function NotReload() {
-	if( (event.ctrlKey == true && (event.keyCode == 78 || event.keyCode == 82)) || (event.keyCode == 116) ) 
-	{ event.keyCode = 0; event.cancelBubble = true; event.returnValue = false; } 
-	} 
-	document.onkeydown = NotReload;
 
 </script>
 </body>
