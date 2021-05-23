@@ -19,7 +19,7 @@ function editPay() {
 		<img src="" />
 	</div>
 Membership
-<%-- 	<c:forEach items="${memberInfo} var="MemberVO"> --%>
+	<c:forEach items="${memberInfo} var="MemberVO">
 	<table id="membership">
 		<tr>
 			<td>
@@ -36,8 +36,8 @@ Membership
 		</tr>
 		<tr>
 			<td>
-<%-- 			${MemberVO.pay_fname}  --%>
-<%-- 			${MemberVO.pay_lname}  --%>
+			${MemberVO.pay_fname} 
+			${MemberVO.pay_lname} 
 			${MemberVO.pay_num} 
 			<input style="border: none; pointer-events: none;" type="password" value="${MemberVO.pay_num_lstfour}">			
 			${MemberVO.pay_cvc} 
@@ -51,7 +51,7 @@ Membership
 			</td>
 		</tr>
 	</table>
-<%-- 	</c:forEach> --%>
+	</c:forEach>
 
 Q & A
 
