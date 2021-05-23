@@ -50,7 +50,7 @@ a:hover, a:visited, a:link, a:active
 	</div>
 
 	<!-- QNA / Chat pop up -->
-	 <form name="frm" method="post" onclick="MOVIETRAPServlet?command=qna_send">
+	 <form name="frm" method="post" >
         <div class="chat-box">
             <div class="chat-closed">Chat Now</div>
             <div class="chat-header hide">
@@ -64,7 +64,7 @@ a:hover, a:visited, a:link, a:active
                 </div>
                 <div id="chat_footer">
                     <textarea id="chat_content" name="chat_content" cols="25" rows="4"></textarea>
-                    <input id="chat-submit" class="btn" type="submit" name="qna_send" value="send">
+                    <input id="chat-submit" class="btn" type="button" name="qna_send" value="send" >
                     <div class="clear"></div>
                 </div>
             </div>
@@ -80,12 +80,29 @@ var id = img.getAttribute('alt');
 	location.href = url;	  
  
 }
-//qna send msg
-function qna_send() {
-var theForm = document.frm;
-theForm.action =  "MOVIETRAPServlet?command=qna_send"; 
-theForm.submit();
-}
+//qna send
+$('#chat-submit').click(function () {
+	var chat_content = document.getElementById("chat_content").value;
+	$.ajax ({
+		url : "MOVIETRAPServlet?command=qna_send",
+		type : "get",
+		async : false,
+		datatype : "json",
+		data : {
+			"chat_content" : chat_content
+		},
+		success : function(result) {
+			console.log("qna_send() suc")
+		},
+		error : function() {
+			console.log("ajax : fail")
+		}
+		
+	});
+	
+	
+});
+
 //pic slide 
 let buttonRight = document.getElementById('slideRight');
 let buttonLeft = document.getElementById('slideLeft');
@@ -163,7 +180,7 @@ window.onload = function() {
 }
 
 $.ajax ({
-    url : 'MOVIETRAPServlet?command=qna_send',
+    url : 'MOVIETRAPServlet?command=qna_list',
     async : false,
     type : 'get',
     datatype : 'json',

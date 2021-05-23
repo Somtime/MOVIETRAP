@@ -28,6 +28,7 @@ public class QnaDAO {
 			pstmt.setString(1, qna.getSend_id());
 			pstmt.setString(2, qna.getRcvd_id());
 			pstmt.setString(3, qna.getChat_content());
+			pstmt.executeQuery();
 			
 		} catch(Exception e) {
 			e.printStackTrace();
