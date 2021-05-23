@@ -1,6 +1,7 @@
 package controller.dao;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import controller.dto.MemberVO;
 import util.DBManager;
@@ -173,5 +174,31 @@ public class MemberDAO {
 		}
 		
 		return member;
+	}
+	
+	// 모든 멤버의 email을 가져와서 List 생성
+	public ArrayList<String> listMemberEmail() {
+		ArrayList<String> emailList =  new ArrayList<String>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT email FROM member";
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				emailList.add(rs.getString("email"));
+			}			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		
+		return emailList;
 	}
 }

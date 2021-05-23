@@ -46,7 +46,13 @@ public class ActionFactory {
 			action = new QnaSendAction();
 		} else if(command.equals("edit_member")) {
 			action = new EditMemberAction();
-		}
+		} else if (command.equals("admin_page")) {
+			action = new AdminPageAction();
+		} else if (command.equals("update_member_info")) {
+			action = new UpdateMemberInfoAction();
+ 		} else if (command.equals("update_pay_info")) {
+ 			action = new UpdatePayInfoAction();
+ 		}
 		
 		
 		return action;
