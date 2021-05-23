@@ -28,10 +28,11 @@ public class GenreMovieAction implements Action {
 		response.setContentType("text/html");
 		 
 		int genre = Integer.parseInt(request.getParameter("genre"));
+		String genre_name = request.getParameter("genre_name");
+		
 		
 		String genreURL = "https://api.themoviedb.org/3/discover/movie?api_key=e520d648beeee23f00a8b3386b9dec08&language=en-US&sort_by=popularity.desc&include_adult=false"
 							+ "&include_video=false&page=1&with_genres=" + genre + "&with_watch_monetization_types=flatrate";
-		
 		// 장르url 에서 id를 뽑아보자
 		String responseBody = get(genreURL);
 		
@@ -51,26 +52,35 @@ public class GenreMovieAction implements Action {
 			JSONObject j = (JSONObject) jsonArray.get(i);
 			 
 			System.out.println(j);
-			
-			// 영화의 id값을 얻어서 api에서 video key를 따옴
-//			String videoURL = "https://api.themoviedb.org/3/movie/" + j.get("id") + "/videos?api_key=e520d648beeee23f00a8b3386b9dec08";
-//			String resBody = get(videoURL);			
-//			JSONObject jObject = new JSONObject();
-//			try {
-//				jObject = (JSONObject) parser.parse(resBody);
-//			} catch (ParseException e) {
-//				e.printStackTrace();
-//			}
-//			
-//			JSONArray jArray = (JSONArray) jObject.get("results");
-//			JSONObject jobj = (JSONObject) jArray.get(0);
-//			System.out.println(jArray.get(0));
-//			j.put("key", jobj.get("key"));
-			// j에 각 키값을 넣음
-			
-			// JSONArray 타입의 data 변수에 각 반복문 마다 j값을 add해줌
 			data.add(j);
 		}
+		// selected gerne 출력
+//		JSONObject getgenre = (JSONObject) jsonArray.get(0);
+//		String genreid = getgenre.get("id").toString();
+//		
+//		String movieDetailURL ="https://api.themoviedb.org/3/movie/"+genreid+"?api_key=e520d648beeee23f00a8b3386b9dec08&language=en-US";
+//		
+//		String resbody = get(movieDetailURL);
+//		
+//		JSONObject movieDetailData = new JSONObject();
+//		
+//		try {
+//			 movieDetailData = (JSONObject) parser.parse(resbody);
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} 
+//		
+//		JSONObject Data  = (JSONObject) movieDetailData.get("genres");
+//		System.out.println("movieDetailData :" + movieDetailData);
+//		System.out.println("Data : " +Data);
+//		
+		
+		
+		
+		
+		
+		
 		System.out.println("GenreMovieAction data : " + data);
 		
 		PrintWriter out = response.getWriter();
