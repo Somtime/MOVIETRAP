@@ -220,13 +220,43 @@ div#trend_movie img:hover {
 	display: none;
 }
 
+#chat_section {
+	width: 100%;
+	height: 75%;
+}
+
+div#chat_footer {
+	width: 100%;
+	height: 24%;
+}
+
+textarea#chat_content {
+	float: left;
+	resize: none;
+	width: 70%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+input#chat-submit {
+	float: right;
+	width: 28%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
 #chat-input input[type="text"] {
 	display: inline-block;
 	height: 20%;
 }
 
 #chat-submit {
-	display: inline-block;
 	height: 10%;
 	bottom: 0px;
+}
+
+.clear {
+	clear: both;
 }
