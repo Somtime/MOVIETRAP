@@ -78,14 +78,15 @@ public class QnaDAO {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-		while(rs.next()) {
-			QnaVO qna = new QnaVO();
-			qna.setCseq(rs.getInt("cseq"));
-			qna.setRcvd_id(rs.getString("rcvd_id"));
-			qna.setSend_id(rs.getString("send_id"));
-			qna.setChat_content(rs.getString("chat_content"));
-			qna.setChat_time(rs.getTimestamp("chat_time"));
-			qnaList.add(qna);		
+			while(rs.next()) {
+				QnaVO qna = new QnaVO();
+				qna.setCseq(rs.getInt("cseq"));
+				qna.setRcvd_id(rs.getString("rcvd_id"));
+				qna.setSend_id(rs.getString("send_id"));
+				qna.setChat_content(rs.getString("chat_content"));
+				qna.setChat_time(rs.getTimestamp("chat_time"));
+				qnaList.add(qna);
+					
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
