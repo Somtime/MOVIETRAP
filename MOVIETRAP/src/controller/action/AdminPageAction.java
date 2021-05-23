@@ -18,6 +18,7 @@ import controller.dto.QnaVO;
 
 public class AdminPageAction implements Action {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
@@ -55,8 +56,8 @@ public class AdminPageAction implements Action {
 		
 		//
 		MemberDAO mDao = MemberDAO.getInstance();
-		ArrayList emailList = mDao.listMemberEmail();
-		
+		ArrayList<String> emailList = mDao.listMemberEmail();
+		emailList.remove("admin");
 		
 		JSONArray jsonArray = new JSONArray();
 		for (int i = 0; i < emailList.size(); i++) {
@@ -67,8 +68,8 @@ public class AdminPageAction implements Action {
 			
 			for (int j = 0; j < qnaList.size(); j++) {
 				JSONObject jsonObject = new JSONObject();
-				QnaVO qna = qnaList.get(i);
-
+				QnaVO qna = qnaList.get(j);
+				
 				jsonObject.put("cseq", qna.getCseq());
 				jsonObject.put("send_id", qna.getSend_id());
 				jsonObject.put("rcvd_id", qna.getRcvd_id());
@@ -77,9 +78,12 @@ public class AdminPageAction implements Action {
 				jsonArray.add(jsonObject);
 			}
 			
+			//System.out.println(jsonArray);
 			json.add(jsonArray);
+			
 		}
 		
+		//System.out.println("json : " + json);
 		response.getWriter().print(json);
 		//
 		
