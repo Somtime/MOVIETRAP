@@ -35,12 +35,13 @@ public class UpdateMemberInfoAction implements Action {
 		);
 		MemberVO member = new MemberVO();
 		member.setName(multi.getParameter("name"));
-		member.setImage(multi.getParameter("image"));
 		member.setPhone(multi.getParameter("phone"));
 		member.setPwd(multi.getParameter("pwd"));
-		member.setPay_num(Integer.parseInt(multi.getParameter("pay_num")));
-		member.setPay_num_lstfour(Integer.parseInt(multi.getParameter("pay_num_lstfour")));
-		member.setPay_cvc(Integer.parseInt(multi.getParameter("pay_cvc")));
+		if(multi.getFilesystemName("image")==null) {
+			member.setImage(multi.getParameter("og_img"));
+		} else {
+			member.setImage(multi.getParameter("image"));
+		}
 
 		MemberDAO mDao = MemberDAO.getInstance();
 		mDao.updateInfo(member);

@@ -14,6 +14,8 @@ public class MemberVO {
 	private int pay_num;
 	private int pay_num_lstfour;
 	private int pay_cvc;
+	private int pay_exp_yr;
+	private int pay_exp_date;
 	private Timestamp pay_date;
 	
 	public String getEmail() {
@@ -21,6 +23,24 @@ public class MemberVO {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getNewsletter() {
+		return newsletter;
+	}
+	public void setNewsletter(String newsletter) {
+		this.newsletter = newsletter;
+	}
+	public int getPay_exp_yr() {
+		return pay_exp_yr;
+	}
+	public void setPay_exp_yr(int pay_exp_yr) {
+		this.pay_exp_yr = pay_exp_yr;
+	}
+	public int getPay_exp_date() {
+		return pay_exp_date;
+	}
+	public void setPay_exp_date(int pay_exp_date) {
+		this.pay_exp_date = pay_exp_date;
 	}
 	public String getPwd() {
 		return pwd;

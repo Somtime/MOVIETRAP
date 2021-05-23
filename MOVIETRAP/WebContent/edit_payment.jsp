@@ -12,7 +12,7 @@
 	<div class="container">
 	<label for="payment"><b>Edit Payment</b></label>
 	<label for="id"><b>Name on Card</b></label>
-    <input type="text" placeholder="Full Name" name="ay_name" required>
+    <input type="text" placeholder="Full Name" name="pay_name" required>
 	
 	     <!-- Card Number -->
 	    <input type="text" placeholder="Card Number Exclude '' - ''" name="pay_num" maxlength="12">
@@ -21,7 +21,7 @@
 	 
 	    <!-- Date Field -->
 	   		 <div class="month">
-	        <select name="Month">
+	        <select name="pay_exp_date">
 	          <option value="january">January</option>
 	          <option value="february">February</option>
 	          <option value="march">March</option>
@@ -38,7 +38,7 @@
 	       </div>
 	        
 	        <div class="year">
-	        <select name="Year">
+	        <select name="pay_exp_yr">
 	          <option value="2021">2021</option>
 	          <option value="2022">2022</option>
 	          <option value="2023">2023</option>

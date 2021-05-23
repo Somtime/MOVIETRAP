@@ -48,13 +48,13 @@
 <body>
 <form method="post" class="login_join_form" name="join_form" action="MOVIETRAPServlet?command=update_member_info" >
 	<div class="container">
-	
-	image 
-	
-    <label for="id"><b>Name</b></label>
+	<label for="image"><b>Profile Image</b></label>
+	<img name="og_img" style="height:35px; width:35px;" src="${memberInfo.image}">
+	<input type="file" name="image">
+    <label for="name"><b>Name</b></label>
     <input type="text" placeholder="Full Name" name="name" required>
     
-    <label for="id"><b>Phone</b></label>
+    <label for="phone"><b>Phone</b></label>
     <input type="text" placeholder="" name="phone" required>
     
     <label for="pwd"><b>Password</b></label>
@@ -71,7 +71,7 @@
 	  <p id="length" class="invalid">Minimum <b>8 characters</b></p>
 	</div>
     <!-- Buttons -->
-    <button type="submit" id="submit">Register</button>    
+    <button type="submit" id="submit">Update</button>    
 </div>
 </form>
 
