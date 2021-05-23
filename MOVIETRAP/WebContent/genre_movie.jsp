@@ -7,20 +7,29 @@
 <meta charset="EUC-KR">
 <title>장르별 영화 페이지</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+#genre_movie_list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+#g_movies {
+  width: 500px;
+  padding: 30px;
+}
+</style>
 </head>
 <body>
 	<input id="genre" type="hidden" value="${genre_num}">
-	<div id="wrap">
+<!-- 	<div id="wrap"> -->
 		
 		<div id="genre_movie_genre">
 			<input type="text" value="Selected Genre">
 		</div>
-		
-		<div id="genre_movie_list">
-			
-		</div>
-			
-	</div>	
+<!-- 		<div id="genre_movie_list_wrapper"> -->
+			<div id="genre_movie_list">	
+			</div>
+<!-- 		</div>	 -->
 
 <script type="text/javascript">
 
@@ -48,7 +57,7 @@ $(document).ready(function(){
 			console.log(json[0]["poster_path"])
 			
 			for (var i = 0; i < json.length; i++) {
-				document.querySelector('#genre_movie_list').innerHTML += '<div><img src='+'http://www.themoviedb.org/t/p/w200' + json[i]["poster_path"] 
+				document.querySelector('#genre_movie_list').innerHTML += '<div id="g_movies"><img src='+'http://www.themoviedb.org/t/p/w500' + json[i]["poster_path"] 
 																			+' alt='+json[i]["id"]+' onclick=genreMovie(this) /></div>';
 			}
 			

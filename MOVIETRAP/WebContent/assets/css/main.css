@@ -1,17 +1,13 @@
 @charset "EUC-KR";
-
 @import
 	url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap')
 	;
-
+* {
+	font-family: poppins;
+}
 body {
 	background-color: black;
 }
-
-/* div#main_movie_title { */
-/* 	margin: 10px; */
-/* 	width: 100%; */
-/* } */
 /*--  main movie trailer: main.jsp ------------------------------------ */
 #main_button img {
 	height: 35px;
@@ -77,8 +73,9 @@ body {
 	position: relative;
 }
 #main_movie_description {
+	top: 3%;
     position: absolute;
-    bottom: 10%;
+    bottom: 5%;
   	float:left;
 	font-size: 1.5em;
 }
