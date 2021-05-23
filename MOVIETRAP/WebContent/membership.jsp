@@ -10,12 +10,15 @@
 * {
 	color:white;
 }
+button {
+	background-color: red;
+}
 </style>
 <script>
 function editPay() {
  var url = "MOVIETRAPServlet?command=edit_pay";
   window.open( url, "_blank_1",
- "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=700");
+ "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=400");
 }
 function editMember() {
 	 var url = "MOVIETRAPServlet?command=edit_member";
@@ -58,8 +61,8 @@ Membership
 			</td>		
 		<tr>
 			<td>
-				<button onclick="editPay()">edit payment</button>
-				<button onclick="editMember()">edit payment</button>
+				<button onclick="editPay()">Edit</button>
+				<button onclick="editMember()">Edit</button>
 				
 			</td>
 		</tr>

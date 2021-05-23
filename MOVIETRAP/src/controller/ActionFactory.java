@@ -44,6 +44,8 @@ public class ActionFactory {
 			action = new GenreMovieAction();
 		} else if (command.equals("qna_send")) {
 			action = new QnaSendAction();
+		} else if(command.equals("edit_member")) {
+			action = new EditMemberAction();
 		}
 		
 		
