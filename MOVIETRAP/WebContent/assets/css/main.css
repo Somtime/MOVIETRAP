@@ -1,9 +1,9 @@
 @charset "EUC-KR";
 @import
-	url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap')
+	url('https://fonts.googleapis.com/css?family=Oswald:400,500,600,700&display=swap')
 	;
 * {
-	font-family: poppins;
+	font-family: oswald;
 }
 body {
 	background-color: black;

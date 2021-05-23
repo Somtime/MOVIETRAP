@@ -13,6 +13,9 @@ a:hover, a:visited, a:link, a:active
 {  
     text-decoration: none;
 }
+* {
+	font-family: oswald;
+}
 </style>
 </head>
 <body style="background-color: black;">
