@@ -6,12 +6,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Membership</title>
+<style>
+* {
+	color:white;
+}
+</style>
 <script>
 function editPay() {
  var url = "MOVIETRAPServlet?command=edit_pay";
   window.open( url, "_blank_1",
- "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=330, height=500");
+ "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=700");
 }
+function editMember() {
+	 var url = "MOVIETRAPServlet?command=edit_member";
+	  window.open( url, "_blank_1",
+	 "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=700");
+	}
 </script>
 </head>
 <body>
@@ -19,11 +29,10 @@ function editPay() {
 		<img src="" />
 	</div>
 Membership
-<%-- 	<c:forEach items="${memberInfo} var="MemberVO"> --%>
 	<table id="membership">
 		<tr>
 			<td>
-				${MemberVO.email} 
+				<c:out value="${memberInfo.email}"/>			
 			</td>
 			<td>
 			<input type="checkbox" onclick="js function">Notify me with new releases!
@@ -36,25 +45,25 @@ Membership
 		</tr>
 		<tr>
 			<td>
-<%-- 			${MemberVO.pay_fname}  --%>
-<%-- 			${MemberVO.pay_lname}  --%>
-			${MemberVO.pay_num} 
-			<input style="border: none; pointer-events: none;" type="password" value="${MemberVO.pay_num_lstfour}">			
-			${MemberVO.pay_cvc} 
-			${MemberVO.pay_date}
+			<c:out value="${memberInfo.pay_name}"/>			
+				<c:out value="${memberInfo.name}"/>		
+				<c:out value="${memberInfo.phone}"/>	
+				<c:out value="${memberInfo.pay_num_lstfour}"/>		
+				<c:out value="${memberInfo.pay_name}"/>		
+<%-- 			<input style="border: none; pointer-events: none;" type="password" value="${MemberVO.pay_num_lstfour}">			 --%>
+				<c:out value="${memberInfo.newsletter}"/>		
+
 			
 			next payment date is ...
 			</td>		
 		<tr>
 			<td>
 				<button onclick="editPay()">edit payment</button>
+				<button onclick="editMember()">edit payment</button>
+				
 			</td>
 		</tr>
 	</table>
-<%-- 	</c:forEach> --%>
-
-Q & A
-
 </body>
 </html>
 
