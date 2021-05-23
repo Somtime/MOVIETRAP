@@ -60,10 +60,12 @@ a:hover, a:visited, a:link, a:active
             <div class="chat-content-container hide">
                 <div id="chat_section" class="chat-content">
                     <!-- 채팅 내용 위치 -->
+                    <div class="clear"></div>
                 </div>
                 <div id="chat_footer">
-                    <textarea id="chat_content" name="chat_content" cols="25" rows="5"></textarea>
+                    <textarea id="chat_content" name="chat_content" cols="25" rows="4"></textarea>
                     <input id="chat-submit" class="btn" type="submit" name="qna_send" value="send">
+                    <div class="clear"></div>
                 </div>
             </div>
         </div>
@@ -159,6 +161,7 @@ window.onload = function() {
 		});
 		
 }
+
 $.ajax ({
     url : 'MOVIETRAPServlet?command=qna_send',
     async : false,
@@ -169,7 +172,7 @@ $.ajax ({
         var user_id = "${sessionScope.loginUser.email}";
         
         console.log(json[0]["chat_content"]);
-        for (var i = 0; i < json.length; i++) {// todo : 왼쪾오른ㄴ쪽 구분할꺼 생각필요
+        for (var i = 0; i < json.length; i++) {
             if (user_id == json[i]["send_id"]) {
                 document.querySelector('#chat_section').innerHTML += '<div ' + 'style="float:right;"' + '>' + json[i]["chat_content"] + '</div><br>';
             } else {
