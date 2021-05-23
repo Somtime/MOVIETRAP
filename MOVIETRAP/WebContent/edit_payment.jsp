@@ -8,7 +8,7 @@
 <title>Edit Payment</title>
 </head>
 <body> 
-<form class="login_join_form">
+<form class="login_join_form" action="MOVIETRAPServlet?command=update_pay_info">
 	<div class="container">
 	<label for="payment"><b>Edit Payment</b></label>
 	<label for="id"><b>Name on Card</b></label>
