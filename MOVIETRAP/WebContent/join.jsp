@@ -49,7 +49,7 @@
 <form method="post" class="login_join_form" name="join_form" action="MOVIETRAPServlet?command=join" >
 	<div class="container">
 	
-    <label for="id"><b>Email</b></label>
+    <label for="email"><b>Email</b></label>
     <input type="email" placeholder="Enter Email" id="user_id" name="email" required>
     <div id="id_check"></div>
     
@@ -57,6 +57,9 @@
     
     <label for="id"><b>Name</b></label>
     <input type="text" placeholder="Full Name" name="name" required>
+    
+    <label for="phone"><b>Phone</b></label>
+    <input type="text" placeholder="Phone Number" name="phone" required>
     
     <label for="pwd"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="pwd" id="pwd1" required>
@@ -73,8 +76,8 @@
 	</div>
     
     <label for="payment"><b>Payment</b></label>
-	<label for="id"><b>Name on Card</b></label>
-    <input type="text" placeholder="Full Name" name="ay_name" required>
+	<label for="pay_name"><b>Name on Card</b></label>
+    <input type="text" placeholder="Full Name" name="pay_name" required>
      <!-- Card Number -->
     <input type="text" placeholder="Card Number Exclude '' - ''" name="pay_num" maxlength="12">
     <input type="text" placeholder="Last Four Digits" name="pay_num_lstfour" maxlength="4">
@@ -82,7 +85,7 @@
  
     <!-- Date Field -->
    		 <div class="month">
-        <select name="Month">
+        <select name="pay_exp_date">
           <option value="january">January</option>
           <option value="february">February</option>
           <option value="march">March</option>
@@ -99,7 +102,7 @@
        </div>
         
         <div class="year">
-        <select name="Year">
+        <select name="pay_exp_yr">
           <option value="2021">2021</option>
           <option value="2022">2022</option>
           <option value="2023">2023</option>
