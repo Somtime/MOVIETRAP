@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ include file="header.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,27 +52,52 @@ a:hover, a:visited, a:link, a:active
 
 	<!-- QNA / Chat pop up -->
 	 <form name="frm" method="post" >
-        <div class="chat-box">
-            <div class="chat-closed">Chat Now</div>
-            <div class="chat-header hide">
-                <div class="box"></div>
-                Online Support
-            </div>
-            <div class="chat-content-container hide">
-                <div id="chat_section" class="chat-content">
-                    <!-- 채팅 내용 위치 -->
-                    <div class="clear"></div>
-                </div>
-                <div id="chat_footer">
-                    <textarea id="chat_content" name="chat_content" cols="25" rows="4"></textarea>
-                    <input id="chat-submit" class="btn" type="button" name="qna_send" value="send" >
-                    <div class="clear"></div>
-                </div>
-            </div>
-        </div>
+	 	<c:if test="${loginUser.email != admin}">
+        	<!-- user login -->
+	        <div class="chat-box">
+	            <div class="chat-closed">Chat Now</div>
+	            <div class="chat-header hide">
+	                <div class="box"></div>
+	                Online Support
+	            </div>
+	            <div class="chat-content-container hide">
+	                <div id="chat_section" class="chat-content">
+	                    <!-- 채팅 내용 위치 -->
+	                    <div class="clear"></div>
+	                </div>
+	                <div id="chat_footer">
+	                    <textarea id="chat_content" name="chat_content" cols="25" rows="4"></textarea>
+	                    <input id="chat-submit" class="btn" type="button" name="qna_send" value="send" >
+	                    <div class="clear"></div>
+	                </div>
+	            </div>
+	        </div>
+        </c:if>
+        <c:if test="${loginUser.email == admin}">
+	        <!-- admin login -->
+	         <div class="chat-box">
+	            <div class="chat-closed">Chat Now</div>
+	            <div class="chat-header hide">
+	                <div class="box"></div>
+	                Online Support
+	            </div>
+	            <div class="chat-content-container hide">
+	                <div id="chat_section" class="chat-content">
+	                    <!-- 채팅 내용 위치 -->
+	                    <div class="clear"></div>
+	                </div>
+	                <div id="chat_footer">
+	                    <textarea id="chat_content" name="chat_content" cols="25" rows="4"></textarea>
+	                    <input id="chat-submit" class="btn" type="button" name="qna_send" value="send" >
+	                    <div class="clear"></div>
+	                </div>
+	            </div>
+	        </div>
+        </c:if>
+        
     </form>
 
-	<script type="text/javascript">
+<script type="text/javascript">
 //send data for each movie(thumbnail);
  function moviepage(img){
 var id = img.getAttribute('alt'); 		
@@ -80,7 +106,8 @@ var id = img.getAttribute('alt');
 	location.href = url;	  
  
 }
-//qna send
+ 
+//qna send ajax
 $('#chat-submit').click(function () {
 	var chat_content = document.getElementById("chat_content").value;
 	$.ajax ({
@@ -179,6 +206,7 @@ window.onload = function() {
 		
 }
 
+// qna_list ajax
 $.ajax ({
     url : 'MOVIETRAPServlet?command=qna_list',
     async : false,

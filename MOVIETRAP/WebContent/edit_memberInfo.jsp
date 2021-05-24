@@ -46,7 +46,7 @@
 </style>
 </head>
 <body>
-<form method="post" class="login_join_form" name="join_form" action="MOVIETRAPServlet?command=update_member_info" >
+<form method="post" class="login_join_form" name="join_form" action="MOVIETRAPServlet?command=update_member_info" enctype="multipart/form-data">
 	<div class="container">
 	<label for="image"><b>Profile Image</b></label>
 	<img name="og_img" style="height:35px; width:35px;" src="${memberInfo.image}">

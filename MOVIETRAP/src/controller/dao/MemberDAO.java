@@ -44,7 +44,7 @@ public class MemberDAO {
 		return result;
 	}
 	//�솕�썝 媛��엯 
-	public void insertMember(MemberVO memberVO) {
+	public void insertMember(MemberVO member) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "INSERT INTO member(email, pwd, name, phone, pay_name, "+
@@ -53,14 +53,14 @@ public class MemberDAO {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, memberVO.getEmail());
-			pstmt.setString(2, memberVO.getPwd());
-			pstmt.setString(3, memberVO.getName());
-			pstmt.setString(4,  memberVO.getPhone());
-			pstmt.setString(5, memberVO.getPay_name());
-			pstmt.setInt(6, memberVO.getPay_num());
-			pstmt.setInt(7, memberVO.getPay_num_lstfour());
-			pstmt.setInt(8, memberVO.getPay_cvc());
+			pstmt.setString(1, member.getEmail());
+			pstmt.setString(2, member.getPwd());
+			pstmt.setString(3, member.getName());
+			pstmt.setString(4,  member.getPhone());
+			pstmt.setString(5, member.getPay_name());
+			pstmt.setInt(6, member.getPay_num());
+			pstmt.setInt(7, member.getPay_num_lstfour());
+			pstmt.setInt(8, member.getPay_cvc());
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -69,7 +69,7 @@ public class MemberDAO {
 		
 	}
 	//membership setting: update payment
-	public void updatePayInfo(MemberVO memberVO) {
+	public void updatePayInfo(MemberVO member) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "UPDATE member SET pay_name=?, pay_num=?, "+
@@ -78,12 +78,12 @@ public class MemberDAO {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, memberVO.getPay_name());
-			pstmt.setInt(2, memberVO.getPay_num());
-			pstmt.setInt(3, memberVO.getPay_num_lstfour());
-			pstmt.setInt(4, memberVO.getPay_cvc());	
-			pstmt.setInt(5, memberVO.getPay_exp_date());
-			pstmt.setInt(6, memberVO.getPay_exp_yr());
+			pstmt.setString(1, member.getPay_name());
+			pstmt.setInt(2, member.getPay_num());
+			pstmt.setInt(3, member.getPay_num_lstfour());
+			pstmt.setInt(4, member.getPay_cvc());	
+			pstmt.setInt(5, member.getPay_exp_date());
+			pstmt.setInt(6, member.getPay_exp_yr());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -93,19 +93,20 @@ public class MemberDAO {
 		
 	}
 	//membership setting: update info
-	public void updateInfo(MemberVO memberVO) {
+	public void updateInfo(MemberVO member) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE member SET pwd=?, phone=? "+
-		"image=?, name=? WHERE email=?";
+		String sql = "UPDATE member SET pwd=?, phone=?, image=?, name=? WHERE email=?";
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, memberVO.getPwd());
-			pstmt.setString(2, memberVO.getPhone());
-			pstmt.setString(3, memberVO.getImage());
-			pstmt.setString(4, memberVO.getName());
+			pstmt.setString(1, member.getPwd());
+			pstmt.setString(2, member.getPhone());
+			pstmt.setString(3, member.getImage());
+			pstmt.setString(4, member.getName());
+			pstmt.setString(5, member.getEmail());
+			
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -123,6 +124,7 @@ public class MemberDAO {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, memberVO.getnewsletter());
+			pstmt.setString(2, memberVO.getEmail());
 		} catch (Exception e) {
 			e.printStackTrace();
 			}

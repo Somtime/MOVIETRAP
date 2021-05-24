@@ -19,20 +19,23 @@ public class UpdateMemberInfoAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "MOVIETRAPServlet?command=membership";
-		// copied from AdminProductWriteAction.java
+		
 		int sizeLimit = 5 * 1024 * 1024; // 5MB
-		String savePath = "product_images"; // product images saving folder location
+		String savePath = "assets/images"; // 
+		
 		// find actual storage path
 		HttpSession session = request.getSession();
 		ServletContext context = session.getServletContext();
 		String uploadPath = context.getRealPath(savePath);
 
-		MultipartRequest multi = new MultipartRequest(request, // request object
+		MultipartRequest multi = new MultipartRequest(
+				request, // request object
 				uploadPath, // upload file storage path
 				sizeLimit, // max file size
 				"UTF-8", // encoding type
 				new DefaultFileRenamePolicy() // same file name rename policy
 		);
+		
 		MemberVO member = new MemberVO();
 		member.setName(multi.getParameter("name"));
 		member.setPhone(multi.getParameter("phone"));
@@ -40,7 +43,7 @@ public class UpdateMemberInfoAction implements Action {
 		if(multi.getFilesystemName("image")==null) {
 			member.setImage(multi.getParameter("og_img"));
 		} else {
-			member.setImage(multi.getParameter("image"));
+			member.setImage(multi.getFilesystemName("image"));
 		}
 
 		MemberDAO mDao = MemberDAO.getInstance();

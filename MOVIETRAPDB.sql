@@ -80,3 +80,4 @@ INSERT INTO qna(cseq, send_id, rcvd_id, chat_content) values(qna_seq.nextval, 'a
 COMMIT;
 
 SELECT name FROM member WHERE email='kdpark@email.com';
+update member set phone='010-1111-1111', pwd='1111' where email='kdpark@email.com';
