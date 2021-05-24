@@ -58,7 +58,7 @@ public class MemberDAO {
 			pstmt.setString(3, member.getName());
 			pstmt.setString(4,  member.getPhone());
 			pstmt.setString(5, member.getPay_name());
-			pstmt.setInt(6, member.getPay_num());
+			pstmt.setString(6, member.getPay_num());
 			pstmt.setInt(7, member.getPay_num_lstfour());
 			pstmt.setInt(8, member.getPay_cvc());
 			pstmt.setString(9, member.getPay_exp_date());
@@ -81,7 +81,7 @@ public class MemberDAO {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, member.getPay_name());
-			pstmt.setInt(2, member.getPay_num());
+			pstmt.setString(2, member.getPay_num());
 			pstmt.setInt(3, member.getPay_num_lstfour());
 			pstmt.setInt(4, member.getPay_cvc());	
 			pstmt.setString(5, member.getPay_exp_date());
@@ -187,7 +187,7 @@ public class MemberDAO {
 				member.setRegdate(rs.getTimestamp("regdate"));
 				member.setnewsletter(rs.getString("newsletter"));
 				member.setPay_name(rs.getString("pay_name"));
-				member.setPay_num(rs.getInt("pay_num"));
+				member.setPay_num(rs.getString("pay_num"));
 				member.setPay_num_lstfour(rs.getInt("pay_num_lstfour"));
 				member.setPay_cvc(rs.getInt("pay_cvc"));
 				member.setPay_date(rs.getTimestamp("pay_date"));

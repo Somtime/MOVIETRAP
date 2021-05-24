@@ -24,7 +24,7 @@ public class JoinAction implements Action {
 		member.setPhone(request.getParameter("phone"));
 		member.setPwd(request.getParameter("pwd"));
 		member.setPay_name(request.getParameter("pay_name"));
-		member.setPay_num(Integer.parseInt(request.getParameter("pay_num")));
+		member.setPay_num(request.getParameter("pay_num"));
 		member.setPay_num_lstfour(Integer.parseInt(request.getParameter("pay_num_lstfour")));
 		member.setPay_exp_date(request.getParameter("pay_exp_date"));
 		member.setPay_exp_yr(Integer.parseInt(request.getParameter("pay_exp_yr")));

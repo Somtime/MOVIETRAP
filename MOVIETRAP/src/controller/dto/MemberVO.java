@@ -11,7 +11,7 @@ public class MemberVO {
 	private Timestamp regdate;
 	private String newsletter;
 	private String pay_name;
-	private int pay_num;
+	private String pay_num;
 	private int pay_num_lstfour;
 	private int pay_cvc;
 	private int pay_exp_yr;
@@ -78,10 +78,10 @@ public class MemberVO {
 	public void setPay_name(String pay_name) {
 		this.pay_name = pay_name;
 	}
-	public int getPay_num() {
+	public String getPay_num() {
 		return pay_num;
 	}
-	public void setPay_num(int pay_num) {
+	public void setPay_num(String pay_num) {
 		this.pay_num = pay_num;
 	}
 	public int getPay_num_lstfour() {
