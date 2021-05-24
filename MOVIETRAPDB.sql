@@ -31,6 +31,8 @@ pay_num     NUMBER,
 pay_num_lstfour NUMBER,
 pay_cvc     NUMBER  ,
 pay_date    DATE    DEFAULT SYSDATE,
+pay_exp_date   VARCHAR2(20),
+pay_exp_yr  NUMBER,  
 admin       CHAR    DEFAULT 'n'
 );
 
