@@ -27,8 +27,8 @@ regdate     DATE         DEFAULT SYSDATE,
 phone       VARCHAR2(40),
 newsletter  CHAR    DEFAULT 'n',
 pay_name    VARCHAR2(100),
-pay_num     NUMBER,
-pay_num_lstfour NUMBER,
+pay_num     VARCHAR2(40),
+pay_num_lstfour VARCHAR2(20),
 pay_cvc     NUMBER  ,
 pay_date    DATE    DEFAULT SYSDATE,
 pay_exp_date   VARCHAR2(20),
@@ -71,9 +71,9 @@ CREATE SEQUENCE qna_seq START WITH 1;
 
 -- member 
 INSERT INTO member (email, pwd, name, phone, pay_name, pay_num, pay_num_lstfour, pay_cvc) values
-('kdpark@email.com','1111','�ڱ浿','010-1111-1111','payname','111111111111','1111','111');
+('kdpark@email.com','1111','박길동','010-1111-1111','payname','111111111111','1111','111');
 INSERT INTO member (email, pwd, name, phone, admin) values
-('admin','2222','������','0','y');
+('admin','2222','관리자','0','y');
 
 -- qna
 INSERT INTO qna(cseq, send_id, rcvd_id, chat_content) values(qna_seq.nextval, 'kdpark@email.com', 'admin','����');
