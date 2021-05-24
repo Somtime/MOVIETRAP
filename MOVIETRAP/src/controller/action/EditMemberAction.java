@@ -19,10 +19,16 @@ public class EditMemberAction implements Action {
 		HttpSession session = request.getSession();
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
 		
+		
+		
+		
+		MemberDAO mDao = MemberDAO.getInstance();
+		
+		
+//		request.setAttribute("memberInfo", mDao.memberInfo(loginUser));
 		if(loginUser == null) {
 			 url = "MOVIETRAPServlet?command=index";
 		} else {
-			MemberDAO mDao = MemberDAO.getInstance();
 			MemberVO memInfo = mDao.memberInfo(loginUser.getEmail());
 			request.setAttribute("memberInfo", memInfo);
 
