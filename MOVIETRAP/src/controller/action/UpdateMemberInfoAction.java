@@ -40,6 +40,7 @@ public class UpdateMemberInfoAction implements Action {
 		member.setName(multi.getParameter("name"));
 		member.setPhone(multi.getParameter("phone"));
 		member.setPwd(multi.getParameter("pwd"));
+		member.setnewsletter(multi.getParameter("newsletter"));
 		if(multi.getFilesystemName("image")==null) {
 			member.setImage(multi.getParameter("og_img"));
 		} else {

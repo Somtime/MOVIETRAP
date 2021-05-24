@@ -78,8 +78,8 @@ button {
 					<td>*************</td>
 				</tr>
 				<tr>
-					<td><c:out value="${memberInfo.newsletter}" /></td>
-					<td><input type="checkbox" />Notify me with new releases!</td>
+					<td><div id="newsletter" style="display:hidden;"><c:out value="${memberInfo.newsletter}" /></div></td>
+					<td><div id="message"></div></td>
 				</tr>
 			</table>
 			<button onclick="editMember()">Edit</button>
@@ -104,6 +104,15 @@ button {
 				</table>
 			 <button onclick="editPay()">Edit</button>
 	</div>
+<script>
+var newsletter_yn = document.getElementById("newsletter");
+
+if (newsletter_yn.equals("y")) {
+	$("#message").text("Subscribed to our newsletter!");
+} else {
+	$("#message").text("Not subscribed to the newsletter!")
+}
+</script>
 </body>
 </html>
 

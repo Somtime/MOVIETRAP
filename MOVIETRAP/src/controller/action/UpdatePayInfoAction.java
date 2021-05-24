@@ -27,7 +27,7 @@ public class UpdatePayInfoAction implements Action {
 		member.setPay_num_lstfour(Integer.parseInt(request.getParameter("pay_num_lstfour")));
 		member.setPay_cvc(Integer.parseInt(request.getParameter("pay_cvc")));
 		member.setPay_exp_yr(Integer.parseInt(request.getParameter("pay_exp_yr")));
-		member.setPay_exp_date(Integer.parseInt(request.getParameter("pay_exp_yr")));
+		member.setPay_exp_date(request.getParameter("pay_exp_date"));
 
 		MemberDAO mDao = MemberDAO.getInstance();
 		mDao.updatePayInfo(member);

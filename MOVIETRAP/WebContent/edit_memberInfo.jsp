@@ -70,6 +70,7 @@
 	  <p id="number" class="invalid">A <b>number</b></p>
 	  <p id="length" class="invalid">Minimum <b>8 characters</b></p>
 	</div>
+	<input type="checkbox" value="y"/>Notify me with new releases!
     <!-- Buttons -->
     <button type="submit" id="submit">Update</button>    
 </div>
@@ -134,7 +135,7 @@
       var numbers = /[0-9]/g;
       if(myInput.value.match(numbers)) {  
         number.classList.remove("invalid");
-        number.classList.add("valid");
+        number.≈.add("valid");
       } else {
         number.classList.remove("valid");
         number.classList.add("invalid");
