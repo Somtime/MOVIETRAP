@@ -46,7 +46,7 @@ public class QnaListAction implements Action {
 			jsonArray.add(jsonObject);
 		}
 		
-		
+		System.out.println(jsonArray);
 		response.getWriter().print(jsonArray);
 
 	}

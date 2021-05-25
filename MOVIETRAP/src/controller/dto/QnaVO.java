@@ -3,12 +3,27 @@ package controller.dto;
 import java.sql.Timestamp;
 
 public class QnaVO {
+	private int qseq;
 	private int cseq;
 	private String send_id;
 	private String rcvd_id;
 	private String chat_content;
-	private Timestamp chat_time;
+	private String regdate;
 	
+	
+	
+	public int getQseq() {
+		return qseq;
+	}
+	public void setQseq(int qseq) {
+		this.qseq = qseq;
+	}
+	public String getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
+	}
 	public int getCseq() {
 		return cseq;
 	}
@@ -33,11 +48,11 @@ public class QnaVO {
 	public void setChat_content(String chat_content) {
 		this.chat_content = chat_content;
 	}
-	public Timestamp getChat_time() {
-		return chat_time;
+	public String getChat_time() {
+		return regdate;
 	}
-	public void setChat_time(Timestamp chat_time) {
-		this.chat_time = chat_time;
+	public void setChat_time(String chat_time) {
+		this.regdate = chat_time;
 	}
 
 }

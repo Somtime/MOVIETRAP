@@ -31,13 +31,19 @@ public class QnaSendAction implements Action {
 		QnaVO qna = new QnaVO();
 		
 		// Qna Insert
-		if(qna_content != null) {			
-			qna.setSend_id(loginUser.getEmail());
-			qna.setRcvd_id("admin");
-			qna.setChat_content(request.getParameter("chat_content"));		
-			
-			qDao.qnaWrite(qna);	
+		int cseq = qDao.checkChat(loginUser.getEmail());
+		
+		if (cseq != 0) {
+			qDao.insertChat(loginUser.getEmail());
+			cseq = qDao.checkChat(loginUser.getEmail());
 		}
+		
+		qna.setSend_id(loginUser.getEmail());
+		qna.setRcvd_id("admin");
+		qna.setChat_content(request.getParameter("chat_content"));		
+		
+		qDao.qnaWrite(qna,cseq);	
+	
 		//
 		
 		//response.getWriter().print();

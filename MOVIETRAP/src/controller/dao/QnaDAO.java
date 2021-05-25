@@ -16,18 +16,62 @@ public class QnaDAO {
 	public static QnaDAO getInstance() {
 		return instance;
 	}
-	
-	public void qnaWrite(QnaVO qna) {
+	public int checkChat(String email) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO qna(cseq, send_id, rcvd_id, chat_content) VALUES(qna_seq.nextval, ?, ?, ?)";
+		ResultSet rs = null;
+		int cseq = 0;
+		
+		String sql = "SELECT cseq FROM chat WHERE id= ? ";
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, email);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				cseq = rs.getInt("cseq");
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return cseq;
+	}
+	
+	public void insertChat(String email) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql ="INSERT INTO chat (cseq,id) VALUES(chat_seq.nextval, ?)";
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, email);
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
+	
+	public void qnaWrite(QnaVO qna, int cseq) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "INSERT INTO qna(qseq, cseq, send_id, rcvd_id, chat_content) VALUES(qna_seq.nextval, ?, ?, ?, ?)";
 
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, qna.getSend_id());
-			pstmt.setString(2, qna.getRcvd_id());
-			pstmt.setString(3, qna.getChat_content());
+			pstmt.setInt(1, cseq);
+			pstmt.setString(2, qna.getSend_id());
+			pstmt.setString(3, qna.getRcvd_id());
+			pstmt.setString(4, qna.getChat_content());
 			pstmt.executeQuery();
 			
 		} catch(Exception e) {
@@ -42,7 +86,7 @@ public class QnaDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM qna WHERE send_id=? OR rcvd_id=? ";
+		String sql = "SELECT * FROM qna WHERE send_id=? OR rcvd_id=? ORDER BY cseq";
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -53,11 +97,11 @@ public class QnaDAO {
 			
 			while (rs.next()) {
 				QnaVO qna = new QnaVO();
-				qna.setCseq(rs.getInt("cseq"));
+				qna.setCseq(rs.getInt("cseq")); 
 				qna.setRcvd_id(rs.getString("rcvd_id"));
 				qna.setSend_id(rs.getString("send_id"));
 				qna.setChat_content(rs.getString("chat_content"));
-				qna.setChat_time(rs.getTimestamp("chat_time"));
+				qna.setRegdate(rs.getString("regdate"));
 				qnaList.add(qna);
 			}
 			
@@ -74,7 +118,7 @@ public class QnaDAO {
 		Connection conn= null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM qna";
+		String sql = "SELECT * FROM qna ORDER BY cseq";
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -85,7 +129,7 @@ public class QnaDAO {
 				qna.setRcvd_id(rs.getString("rcvd_id"));
 				qna.setSend_id(rs.getString("send_id"));
 				qna.setChat_content(rs.getString("chat_content"));
-				qna.setChat_time(rs.getTimestamp("chat_time"));
+				qna.setRegdate(rs.getString("regdate"));
 				qnaList.add(qna);
 					
 			}

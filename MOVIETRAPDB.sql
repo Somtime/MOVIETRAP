@@ -58,7 +58,7 @@ DROP TABLE chat CASCADE CONSTRAINTS;
 CREATE TABLE chat(
 cseq    NUMBER(5) PRIMARY KEY,
 id      VARCHAR2(20) REFERENCES member(email),
-regdate    VARCHAR2(20) DEFAULT SYSDATE
+regdate DATE  DEFAULT SYSDATE
 );
 
 
@@ -76,7 +76,7 @@ cseq      NUMBER  REFERENCES chat(cseq),
 send_id   VARCHAR2(50)   REFERENCES member(email),
 rcvd_id   VARCHAR2(50)    REFERENCES member(email),
 chat_content VARCHAR2(50)   NOT NULL,
-regdate    TIMESTAMP      DEFAULT SYSDATE 
+regdate    DATE      DEFAULT SYSDATE 
 );
 
 --QNA sequence
@@ -91,11 +91,16 @@ INSERT INTO member (email, pwd, name, phone, pay_name, pay_num, pay_num_lstfour,
 INSERT INTO member (email, pwd, name, phone, admin) values
 ('admin','2222','관리자','0','y');
 
+--chat
+INSERT INTO chat(cseq, id) values(chat_seq.nextval, 'kdpark@email.com');
+
 -- qna
-INSERT INTO qna(qseq, cseq, send_id, rcvd_id, chat_content) values(qna_seq.nextval, 'kdpark@email.com', 'admin','question');
-INSERT INTO qna(qseq, cseq, send_id, rcvd_id, chat_content) values(qna_seq.nextval, 'admin', 'kdpark@email.com','answer');
+INSERT INTO qna(qseq, cseq, send_id, rcvd_id, chat_content) values(qna_seq.nextval,1,'kdpark@email.com', 'admin','question');
+INSERT INTO qna(qseq, cseq, send_id, rcvd_id, chat_content) values(qna_seq.nextval,1,'admin', 'kdpark@email.com','answer');
 
 COMMIT;
 
 SELECT name FROM member WHERE email='kdpark@email.com';
 update member set phone='010-1111-1111', pwd='1111' where email='kdpark@email.com';
+
+SELECT TO_CHAR(regdate,'YYYY-MM-DD HH24:MI') FROM qna
