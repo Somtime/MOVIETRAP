@@ -53,14 +53,30 @@ edit_date   DATE    DEFAULT SYSDATE
 DROP SEQUENCE review_seq;
 CREATE SEQUENCE review_seq START WITH 1; 
 
+--Chat Table
+DROP TABLE chat CASCADE CONSTRAINTS;
+CREATE TABLE chat(
+cseq    NUMBER(5) PRIMARY KEY,
+id      VARCHAR2(20) REFERENCES member(email),
+regdate    VARCHAR2(20) DEFAULT SYSDATE
+);
+
+
+-- Chat sequence
+DROP SEQUENCE chat_seq;
+CREATE SEQUENCE chat_seq START WITH 1; 
+
+
+
 -- Qna Table
 DROP TABLE qna CASCADE CONSTRAINTS;
 CREATE TABLE qna (
-cseq        NUMBER  PRIMARY KEY,
+qseq      NUMBER  PRIMARY KEY,
+cseq      NUMBER  REFERENCES chat(cseq),
 send_id   VARCHAR2(50)   REFERENCES member(email),
 rcvd_id   VARCHAR2(50)    REFERENCES member(email),
 chat_content VARCHAR2(50)   NOT NULL,
-chat_time    TIMESTAMP      DEFAULT SYSDATE 
+regdate    TIMESTAMP      DEFAULT SYSDATE 
 );
 
 --QNA sequence
@@ -76,8 +92,8 @@ INSERT INTO member (email, pwd, name, phone, admin) values
 ('admin','2222','관리자','0','y');
 
 -- qna
-INSERT INTO qna(cseq, send_id, rcvd_id, chat_content) values(qna_seq.nextval, 'kdpark@email.com', 'admin','����');
-INSERT INTO qna(cseq, send_id, rcvd_id, chat_content) values(qna_seq.nextval, 'admin', 'kdpark@email.com','�亯');
+INSERT INTO qna(qseq, cseq, send_id, rcvd_id, chat_content) values(qna_seq.nextval, 'kdpark@email.com', 'admin','question');
+INSERT INTO qna(qseq, cseq, send_id, rcvd_id, chat_content) values(qna_seq.nextval, 'admin', 'kdpark@email.com','answer');
 
 COMMIT;
 
