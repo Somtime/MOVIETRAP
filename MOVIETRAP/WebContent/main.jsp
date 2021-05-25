@@ -76,7 +76,7 @@ a:hover, a:visited, a:link, a:active
         <c:if test="${loginUser.email == admin}">
 	        <!-- admin login -->
 	         <div class="chat-box">
-	            <div class="chat-closed">Chat Now</div>
+	            <div class="chat-closed">Chat Now - Admin</div>
 	            <div class="chat-header hide">
 	                <div class="box"></div>
 	                Online Support
@@ -207,6 +207,8 @@ window.onload = function() {
 }
 
 // qna_list ajax
+
+
 $.ajax ({
     url : 'MOVIETRAPServlet?command=qna_list',
     async : false,
@@ -216,7 +218,6 @@ $.ajax ({
         const json = JSON.parse(result);
         var user_id = "${sessionScope.loginUser.email}";
         
-        console.log(json[0]["chat_content"]);
         for (var i = 0; i < json.length; i++) {
             if (user_id == json[i]["send_id"]) {
                 document.querySelector('#chat_section').innerHTML += '<div ' + 'style="float:right;"' + '>' + json[i]["chat_content"] + '</div><br>';
@@ -225,7 +226,7 @@ $.ajax ({
             }
         }
         
-        
+
     },
     error : function() {
         console.log("ajax : fail")

@@ -12,11 +12,11 @@
 	<div class="container">
 	<label for="payment"><b>Edit Payment</b></label>
 	<label for="id"><b>Name on Card</b></label>
-    <input type="text" placeholder="Full Name" name="pay_name" required>
+    <input type="text" placeholder="${memberInfo.name}" name="pay_name" required>
 	
 	     <!-- Card Number -->
-	    <input type="text" placeholder="Card Number Exclude '' - ''" name="pay_num" maxlength="12">
-	    <input type="text" placeholder="Last Four Digits" name="pay_num_lstfour" maxlength="4">
+	    <input type="text" placeholder="${memberInfo.pay_num}" name="pay_num" maxlength="12">
+	    <input type="text" placeholder="${memberInfo.pay_num_lstfour}" name="pay_num_lstfour" maxlength="4">
 	    
 	 
 	    <!-- Date Field -->
@@ -51,7 +51,7 @@
 	        </div>
 	    <!-- Card Verification Field -->
 	
-	        <input type="text" placeholder="CVV" maxlength="4" name="pay_cvc">
+	        <input type="text" placeholder="${memberInfo.pay_cvc}" maxlength="4" name="pay_cvc">
 	        <p style="font-size: .8rem;">3 or 4 digits usually found on the signature strip</p>
 	 
 	    <!-- Buttons -->
