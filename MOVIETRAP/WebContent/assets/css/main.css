@@ -169,6 +169,15 @@ div#trend_movie img:hover {
 	bottom: 0;
 	box-shadow: 0 0 0.1em #000;
 }
+.chat_list {
+	float: left;
+	width: 250px;
+	height: 300px;
+	background: white;
+	border: 1px solid #777;
+	overflow-y: auto;
+	word-wrap: break-word;
+}
 
 .chat-closed {
 	height: 50px;
@@ -193,6 +202,7 @@ div#trend_movie img:hover {
 }
 
 .chat-content-container {
+	float: right;
 	width: 250px;
 	height: 300px;
 	background: white;

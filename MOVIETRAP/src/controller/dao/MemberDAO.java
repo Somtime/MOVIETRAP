@@ -48,7 +48,7 @@ public class MemberDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "INSERT INTO member(email, pwd, name, phone, pay_name, "+
-		" pay_num, pay_num_lstfour, pay_cvc, pay_exp_date, pay_exp_yr VALUES(?,?,?,?,?,?,?,?,?,?)";
+		" pay_num, pay_num_lstfour, pay_cvc, pay_exp_date, pay_exp_yr) VALUES(?,?,?,?,?,?,?,?,?,?)";
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -63,6 +63,8 @@ public class MemberDAO {
 			pstmt.setInt(8, member.getPay_cvc());
 			pstmt.setString(9, member.getPay_exp_date());
 			pstmt.setInt(10, member.getPay_exp_yr());
+			
+			pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -110,6 +112,8 @@ public class MemberDAO {
 			pstmt.setString(5, member.getEmail());
 			
 			pstmt.executeUpdate();
+			System.out.println(member.getEmail());
+			System.out.println(member.getImage());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

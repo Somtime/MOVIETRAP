@@ -25,6 +25,8 @@ public class UpdateMemberInfoAction implements Action {
 		
 		// find actual storage path
 		HttpSession session = request.getSession();
+		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+		
 		ServletContext context = session.getServletContext();
 		String uploadPath = context.getRealPath(savePath);
 
@@ -37,6 +39,7 @@ public class UpdateMemberInfoAction implements Action {
 		);
 		
 		MemberVO member = new MemberVO();
+		member.setEmail(loginUser.getEmail());
 		member.setName(multi.getParameter("name"));
 		member.setPhone(multi.getParameter("phone"));
 		member.setPwd(multi.getParameter("pwd"));

@@ -55,11 +55,16 @@ a:hover, a:visited, a:link, a:active
 	 	<c:if test="${loginUser.email != admin}">
         	<!-- user login -->
 	        <div class="chat-box">
+	       		
 	            <div class="chat-closed">Chat Now</div>
 	            <div class="chat-header hide">
 	                <div class="box"></div>
 	                Online Support
 	            </div>
+	            <div class="chat_list hide">
+	        		Naga
+	        	
+	        	</div>
 	            <div class="chat-content-container hide">
 	                <div id="chat_section" class="chat-content">
 	                    <!-- 채팅 내용 위치 -->
@@ -80,6 +85,10 @@ a:hover, a:visited, a:link, a:active
 	            <div class="chat-header hide">
 	                <div class="box"></div>
 	                Online Support
+	            </div>
+	             <div class="chat-header hide">
+	                <div class="box"></div>
+	                Chat User Name
 	            </div>
 	            <div class="chat-content-container hide">
 	                <div id="chat_section" class="chat-content">
@@ -145,12 +154,12 @@ buttonRight.addEventListener('click', function(){
 //qna
  $(document).ready(function(){
     $(".chat-closed").on("click",function(e){
-        $(".chat-header,.chat-content-container").removeClass("hide");
+        $(".chat-header,.chat-content-container,.chat_list").removeClass("hide");
         $(this).addClass("hide");
     });
 
     $(".chat-header").on("click",function(e){
-        $(".chat-header,.chat-content-container").addClass("hide");
+        $(".chat-header,.chat-content-container,.chat_list").addClass("hide");
         $(".chat-closed").removeClass("hide");
     });
 });

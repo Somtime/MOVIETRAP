@@ -103,4 +103,6 @@ COMMIT;
 SELECT name FROM member WHERE email='kdpark@email.com';
 update member set phone='010-1111-1111', pwd='1111' where email='kdpark@email.com';
 
-SELECT TO_CHAR(regdate,'YYYY-MM-DD HH24:MI') FROM qna
+SELECT TO_CHAR(regdate,'YYYY-MM-DD HH24:MI') FROM qna;
+
+SELECT * FROM member;
