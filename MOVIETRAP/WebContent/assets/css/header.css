@@ -16,7 +16,13 @@ header {
 	float: right;
 	align-content: center; 
 }
-
+#genre_select {
+	margin-right: 10%;
+	margin-top: 0.8%;
+	margin-left: 1.5%;
+	padding: 10px;
+	font-size: 1.5em;
+}
 #logo {
 	margin: 15px;
 	float: left;

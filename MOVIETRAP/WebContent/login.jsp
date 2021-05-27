@@ -25,15 +25,14 @@ function PwdFunction() {
 	    <label for="pwd"><b>Password</b></label>
 	    <input type="password" id="login_pwd" placeholder="Enter Password" name="pwd" required>
 	    <input type="checkbox" onclick="PwdFunction()">Show Password
-	    <button type="submit">Login</button>
+	    <button type="submit" class="button">Login</button>
 	    
-   		<div class="container" style="background-color:#f1f1f1">
-   		
-	    <button type="button" class="cancelbtn">Cancel</button>
-	    <span class="psw">Forgot <a href="#">password?</a><br>
-	  	<a href="MOVIETRAPServlet?command=join_form">Sign up</a></span>    
+	       			    <span class="psw">Forgot <a href="#">password?</a><br>
+	  	<a href="MOVIETRAPServlet?command=join_form">Sign up</a></span>  
+<!--    		<div class="container" style="background-color:#f1f1f1"> -->
+   		  
 	
-		</div>
+<!-- 		</div> -->
 	</div>
 </form>
 </body>
