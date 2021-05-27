@@ -13,6 +13,8 @@ GRANT create view, alter user to MOVIETRAPDB;
 GRANT dba to MOVIETRAPDB;
 COMMIT;
 
+select * from member;
+insert into member (image) values("default.png") where name="Gum" ;
 
 ---- ���̺� �� ������ ����-----
 

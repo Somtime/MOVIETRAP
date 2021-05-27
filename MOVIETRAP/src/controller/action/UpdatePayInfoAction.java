@@ -20,11 +20,11 @@ public class UpdatePayInfoAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "MOVIETRAPServlet?command=membership";
 		
-		request.setCharacterEncoding("utf=8");
+		request.setCharacterEncoding("UTF-8");
 		MemberVO member = new MemberVO();
 		member.setPay_name(request.getParameter("pay_name"));
 		member.setPay_num(request.getParameter("pay_num"));
-		member.setPay_num_lstfour(Integer.parseInt(request.getParameter("pay_num_lstfour")));
+		member.setPay_num_lstfour(request.getParameter("pay_num_lstfour"));
 		member.setPay_cvc(Integer.parseInt(request.getParameter("pay_cvc")));
 		member.setPay_exp_yr(Integer.parseInt(request.getParameter("pay_exp_yr")));
 		member.setPay_exp_date(request.getParameter("pay_exp_date"));
