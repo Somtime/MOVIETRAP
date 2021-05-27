@@ -54,6 +54,10 @@ public class ActionFactory {
  			action = new UpdatePayInfoAction();
  		} else if (command.equals("qna_list")) {
  			action = new QnaListAction();
+ 		} else if (command.equals("admin_chat_list")) {
+ 			action = new AdminChatListAction();
+ 		} else if (command.equals("admin_qna_list")) {
+ 			action = new AdminQnaListAction();
  		}
 		
 		

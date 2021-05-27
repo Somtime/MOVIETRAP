@@ -52,43 +52,124 @@ a:hover, a:visited, a:link, a:active
 
 	<!-- QNA / Chat pop up -->
 	 <form name="frm" method="post" >
-	 	<c:if test="${loginUser.email != admin}">
-        	<!-- user login -->
+	 	<c:if test="${loginUser.email == 'admin'}">
+        	<!-- admin login -->
+        	 <script type="text/javascript">
+	        	$.ajax ({
+	        		url : "MOVIETRAPServlet?command=admin_chat_list",
+	        		type : "get",
+	        		datatype : "json",
+	        		success : function(result) {
+	        			const json = JSON.parse(result)
+	        			console.log("admin chat list : success")
+	        			
+	        			for(var i = 0; i < json.length; i++) {
+	        				console.log(json[i]["cseq"])
+	        				console.log(json[i]["id"])
+	        				console.log(json[i]["regdate"])
+	        				
+        				  document.querySelector('.chat_list').innerHTML += '<div><button type="button" id="qna_list_btn" onclick="admin_qna_list()" class="qna_list_button" value=' + json[i]["cseq"] + '>' + json[i]["id"] + '</button></div><br>';
+        				  
+	        			}
+	        		},
+	        		error : function() {
+	        			console.log("admin chat list : fail")
+	        		}
+	        	});
+	        	
+	        	function admin_qna_list() {
+	        		var cseq = document.getElementById("qna_list_btn").value;
+	        		var user_id = "${sessionScope.loginUser.email}";
+	        		
+	        		$.ajax ({
+	        			url : "MOVIETRAPServlet?command=admin_qna_list",
+	        			type : "get",
+	        			datatype : "json",
+	        			data : {
+	        				"cseq" : cseq
+	        			},
+	        			success : function(result) {
+	        				const json = JSON.parse(result)
+	        				console.log("admin qna list : success")
+	                        document.querySelector('#user_name_box').innerHTML += '<div>' + json[0]["send_id"] + '</div>';
+
+	        				for (var i = 0; i < json.length; i++) {
+			                    if (user_id == json[i]["send_id"]) {
+			                        document.querySelector('#chat_section').innerHTML += '<div ' + 'style="float:right;"' + '>' + json[i]["chat_content"] + '</div><br>';
+			                    } else {
+			                        document.querySelector('#chat_section').innerHTML += '<div ' + 'style="float:left;"' + '>' + json[i]["chat_content"] + '</div><br>';
+		                    	}
+			                }
+	        			},
+	        			error : function() {
+	        				console.log("admin qna list : fail")
+	        			}
+	        		});
+	        	}
+	        </script>
 	        <div class="chat-box">
 	       		
-	            <div class="chat-closed">Chat Now</div>
-	            <div class="chat-header hide">
+	            <div class="chat-closed">Chat Now - Admin</div>
+	            <div class="chat-header hide" style="float:left">
 	                <div class="box"></div>
 	                Online Support
 	            </div>
+	             <div id="user_name_box" class="chat-header hide" style="float:right">
+	                <div  class="box">
+	                	<!-- User Name -->
+	                </div>
+	            </div>
+	            <div class="clear"></div>
 	            <div class="chat_list hide">
-	        		Naga
 	        	
 	        	</div>
 	            <div class="chat-content-container hide">
 	                <div id="chat_section" class="chat-content">
 	                    <!-- 채팅 내용 위치 -->
-	                    <div class="clear"></div>
 	                </div>
 	                <div id="chat_footer">
 	                    <textarea id="chat_content" name="chat_content" cols="25" rows="4"></textarea>
 	                    <input id="chat-submit" class="btn" type="button" name="qna_send" value="send" >
-	                    <div class="clear"></div>
 	                </div>
 	            </div>
+	            <div class="clear"></div>
 	        </div>
         </c:if>
-        <c:if test="${loginUser.email == admin}">
-	        <!-- admin login -->
+        <c:if test="${loginUser.email != 'admin'}">
+        
+	        <!-- user login -->
+	        <script type="text/javascript">
+			     // qna_list ajax
+			        $.ajax ({
+			            url : 'MOVIETRAPServlet?command=qna_list',
+			            async : false,
+			            type : 'get',
+			            datatype : 'json',
+			            success : function(result) {
+			                const json = JSON.parse(result);
+			                var user_id = "${sessionScope.loginUser.email}";
+			                
+			                for (var i = 0; i < json.length; i++) {
+			                    if (user_id == json[i]["send_id"]) {
+			                        document.querySelector('#chat_section').innerHTML += '<div ' + 'style="float:right;"' + '>' + json[i]["chat_content"] + '</div><br>';
+			                    } else {
+			                        document.querySelector('#chat_section').innerHTML += '<div ' + 'style="float:left;"' + '>' + json[i]["chat_content"] + '</div><br>';
+			                    }
+			                }
+			                
+		
+			            },
+			            error : function() {
+			                console.log("qna list : fail")
+			            }
+			        });
+	        </script>
+	        
 	         <div class="chat-box">
-	            <div class="chat-closed">Chat Now - Admin</div>
+	            <div class="chat-closed">Chat Now</div>
 	            <div class="chat-header hide">
 	                <div class="box"></div>
 	                Online Support
-	            </div>
-	             <div class="chat-header hide">
-	                <div class="box"></div>
-	                Chat User Name
 	            </div>
 	            <div class="chat-content-container hide">
 	                <div id="chat_section" class="chat-content">
@@ -102,6 +183,7 @@ a:hover, a:visited, a:link, a:active
 	                </div>
 	            </div>
 	        </div>
+	       
         </c:if>
         
     </form>
@@ -117,7 +199,7 @@ var id = img.getAttribute('alt');
 }
  
 //qna send ajax
-$('#chat-submit').click(function () {
+$('#chat-submit').click(function() {
 	var chat_content = document.getElementById("chat_content").value;
 	$.ajax ({
 		url : "MOVIETRAPServlet?command=qna_send",
@@ -135,8 +217,6 @@ $('#chat-submit').click(function () {
 		}
 		
 	});
-	
-	
 });
 
 //pic slide 
@@ -181,7 +261,7 @@ window.onload = function() {
 				var trailer_id = json["trailer_id"]
 				
 				//main_trailer play button
-				console.log("trailer_id: " +trailer_id)
+				//console.log("trailer_id: " +trailer_id)
 				document.querySelector('#trailer_playbtn').href += 'MOVIETRAPServlet?command=moviepage&movieid='+trailer_id;
 				
 				//main_trailer_detail 삽입
@@ -193,7 +273,7 @@ window.onload = function() {
 				// 메인 동영상 src 인기 영상 트레일러로 변경
 				
 				if (trailerkey != null) {				
-					console.log(trailerkey);
+					//console.log(trailerkey);
 					document.getElementById('main_movie_frame').src = "https://youtube.com/embed/" + trailerkey + "?autoplay=1&mute=1";
 				}	
 				// 메인 동영상 src 인기 영상 트레일러로 변경 끝 
@@ -208,39 +288,14 @@ window.onload = function() {
 
 			},
 			error : function() {
-				console.log("ajax : fail")
+				console.log("trend movie : fail")
 			}
 			
 		});
 		
 }
 
-// qna_list ajax
 
-
-$.ajax ({
-    url : 'MOVIETRAPServlet?command=qna_list',
-    async : false,
-    type : 'get',
-    datatype : 'json',
-    success : function(result) {
-        const json = JSON.parse(result);
-        var user_id = "${sessionScope.loginUser.email}";
-        
-        for (var i = 0; i < json.length; i++) {
-            if (user_id == json[i]["send_id"]) {
-                document.querySelector('#chat_section').innerHTML += '<div ' + 'style="float:right;"' + '>' + json[i]["chat_content"] + '</div><br>';
-            } else {
-                document.querySelector('#chat_section').innerHTML += '<div ' + 'style="float:left;"' + '>' + json[i]["chat_content"] + '</div><br>';
-            }
-        }
-        
-
-    },
-    error : function() {
-        console.log("ajax : fail")
-    }
-});
 </script>
 </body>
 </html>

@@ -179,6 +179,14 @@ div#trend_movie img:hover {
 	word-wrap: break-word;
 }
 
+.qna_list_button {
+	width: 100%;
+	font-size: medium;
+	border: none;
+	background-color: inherit;
+	margin: 1% 0 1% 0;	
+}
+
 .chat-closed {
 	height: 50px;
 	left: 90%;

@@ -5,8 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import org.json.simple.JSONObject;
-
+import controller.dto.ChatVO;
 import controller.dto.QnaVO;
 import util.DBManager;
 
@@ -141,8 +140,77 @@ public class QnaDAO {
 		return qnaList;
 	}
 	
+	// Admin : 모든 채팅 목록을 불러오는 메소드
+	public ArrayList<ChatVO> listChat() {
+		ArrayList<ChatVO> chatList = new ArrayList<>();
+		Connection conn= null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM chat ORDER BY regdate";
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				ChatVO chat = new ChatVO();
+				
+				chat.setCseq(rs.getInt("cseq"));
+				chat.setId(rs.getString("id"));
+				chat.setRegdate(rs.getString("regdate"));
+				
+				chatList.add(chat);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		
+		return chatList;
+	}
+	
+	public ArrayList<QnaVO> qnaGet(int cseq) {
+		ArrayList<QnaVO> qnaList = new ArrayList<>();
+		Connection conn= null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM qna WHERE cseq=?";
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, cseq);
+			
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				QnaVO qna = new QnaVO();
+				
+				qna.setQseq(rs.getInt("qseq"));
+				qna.setCseq(rs.getInt("cseq"));
+				qna.setSend_id(rs.getString("send_id"));
+				qna.setRcvd_id(rs.getString("rcvd_id"));
+				qna.setChat_content(rs.getString("chat_content"));
+				qna.setRegdate(rs.getString("regdate"));
+				
+				qnaList.add(qna);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		
+		return qnaList;
+	}
+	
 	//selectByMember (search by member id)
 	//listAll * from * 
 	//listMsgs where userid (session) timestamp desc 
 	//public ArrayList<QnaVO> msgsList()
+	
+	
+	
 }

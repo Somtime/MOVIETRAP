@@ -1,7 +1,5 @@
 package controller.dto;
 
-import java.sql.Timestamp;
-
 public class QnaVO {
 	private int qseq;
 	private int cseq;
