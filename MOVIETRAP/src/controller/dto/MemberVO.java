@@ -12,7 +12,7 @@ public class MemberVO {
 	private String newsletter;
 	private String pay_name;
 	private String pay_num;
-	private int pay_num_lstfour;
+	private String pay_num_lstfour;
 	private int pay_cvc;
 	private int pay_exp_yr;
 	private String pay_exp_date;
@@ -84,10 +84,10 @@ public class MemberVO {
 	public void setPay_num(String pay_num) {
 		this.pay_num = pay_num;
 	}
-	public int getPay_num_lstfour() {
+	public String getPay_num_lstfour() {
 		return pay_num_lstfour;
 	}
-	public void setPay_num_lstfour(int pay_num_lstfour) {
+	public void setPay_num_lstfour(String pay_num_lstfour) {
 		this.pay_num_lstfour = pay_num_lstfour;
 	}
 	public int getPay_cvc() {

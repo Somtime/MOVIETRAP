@@ -59,7 +59,7 @@ public class MemberDAO {
 			pstmt.setString(4,  member.getPhone());
 			pstmt.setString(5, member.getPay_name());
 			pstmt.setString(6, member.getPay_num());
-			pstmt.setInt(7, member.getPay_num_lstfour());
+			pstmt.setString(7, member.getPay_num_lstfour());
 			pstmt.setInt(8, member.getPay_cvc());
 			pstmt.setString(9, member.getPay_exp_date());
 			pstmt.setInt(10, member.getPay_exp_yr());
@@ -84,7 +84,7 @@ public class MemberDAO {
 			
 			pstmt.setString(1, member.getPay_name());
 			pstmt.setString(2, member.getPay_num());
-			pstmt.setInt(3, member.getPay_num_lstfour());
+			pstmt.setString(3, member.getPay_num_lstfour());
 			pstmt.setInt(4, member.getPay_cvc());	
 			pstmt.setString(5, member.getPay_exp_date());
 			pstmt.setInt(6, member.getPay_exp_yr());
@@ -100,7 +100,7 @@ public class MemberDAO {
 	public void updateInfo(MemberVO member) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE member SET pwd=?, phone=?, image=?, name=? WHERE email=?";
+		String sql = "UPDATE member SET pwd=?, phone=?, image=?, name=?, newsletter=? WHERE email=?";
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -110,10 +110,14 @@ public class MemberDAO {
 			pstmt.setString(3, member.getImage());
 			pstmt.setString(4, member.getName());
 			pstmt.setString(5, member.getEmail());
+			pstmt.setString(6, member.getNewsletter());
 			
 			pstmt.executeUpdate();
-			System.out.println(member.getEmail());
+			System.out.println(member.getNewsletter());
 			System.out.println(member.getImage());
+			System.out.println(member.getPhone());
+			System.out.println(member.getName());
+			System.out.println(member.getPwd());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -121,21 +125,21 @@ public class MemberDAO {
 		}
 		
 	}
-	//membership setting:  newsletter checkbox
-	public void newsletterUpdate(MemberVO memberVO) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String sql = "UPDATE member SET newsletter=? WHERE email=?";
-		try {
-			conn = DBManager.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, memberVO.getnewsletter());
-			pstmt.setString(2, memberVO.getEmail());
-		} catch (Exception e) {
-			e.printStackTrace();
-			}
-		DBManager.close(conn, pstmt);
-	}
+//	//membership setting:  newsletter checkbox
+//	public void newsletterUpdate(MemberVO memberVO) {
+//		Connection conn = null;
+//		PreparedStatement pstmt = null;
+//		String sql = "UPDATE member SET newsletter=? WHERE email=?";
+//		try {
+//			conn = DBManager.getConnection();
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setString(1, memberVO.getnewsletter());
+//			pstmt.setString(2, memberVO.getEmail());
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			}
+//		DBManager.close(conn, pstmt);
+//	}
 	
 	// loginCheck
 	public int loginCheck(String email, String pwd) {
@@ -192,7 +196,7 @@ public class MemberDAO {
 				member.setnewsletter(rs.getString("newsletter"));
 				member.setPay_name(rs.getString("pay_name"));
 				member.setPay_num(rs.getString("pay_num"));
-				member.setPay_num_lstfour(rs.getInt("pay_num_lstfour"));
+				member.setPay_num_lstfour(rs.getString("pay_num_lstfour"));
 				member.setPay_cvc(rs.getInt("pay_cvc"));
 				member.setPay_date(rs.getTimestamp("pay_date"));
 			}			

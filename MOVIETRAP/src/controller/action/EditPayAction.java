@@ -18,12 +18,16 @@ public class EditPayAction implements Action {
 		String url = "edit_payment.jsp";
 		
 		HttpSession session = request.getSession();
-		String email = (String) session.getAttribute("loginUser");
+		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 		
 		MemberDAO mDao = MemberDAO.getInstance();
 		
-		
-		request.setAttribute("memberInfo", mDao.memberInfo(email));
+		if(loginUser == null) {
+			url = "MOVIETRAPServlet?command=index";
+		} else {
+			MemberVO memberInfo = mDao.memberInfo(loginUser.getEmail());
+			request.setAttribute("memberInfo", memberInfo);
+		}
 
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
