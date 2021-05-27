@@ -12,7 +12,7 @@ header {
 	margin: auto;
 }
     
-#logo, #search, #genre, #user_icon, #watch_later, #set {
+#logo, #genre_select, #user_icon, #set {
 	float: left;
 	align-content: center; 
 }

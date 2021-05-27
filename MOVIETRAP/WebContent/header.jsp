@@ -19,10 +19,6 @@ body {
 		<div id="logo" onclick="location='main.jsp'">
 				<img src="assets/images/logo.png" /> 
 		</div>
-		
-		<div id="search">  
-			<input type="search" placeholder="search">
-		</div>
  			 <select id="genre_select" onchange="selectGenre()">
  			 	 <option value= "" >SelectGenre</option>
 				 <option value="28" >Action</option> 
@@ -47,11 +43,6 @@ body {
 			</select>
 		<div id="user_icon" onclick="location='MOVIETRAPServlet?command=membership'">
 			<img src="assets/images/user.png" />
-		</div>
-		
-		<div id="watch_later">
-			<a href="" ></a>
-				<img src="assets/images/heart.png" />
 		</div>
 		
 		<div id="set">
