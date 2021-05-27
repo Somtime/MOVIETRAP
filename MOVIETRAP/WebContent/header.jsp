@@ -8,20 +8,16 @@
 <meta charset="EUC-KR">
 <link href="assets/css/header.css" type="text/css" rel="stylesheet" >  
 <title>Header</title>
-<style>    
+<style>   
 body {    
 	z-index: 9;
-	}
+	}    
 </style>
 </head>
 <body>
 	<header>
 		<div id="logo" onclick="location='main.jsp'">
 				<img src="assets/images/logo.png" /> 
-		</div>
-		
-		<div id="search">  
-			<input type="search" placeholder="search">
 		</div>
  			 <select id="genre_select" onchange="selectGenre()">
  			 	 <option value= "" >SelectGenre</option>
@@ -47,11 +43,6 @@ body {
 			</select>
 		<div id="user_icon" onclick="location='MOVIETRAPServlet?command=membership'">
 			<img src="assets/images/user.png" />
-		</div>
-		
-		<div id="watch_later">
-			<a href="" ></a>
-				<img src="assets/images/heart.png" />
 		</div>
 		
 		<div id="set">
