@@ -25,7 +25,7 @@ public class MembershipAction implements Action {
 			MemberDAO mDao = MemberDAO.getInstance();
 			MemberVO memInfo = mDao.memberInfo(loginUser.getEmail());
 			request.setAttribute("memberInfo", memInfo);
-
+			System.out.println("memberInfo : " + memInfo.getNewsletter());
 			
 		}
 		request.getRequestDispatcher(url).forward(request, response);

@@ -46,8 +46,6 @@ body {
 		</div>
 		
 		<div id="set">
-			<a href="" ></a>
-				<img src="assets/images/set.png" />
 		</div>
 	</header>
 <script>

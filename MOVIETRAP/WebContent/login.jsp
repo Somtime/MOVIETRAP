@@ -25,7 +25,7 @@ function PwdFunction() {
 	    <label for="pwd"><b>Password</b></label>
 	    <input type="password" id="login_pwd" placeholder="Enter Password" name="pwd" required>
 	    <input type="checkbox" onclick="PwdFunction()">Show Password
-	    <button type="submit" class="button">Login</button>
+	    <br><button type="submit" class="button">Login</button>
 	    
 	       			    <span class="psw">Forgot <a href="#">password?</a><br>
 	  	<a href="MOVIETRAPServlet?command=join_form">Sign up</a></span>  

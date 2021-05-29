@@ -35,6 +35,7 @@ public class AdminChatListAction implements Action {
 			jsonObject.put("id", chat.get(i).getId());
 			jsonObject.put("regdate", chat.get(i).getRegdate());
 			
+			
 			jsonArray.add(jsonObject);
 		}
 		

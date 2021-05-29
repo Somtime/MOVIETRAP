@@ -2,7 +2,6 @@ package controller.action;
 
 import java.io.IOException;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,23 +16,13 @@ public class EditMemberAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "edit_memberInfo.jsp";
 		HttpSession session = request.getSession();
-		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
-		
-		
-		
-		
-		MemberDAO mDao = MemberDAO.getInstance();
-		
-		
-//		request.setAttribute("memberInfo", mDao.memberInfo(loginUser));
-		if(loginUser == null) {
-			 url = "MOVIETRAPServlet?command=index";
-		} else {
-			MemberVO memInfo = mDao.memberInfo(loginUser.getEmail());
-			request.setAttribute("memberInfo", memInfo);
+		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 
-			
-		}
+		MemberDAO mDao = MemberDAO.getInstance();
+
+		MemberVO memInfo = mDao.memberInfo(loginUser.getEmail());
+		request.setAttribute("memberInfo", memInfo);
+
 		request.getRequestDispatcher(url).forward(request, response);
 
 	}

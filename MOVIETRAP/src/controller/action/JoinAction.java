@@ -19,7 +19,7 @@ public class JoinAction implements Action {
 		MemberVO member = new MemberVO();
 		
 		member.setEmail(request.getParameter("email"));
-		member.setnewsletter(request.getParameter("newsletter_yn"));
+		member.setNewsletter(request.getParameter("newsletter_yn"));
 		member.setName(request.getParameter("name"));
 		member.setPhone(request.getParameter("phone"));
 		member.setPwd(request.getParameter("pwd"));

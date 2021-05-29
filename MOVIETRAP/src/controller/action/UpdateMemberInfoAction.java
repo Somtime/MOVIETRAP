@@ -43,7 +43,7 @@ public class UpdateMemberInfoAction implements Action {
 		member.setName(multi.getParameter("name"));
 		member.setPhone(multi.getParameter("phone"));
 		member.setPwd(multi.getParameter("pwd"));
-		member.setnewsletter(multi.getParameter("newsletter"));
+		member.setNewsletter(multi.getParameter("newsletter"));
 		if(multi.getFilesystemName("image")==null) {
 			member.setImage(multi.getParameter("og_img"));
 		} else {
@@ -53,7 +53,7 @@ public class UpdateMemberInfoAction implements Action {
 		MemberDAO mDao = MemberDAO.getInstance();
 		mDao.updateInfo(member);
 
-		request.getRequestDispatcher(url).forward(request, response);
+		//request.getRequestDispatcher(url).forward(request, response);
 	}
 
 }

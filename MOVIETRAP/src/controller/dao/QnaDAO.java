@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import controller.dto.ChatVO;
+import controller.dto.MemberVO;
 import controller.dto.QnaVO;
 import util.DBManager;
 
@@ -72,6 +73,7 @@ public class QnaDAO {
 			pstmt.setString(3, qna.getRcvd_id());
 			pstmt.setString(4, qna.getChat_content());
 			pstmt.executeQuery();
+			System.out.println("qnaWrite // cseq : " + cseq);
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -205,6 +207,7 @@ public class QnaDAO {
 		
 		return qnaList;
 	}
+	
 	
 	//selectByMember (search by member id)
 	//listAll * from * 

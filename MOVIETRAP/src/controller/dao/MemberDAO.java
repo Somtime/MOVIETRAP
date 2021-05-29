@@ -48,7 +48,7 @@ public class MemberDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "INSERT INTO member(email, pwd, name, phone, pay_name, "+
-		" pay_num, pay_num_lstfour, pay_cvc, pay_exp_date, pay_exp_yr) VALUES(?,?,?,?,?,?,?,?,?,?)";
+		" pay_num, pay_num_lstfour, pay_cvc, pay_exp_date, pay_exp_yr, newsletter) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -63,6 +63,7 @@ public class MemberDAO {
 			pstmt.setInt(8, member.getPay_cvc());
 			pstmt.setString(9, member.getPay_exp_date());
 			pstmt.setInt(10, member.getPay_exp_yr());
+			pstmt.setString(11, member.getNewsletter());
 			
 			pstmt.executeUpdate();
 		} catch(Exception e) {
@@ -88,6 +89,7 @@ public class MemberDAO {
 			pstmt.setInt(4, member.getPay_cvc());	
 			pstmt.setString(5, member.getPay_exp_date());
 			pstmt.setInt(6, member.getPay_exp_yr());
+			pstmt.setString(7, member.getEmail());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -109,15 +111,10 @@ public class MemberDAO {
 			pstmt.setString(2, member.getPhone());
 			pstmt.setString(3, member.getImage());
 			pstmt.setString(4, member.getName());
-			pstmt.setString(5, member.getEmail());
-			pstmt.setString(6, member.getNewsletter());
+			pstmt.setString(5, member.getNewsletter());
+			pstmt.setString(6, member.getEmail());
 			
 			pstmt.executeUpdate();
-			System.out.println(member.getNewsletter());
-			System.out.println(member.getImage());
-			System.out.println(member.getPhone());
-			System.out.println(member.getName());
-			System.out.println(member.getPwd());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -193,7 +190,7 @@ public class MemberDAO {
 				member.setPhone(rs.getString("phone"));
 				member.setImage(rs.getString("image"));
 				member.setRegdate(rs.getTimestamp("regdate"));
-				member.setnewsletter(rs.getString("newsletter"));
+				member.setNewsletter(rs.getString("newsletter"));
 				member.setPay_name(rs.getString("pay_name"));
 				member.setPay_num(rs.getString("pay_num"));
 				member.setPay_num_lstfour(rs.getString("pay_num_lstfour"));

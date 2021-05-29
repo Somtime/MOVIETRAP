@@ -37,7 +37,7 @@ input[type=text], input[type=password], input[type=email] {
   box-sizing: border-box;
 }
 button {
-  background-color: #04AA6D;
+  background-color: #f44336;
   color: white;
   padding: 14px 20px;
   margin: 8px 5px;

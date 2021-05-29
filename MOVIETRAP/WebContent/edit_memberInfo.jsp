@@ -48,20 +48,20 @@
 <body>
 <form method="post" class="login_join_form" name="edit_member_info" action="MOVIETRAPServlet?command=update_member_info" enctype="multipart/form-data">
 	<div class="container">
-	<label for="image"><b>Profile Image</b></label>
-	<img name="og_img" style="height:35px; width:35px;" src="assets/images/${memberInfo.image}">
-	<input type="file" name="image">
+	<label for="image"><b>Profile Image</b></label><br>
+	<img name="og_img" style="height:35px; width:35px;" src="assets/images/${memberInfo.image}" /><br>
+	<input type="file" name="image"><br>
     <label for="name"><b>Name</b></label>
-    <input type="text" placeholder="${memberInfo.name}" name="name" required>
+    <input type="text" value="${memberInfo.name}" name="name"  >
     
     <label for="phone"><b>Phone</b></label>
-    <input type="text" placeholder="${memberInfo.phone}" name="phone" required>
+    <input type="text" value="${memberInfo.phone}" name="phone"  >
     
     <label for="pwd"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="pwd" id="pwd1" required>
+    <input type="password" placeholder="Enter Password" name="pwd" id="pwd1"  >
     
     <label for="pwd"><b>Re-Enter Password</b></label>
-    <input type="password" placeholder="Re-Enter Password" name="pwd" id="pwd2"required>
+    <input type="password" placeholder="Re-Enter Password" name="pwd" id="pwd2" >
     <div id="CheckPasswordMatch"></div>
     <div id="message">
 	  <h4>Password must contain the following:</h4>
@@ -77,6 +77,7 @@
 </form>
 
 <script type="text/javascript">	
+
 	// 비밀번호 확인
 	    function checkPasswordMatch() {
         var password = $("#pwd1").val();

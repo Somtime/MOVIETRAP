@@ -30,10 +30,9 @@ public class QnaSendAction implements Action {
 		QnaDAO qDao = QnaDAO.getInstance();
 		QnaVO qna = new QnaVO();
 		
-		// Qna Insert
 		int cseq = qDao.checkChat(loginUser.getEmail());
 		
-		if (cseq != 0) {
+		if (cseq == 0) {
 			qDao.insertChat(loginUser.getEmail());
 			cseq = qDao.checkChat(loginUser.getEmail());
 		}
@@ -44,9 +43,6 @@ public class QnaSendAction implements Action {
 		
 		qDao.qnaWrite(qna,cseq);	
 	
-		//
-		
-		//response.getWriter().print();
 	}
 
 }

@@ -32,7 +32,6 @@ a:hover, a:visited, a:link, a:active
 							<img src="assets/images/main-play.png" />
 							</a>
 <!-- 														</div> -->
-							<img src="assets/images/main-heart.png" />
 						</div>
 					</div>
 				</div>
@@ -62,12 +61,9 @@ a:hover, a:visited, a:link, a:active
 	        		success : function(result) {
 	        			const json = JSON.parse(result)
 	        			console.log("admin chat list : success")
+	        			console.log(json)
 	        			
 	        			for(var i = 0; i < json.length; i++) {
-	        				console.log(json[i]["cseq"])
-	        				console.log(json[i]["id"])
-	        				console.log(json[i]["regdate"])
-	        				
         				  document.querySelector('.chat_list').innerHTML += '<div><button type="button" id="qna_list_btn" onclick="admin_qna_list()" class="qna_list_button" value=' + json[i]["cseq"] + '>' + json[i]["id"] + '</button></div><br>';
         				  
 	        			}
@@ -138,7 +134,26 @@ a:hover, a:visited, a:link, a:active
         <c:if test="${loginUser.email != 'admin'}">
         
 	        <!-- user login -->
-	        <script type="text/javascript">
+	       
+	         <div class="chat-box">
+	            <div class="chat-closed">Chat Now</div>
+	            <div class="chat-header hide">
+	                <div class="box"></div>
+	                Online Support
+	            </div>
+	            <div class="chat-content-container hide">
+	                <div id="chat_section" class="chat-content">
+	                    <!-- 채팅 내용 위치 -->
+	                </div>
+	                <div id="chat_footer">
+	                    <textarea id="chat_content" name="chat_content" cols="25" rows="4"></textarea>
+	                    <input id="chat-submit" class="btn" type="button" name="qna_send" value="send" >
+	                    <div class="clear"></div>
+	                </div>
+	            </div>
+	        </div>
+	        
+	         <script type="text/javascript">
 			     // qna_list ajax
 			        $.ajax ({
 			            url : 'MOVIETRAPServlet?command=qna_list',
@@ -148,10 +163,13 @@ a:hover, a:visited, a:link, a:active
 			            success : function(result) {
 			                const json = JSON.parse(result);
 			                var user_id = "${sessionScope.loginUser.email}";
+			                console.log("user_id : " + user_id)
 			                
+			         
 			                for (var i = 0; i < json.length; i++) {
+			                		
 			                    if (user_id == json[i]["send_id"]) {
-			                        document.querySelector('#chat_section').innerHTML += '<div ' + 'style="float:right;"' + '>' + json[i]["chat_content"] + '</div><br>';
+			                    	document.querySelector('#chat_section').innerHTML += '<div ' + 'style="float:right;"' + '>' + json[i]["chat_content"] + '</div><br>';
 			                    } else {
 			                        document.querySelector('#chat_section').innerHTML += '<div ' + 'style="float:left;"' + '>' + json[i]["chat_content"] + '</div><br>';
 			                    }
@@ -164,25 +182,6 @@ a:hover, a:visited, a:link, a:active
 			            }
 			        });
 	        </script>
-	        
-	         <div class="chat-box">
-	            <div class="chat-closed">Chat Now</div>
-	            <div class="chat-header hide">
-	                <div class="box"></div>
-	                Online Support
-	            </div>
-	            <div class="chat-content-container hide">
-	                <div id="chat_section" class="chat-content">
-	                    <!-- 채팅 내용 위치 -->
-	                    <div class="clear"></div>
-	                </div>
-	                <div id="chat_footer">
-	                    <textarea id="chat_content" name="chat_content" cols="25" rows="4"></textarea>
-	                    <input id="chat-submit" class="btn" type="button" name="qna_send" value="send" >
-	                    <div class="clear"></div>
-	                </div>
-	            </div>
-	        </div>
 	       
         </c:if>
         
@@ -193,7 +192,6 @@ a:hover, a:visited, a:link, a:active
  function moviepage(img){
 var id = img.getAttribute('alt'); 		
 	var url = "MOVIETRAPServlet?command=moviepage&movieid="+id;
-	console.log(id)
 	location.href = url;	  
  
 }

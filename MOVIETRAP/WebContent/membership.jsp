@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ include file="header.jsp"%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Membership</title>
 <style>
-* {
+body{
 	color: white;
 }
 
@@ -43,22 +44,22 @@ button {
 <script>
 	function editPay() {
 		var url = "MOVIETRAPServlet?command=edit_pay";
-		window
-				.open(url, "_blank_1",
+		var pay_window = window.open(url, "_blank_1",
 						"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=630");
 	}
+	
 	function editMember() {
 		var url = "MOVIETRAPServlet?command=edit_member";
-		window
-				.open(url, "_blank_1",
+		var edit_info = window.open(url, "_blank_1",
 						"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=630");
 	}
+
 </script>
 </head>
 <body>
 	<div id="membership_page_wrapper">
 		<div id="membership_page">
-			<img src="${memberInfo.image}" /> <br>
+			<img src="assets/images/${memberInfo.image}" /> <br>
 			<hr>
 			<h3>
 				<c:out value="${memberInfo.name}" />
@@ -78,7 +79,7 @@ button {
 					<td>*************</td>
 				</tr>
 				<tr>
-					<td><div id="newsletter" style="display:hidden;"><c:out value="${memberInfo.newsletter}" /></div></td>
+					<td><input name="name" type="hidden" id="newsletter" style="display:hidden" value="${memberInfo.newsletter}"></td>
 					<td><div id="message"></div></td>
 				</tr>
 			</table>
@@ -94,7 +95,7 @@ button {
 					<td><c:out value="${memberInfo.pay_name}" /></td>
 				</tr>
 				<tr>
-					<td> CARD LAST 4-DIGITS: </td>
+					<td> LAST 4-DIGITS: </td>
 					<td><c:out value="${memberInfo.pay_num_lstfour}" /></td>
 				</tr>
 				<tr>
@@ -103,11 +104,14 @@ button {
 				</tr>
 				</table>
 			 <button onclick="editPay()">Edit</button>
+		</div>
 	</div>
-<script>
-var newsletter_yn = document.getElementById("newsletter");
-
-if (newsletter_yn.equals("y")) {
+<script type="text/javascript">
+	var newsletter_yn = document.getElementById("newsletter").value;
+	//var newsletter = ${memberInfo.newsletter};
+	console.log(newsletter_yn)
+ 	console.log(name.value)
+if (newsletter_yn == 'y') {
 	$("#message").text("Subscribed to our newsletter!");
 } else {
 	$("#message").text("Not subscribed to the newsletter!")

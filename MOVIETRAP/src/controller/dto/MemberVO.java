@@ -66,12 +66,6 @@ public class MemberVO {
 	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
 	}
-	public String getnewsletter() {
-		return newsletter;
-	}
-	public void setnewsletter(String newsletter) {
-		this.newsletter = newsletter;
-	}
 	public String getPay_name() {
 		return pay_name;
 	}

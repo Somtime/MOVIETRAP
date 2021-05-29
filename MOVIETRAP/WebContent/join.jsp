@@ -53,7 +53,7 @@
     <input type="email" placeholder="Enter Email" id="user_id" name="email" required>
     <div id="id_check"></div>
     
-    <input name="newsletter_yn" type="checkbox" value="y"> Notify me with new releases!<br>     
+    <input name="newsletter_yn" type="checkbox" value='y'><span>Notify me with new releases!</span><br>     
     
     <label for="id"><b>Name</b></label>
     <input type="text" placeholder="Full Name" name="name" required>
