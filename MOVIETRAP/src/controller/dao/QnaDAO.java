@@ -87,7 +87,7 @@ public class QnaDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM qna WHERE send_id=? OR rcvd_id=? ORDER BY qseq ASC	";
+		String sql = "SELECT * FROM qna WHERE send_id=? OR rcvd_id=? ORDER BY cseq";
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
