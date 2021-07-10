@@ -1,19 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ include file="header.jsp"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
 <link href="assets/css/main.css" type="text/css" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>MOVIETRAP</title>
 <style>
-a:hover, a:visited, a:link, a:active
-{  
-    text-decoration: none;
+a:hover, a:visited, a:link, a:active {
+	text-decoration: none;
 }
+
 * {
 	font-family: oswald;
 }
@@ -21,17 +22,18 @@ a:hover, a:visited, a:link, a:active
 </head>
 <body style="background-color: black;">
 	<div class="main_movie_container">
-		<div id="main_movie" > <!-- style="overflow-y: hidden; overflow-x: hidden;" -->
+		<div id="main_movie">
+			<!-- style="overflow-y: hidden; overflow-x: hidden;" -->
 			<div id="main_movie_trailer">
-				<iframe id="main_movie_frame" src=""> </iframe> 
+				<iframe id="main_movie_frame" src=""> </iframe>
 				<div class="main_movie_info_hover">
-					<div class="main_movie_info" style="color:white;">
+					<div class="main_movie_info" style="color: white;">
 						<div id="main_button">
-<!-- 							<div id="trailer_playbtn"> -->
-							<a id="trailer_playbtn">
-							<img src="assets/images/main-play.png" />
+							<!-- 							<div id="trailer_playbtn"> -->
+							<a id="trailer_playbtn"> <img
+								src="assets/images/main-play.png" />
 							</a>
-<!-- 														</div> -->
+							<!-- 														</div> -->
 						</div>
 					</div>
 				</div>
@@ -50,10 +52,10 @@ a:hover, a:visited, a:link, a:active
 	</div>
 
 	<!-- QNA / Chat pop up -->
-	 <form name="frm" method="post" >
-	 	<c:if test="${loginUser.email == 'admin'}">
-        	<!-- admin login -->
-        	 <script type="text/javascript">
+	<form name="frm" method="post">
+		<c:if test="${loginUser.email == 'admin'}">
+			<!-- admin login -->
+			<script type="text/javascript">
 	        	$.ajax ({
 	        		url : "MOVIETRAPServlet?command=admin_chat_list",
 	        		type : "get",
@@ -65,7 +67,6 @@ a:hover, a:visited, a:link, a:active
 	        			
 	        			for(var i = 0; i < json.length; i++) {
         				  document.querySelector('.chat_list').innerHTML += '<div><button type="button" id="qna_list_btn" onclick="admin_qna_list()" class="qna_list_button" value=' + json[i]["cseq"] + '>' + json[i]["id"] + '</button></div><br>';
-        				  
 	        			}
 	        		},
 	        		error : function() {
@@ -77,6 +78,9 @@ a:hover, a:visited, a:link, a:active
 	        		var cseq = document.getElementById("qna_list_btn").value;
 	        		var user_id = "${sessionScope.loginUser.email}";
 	        		
+	        		$('#chat_section').empty();
+	        		$('#user_name_box').empty();
+	        		
 	        		$.ajax ({
 	        			url : "MOVIETRAPServlet?command=admin_qna_list",
 	        			type : "get",
@@ -87,8 +91,9 @@ a:hover, a:visited, a:link, a:active
 	        			success : function(result) {
 	        				const json = JSON.parse(result)
 	        				console.log("admin qna list : success")
-	                        document.querySelector('#user_name_box').innerHTML += '<div>' + json[0]["send_id"] + '</div>';
 
+	        				document.querySelector('#user_name_box').innerHTML += '<div>' + json[0]["send_id"] + '</div>';
+							
 	        				for (var i = 0; i < json.length; i++) {
 			                    if (user_id == json[i]["send_id"]) {
 			                        document.querySelector('#chat_section').innerHTML += '<div ' + 'style="float:right;"' + '>' + json[i]["chat_content"] + '</div><br>';
@@ -103,57 +108,58 @@ a:hover, a:visited, a:link, a:active
 	        		});
 	        	}
 	        </script>
-	        <div class="chat-box">
-	       		
-	            <div class="chat-closed">Chat Now - Admin</div>
-	            <div class="chat-header hide" style="float:left">
-	                <div class="box"></div>
-	                Online Support
-	            </div>
-	             <div id="user_name_box" class="chat-header hide" style="float:right">
-	                <div  class="box">
-	                	<!-- User Name -->
-	                </div>
-	            </div>
-	            <div class="clear"></div>
-	            <div class="chat_list hide">
-	        	
-	        	</div>
-	            <div class="chat-content-container hide">
-	                <div id="chat_section" class="chat-content">
-	                    <!-- 채팅 내용 위치 -->
-	                </div>
-	                <div id="chat_footer">
-	                    <textarea id="chat_content" name="chat_content" cols="25" rows="4"></textarea>
-	                    <input id="chat-submit" class="btn" type="button" name="qna_send" value="send" >
-	                </div>
-	            </div>
-	            <div class="clear"></div>
-	        </div>
-        </c:if>
-        <c:if test="${loginUser.email != 'admin'}">
-        
-	        <!-- user login -->
-	       
-	         <div class="chat-box">
-	            <div class="chat-closed">Chat Now</div>
-	            <div class="chat-header hide">
-	                <div class="box"></div>
-	                Online Support
-	            </div>
-	            <div class="chat-content-container hide">
-	                <div id="chat_section" class="chat-content">
-	                    <!-- 채팅 내용 위치 -->
-	                </div>
-	                <div id="chat_footer">
-	                    <textarea id="chat_content" name="chat_content" cols="25" rows="4"></textarea>
-	                    <input id="chat-submit" class="btn" type="button" name="qna_send" value="send" >
-	                    <div class="clear"></div>
-	                </div>
-	            </div>
-	        </div>
-	        
-	         <script type="text/javascript">
+			<div class="chat-box">
+
+				<div class="chat-closed">Chat Now - Admin</div>
+				<div class="chat-header hide" style="float: left">
+					<div class="box"></div>
+					Online Support
+				</div>
+				<div id="user_name_box" class="chat-header hide"
+					style="float: right">
+					<div class="box">
+						<!-- User Name -->
+					</div>
+				</div>
+				<div class="clear"></div>
+				<div class="chat_list hide"></div>
+				<div class="chat-content-container hide">
+					<div id="chat_section" class="chat-content">
+						<!-- 채팅 내용 위치 -->
+					</div>
+					<div id="chat_footer">
+						<textarea id="chat_content" name="chat_content" cols="25" rows="4"></textarea>
+						<input id="chat-submit" class="btn" type="button" name="qna_send"
+							value="send">
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</c:if>
+		<c:if test="${loginUser.email != 'admin'}">
+
+			<!-- user login -->
+
+			<div class="chat-box">
+				<div class="chat-closed">Chat Now</div>
+				<div class="chat-header hide">
+					<div class="box"></div>
+					Online Support
+				</div>
+				<div class="chat-content-container hide">
+					<div id="chat_section" class="chat-content">
+						<!-- 채팅 내용 위치 -->
+					</div>
+					<div id="chat_footer">
+						<textarea id="chat_content" name="chat_content" cols="25" rows="4"></textarea>
+						<input id="chat-submit" class="btn" type="button" name="qna_send"
+							value="send">
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+
+			<script type="text/javascript">
 			     // qna_list ajax
 			        $.ajax ({
 			            url : 'MOVIETRAPServlet?command=qna_list',
@@ -164,14 +170,13 @@ a:hover, a:visited, a:link, a:active
 			                const json = JSON.parse(result);
 			                var user_id = "${sessionScope.loginUser.email}";
 			                console.log("user_id : " + user_id)
-			                
-			         
+			             	
 			                for (var i = 0; i < json.length; i++) {
 			                		
 			                    if (user_id == json[i]["send_id"]) {
 			                    	document.querySelector('#chat_section').innerHTML += '<div ' + 'style="float:right;"' + '>' + json[i]["chat_content"] + '</div><br>';
 			                    } else {
-			                        document.querySelector('#chat_section').innerHTML += '<div ' + 'style="float:left;"' + '>' + json[i]["chat_content"] + '</div><br>';
+			                        document.querySelector('#chat_section').innerHTML +	= '<div ' + 'style="float:left;"' + '>' + json[i]["chat_content"] + '</div><br>';
 			                    }
 			                }
 			                
@@ -182,12 +187,12 @@ a:hover, a:visited, a:link, a:active
 			            }
 			        });
 	        </script>
-	       
-        </c:if>
-        
-    </form>
 
-<script type="text/javascript">
+		</c:if>
+
+	</form>
+
+	<script type="text/javascript">
 //send data for each movie(thumbnail);
  function moviepage(img){
 var id = img.getAttribute('alt'); 		
