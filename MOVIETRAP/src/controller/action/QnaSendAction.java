@@ -41,7 +41,24 @@ public class QnaSendAction implements Action {
 		qna.setRcvd_id("admin");
 		qna.setChat_content(request.getParameter("chat_content"));		
 		
-		qDao.qnaWrite(qna,cseq);	
+		qDao.qnaWrite(qna,cseq);
+		
+		// Qna List
+		ArrayList qnaList = qDao.qnaList(loginUser.getEmail());
+		JSONArray jsonArray = new JSONArray();
+		for (int i = 0; i < qnaList.size(); i++) {
+			qna = (QnaVO) qnaList.get(i);
+			
+			JSONObject jsonObject = new JSONObject();
+			jsonObject.put("cseq", qna.getCseq());
+			jsonObject.put("send_id", qna.getSend_id());
+			jsonObject.put("rcvd_id", qna.getRcvd_id());
+			jsonObject.put("chat_content", qna.getChat_content());
+			
+			jsonArray.add(jsonObject);
+		}		
+		System.out.println(jsonArray);
+		response.getWriter().print(jsonArray);
 	
 	}
 

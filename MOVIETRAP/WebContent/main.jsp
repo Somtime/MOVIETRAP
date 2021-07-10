@@ -166,17 +166,18 @@ a:hover, a:visited, a:link, a:active {
 			            async : false,
 			            type : 'get',
 			            datatype : 'json',
-			            success : function(result) {
+			            success : function(result) {		            	
 			                const json = JSON.parse(result);
 			                var user_id = "${sessionScope.loginUser.email}";
 			                console.log("user_id : " + user_id)
-			             	
+			             	console.log("user qna list");
+			                
 			                for (var i = 0; i < json.length; i++) {
 			                		
 			                    if (user_id == json[i]["send_id"]) {
 			                    	document.querySelector('#chat_section').innerHTML += '<div ' + 'style="float:right;"' + '>' + json[i]["chat_content"] + '</div><br>';
 			                    } else {
-			                        document.querySelector('#chat_section').innerHTML +	= '<div ' + 'style="float:left;"' + '>' + json[i]["chat_content"] + '</div><br>';
+			                        document.querySelector('#chat_section').innerHTML += '<div ' + 'style="float:left;"' + '>' + json[i]["chat_content"] + '</div><br>';
 			                    }
 			                }
 			                
@@ -213,12 +214,27 @@ $('#chat-submit').click(function() {
 			"chat_content" : chat_content
 		},
 		success : function(result) {
+			$('#chat_section').empty();
+			$("#chat_content").val("");
+            const json = JSON.parse(result);
+            var user_id = "${sessionScope.loginUser.email}";
+            console.log("user_id : " + user_id)
+         	console.log("user qna list");
+            
+            for (var i = 0; i < json.length; i++) {
+            		
+                if (user_id == json[i]["send_id"]) {
+                	document.querySelector('#chat_section').innerHTML += '<div ' + 'style="float:right;"' + '>' + json[i]["chat_content"] + '</div><br>';
+                } else {
+                    document.querySelector('#chat_section').innerHTML += '<div ' + 'style="float:left;"' + '>' + json[i]["chat_content"] + '</div><br>';
+                }
+            }
+        		
 			console.log("qna_send() suc")
 		},
 		error : function() {
 			console.log("ajax : fail")
-		}
-		
+		}		
 	});
 });
 
