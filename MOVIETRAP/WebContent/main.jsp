@@ -170,7 +170,7 @@ a:hover, a:visited, a:link, a:active {
 			            success : function(result) {
 			                const json = JSON.parse(result);
 			                var user_id = "${sessionScope.loginUser.email}";
-			                console.log("user_id : " + user_id)
+			                document.querySelector('.chat-header').innerHTML += "<input type='hidden' id='chat_cseq' value='0' />";
 			             	
 			                for (var i = 0; i < json.length; i++) {
 			                		
