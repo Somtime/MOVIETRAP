@@ -112,3 +112,4 @@ SELECT * FROM member;
 UPDATE member SET pwd='1111', phone='0000000', image='user.png', name='gildong park', newsletter='y' WHERE email='kdpark@email.com';
 
 SELECT distinct * FROM chat ORDER BY regdate;
+ SELECT cseq FROM chat WHERE id = 'admin';

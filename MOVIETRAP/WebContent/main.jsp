@@ -93,9 +93,10 @@ a:hover, a:visited, a:link, a:active {
 	        				console.log("admin qna list : success")
 
 	        				document.querySelector('#user_name_box').innerHTML += '<div>' + json[0]["send_id"] + '</div>';
-							
+	        				document.querySelector('#user_name_box').innerHTML += "<input type='hidden' id='chat_cseq' value='" + json[0]["cseq"] + "' />";
+	        				
 	        				for (var i = 0; i < json.length; i++) {
-			                    if (user_id == json[i]["send_id"]) {
+	        					if (user_id == json[i]["send_id"]) {
 			                        document.querySelector('#chat_section').innerHTML += '<div ' + 'style="float:right;"' + '>' + json[i]["chat_content"] + '</div><br>';
 			                    } else {
 			                        document.querySelector('#chat_section').innerHTML += '<div ' + 'style="float:left;"' + '>' + json[i]["chat_content"] + '</div><br>';
@@ -176,7 +177,7 @@ a:hover, a:visited, a:link, a:active {
 			                    if (user_id == json[i]["send_id"]) {
 			                    	document.querySelector('#chat_section').innerHTML += '<div ' + 'style="float:right;"' + '>' + json[i]["chat_content"] + '</div><br>';
 			                    } else {
-			                        document.querySelector('#chat_section').innerHTML +	= '<div ' + 'style="float:left;"' + '>' + json[i]["chat_content"] + '</div><br>';
+			                        document.querySelector('#chat_section').innerHTML += '<div ' + 'style="float:left;"' + '>' + json[i]["chat_content"] + '</div><br>';
 			                    }
 			                }
 			                
@@ -204,15 +205,34 @@ var id = img.getAttribute('alt');
 //qna send ajax
 $('#chat-submit').click(function() {
 	var chat_content = document.getElementById("chat_content").value;
+	var chat_cseq = document.getElementById("chat_cseq").value;
 	$.ajax ({
 		url : "MOVIETRAPServlet?command=qna_send",
 		type : "get",
 		async : false,
 		datatype : "json",
 		data : {
-			"chat_content" : chat_content
+			"chat_content" : chat_content,
+			"chat_cseq": chat_cseq
 		},
 		success : function(result) {
+			$("#chat_section").empty();
+			$("#chat_content").val("");
+            const json = JSON.parse(result);
+            var user_id = "${sessionScope.loginUser.email}";
+            console.log("user_id : " + user_id)
+         	
+            for (var i = 0; i < json.length; i++) {
+            		
+                if (user_id == json[i]["send_id"]) {
+                	document.querySelector('#chat_section').innerHTML += '<div ' + 'style="float:right;"' + '>' + json[i]["chat_content"] + '</div><br>';
+                } else {
+                    document.querySelector('#chat_section').innerHTML += '<div ' + 'style="float:left;"' + '>' + json[i]["chat_content"] + '</div><br>';
+                }
+            }
+            
+
+        
 			console.log("qna_send() suc")
 		},
 		error : function() {
